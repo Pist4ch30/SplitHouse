@@ -10,10 +10,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_28_155359) do
+ActiveRecord::Schema.define(version: 2022_02_28_164739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.date "finish_date"
+    t.date "start_date"
+    t.integer "duration"
+    t.bigint "property_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_id"], name: "index_bookings_on_property_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "property_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_id"], name: "index_favorites_on_property_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "parts", force: :cascade do |t|
+    t.integer "status"
+    t.integer "nbr_part"
+    t.integer "total_amount"
+    t.integer "days_allowed"
+    t.bigint "property_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_id"], name: "index_parts_on_property_id"
+    t.index ["user_id"], name: "index_parts_on_user_id"
+  end
+
+  create_table "properties", force: :cascade do |t|
+    t.string "title"
+    t.integer "price_part"
+    t.integer "home_size"
+    t.integer "nbr_room"
+    t.integer "nbr_bathroom"
+    t.string "address"
+    t.text "detail"
+    t.boolean "pool"
+    t.boolean "garden"
+    t.boolean "parking"
+    t.boolean "garage"
+    t.boolean "summer_kitchen"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,6 +76,14 @@ ActiveRecord::Schema.define(version: 2022_02_28_155359) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.date "date_of_birth"
+    t.text "about_you"
+    t.integer "budget"
+    t.string "address"
+    t.string "occupation"
+    t.integer "family_status"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
