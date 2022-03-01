@@ -5,10 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :bookings
-  has_many :favorites
+  acts_as_favoritor
   has_many :parts
-
-
 
   enum family_status: {
     single: 0,

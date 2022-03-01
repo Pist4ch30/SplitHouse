@@ -1,6 +1,6 @@
 class Property < ApplicationRecord
   has_many :bookings
-  has_many :favorites
+  acts_as_favoritable
   has_many :parts
   validates :address, presence: true
   validates :price_part, presence: true
