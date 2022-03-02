@@ -1,0 +1,6 @@
+<div class="property-info-window">
+  <%#= cl_image_tag property.photos.first.key, width: 100, height: 80, crop: :fill %>
+  <%= cl_image_tag property.photos.first.key %>
+  <h2><%= property.title %></h2>
+  <p><%= property.address %></p>
+</div>

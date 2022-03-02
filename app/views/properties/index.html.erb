@@ -1,2 +1,40 @@
-<h1>Properties#index</h1>
-<p>Find me in app/views/properties/index.html.erb</p>
+<div class="container">
+
+  <div class="banner-index" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.univers-vacances.fr/wp-content/uploads/2020/07/pierre-et-vacances-ete-piscine-image-principale.jpg);">
+    <div class="container">
+      <h1>Jetez vous à l'eau, devenez propriétaire !</h1>
+    </div>
+  </div>
+
+  <div class="search">
+    <%= link_to "Rechercher", "#", class: "btn btn-ghost" %>
+  </div>
+
+  <div class="" style="width: 80%; height: 400px"
+    data-controller="mapbox"
+    data-mapbox-markers-value="<%= @markers.to_json %>"
+    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
+  <div class="col-sm-12">
+    <div class="property-cards mt-5">
+      <% @properties.each do |property| %>
+        <div class="card property-card">
+          <%= cl_image_tag property.photos.first.key %>
+          <div class="card-body">
+            <h5 class="card-title"><%= property.title %></h5>
+            <p class="card-text">
+              <ul>
+                <li>Adresse : <%= property.address %></li>
+                <li>Surface : <%= property.home_size %> m2</li>
+                <li>Description : <%= property.detail %></li>
+              </ul>
+            </p>
+            <%= link_to "Découvrir", property_path(property.id), class: "btn btn-primary btn-decouvrir" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    </div>
+
+</div>
