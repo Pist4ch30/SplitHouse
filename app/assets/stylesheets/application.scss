@@ -7,7 +7,11 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import url("https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css");
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+// CSS Dashboard
+@import "dashboards/dashboard";

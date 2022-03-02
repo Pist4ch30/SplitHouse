@@ -140,18 +140,36 @@ part1.nbr_part = 4
 part1.property = maison1
 part1.user = didier
 
-part2 = Part.new
-part2.status = 1
-part2.nbr_part = 4
-part2.property = maison1
-part2.user = jorge
-
 martin.favorite(maison1)
 martin.favorite(maison2)
 
-booking1 = Booking.new
-booking1.finish_date = "14/08/2022"
-booking1.start_date = "01/08/2022"
-booking1.duration = 14
-booking1.property = maison1
-booking1.user = didier
+
+
+# _____ Simulation => Didier et Jorge achete 4 part chacun _____
+
+# Achat => de parts
+Part.create(status: 1, nbr_part: 4, property: maison1, user: didier)
+Part.create(status: 1, nbr_part: 4, property: maison1, user: jorge)
+
+# Didier reserve 2 semaines en aout
+Booking.create(finish_date: "14/08/2022", start_date: "01/08/2022", duration: 14, property: maison1, user: didier)
+# Didier reserve 15 jours en octobre
+Booking.create(finish_date: "10/10/2022", start_date: "25/10/2022", property: maison1, user: didier)
+
+# Jorge reserve 2 semaines en aout
+Booking.create(finish_date: "30/08/2022", start_date: "15/08/2022", duration: 14, property: maison1, user: jorge)
+# Jorge reserve 10 jours en septembre
+Booking.create(finish_date: "20/09/2022", start_date: "10/09/2022", duration: 14, property: maison1, user: jorge)
+
+#Ajout de favoris
+didier.favorite(maison1)
+didier.favorite(maison2)
+didier.favorite(maison3)
+
+jorge.favorite(maison1)
+jorge.favorite(maison3)
+
+# _____ Simulation => Didier à des parts dans deux propiété _____
+
+# Achat => de parts
+Part.create(status: 0, nbr_part: 2, property: maison2, user: didier)
