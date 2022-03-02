@@ -7,11 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
 
+puts 'destroying everything !'
 Booking.destroy_all
 Part.destroy_all
+Favorite.destroy_all
 Property.destroy_all
 User.destroy_all
 
+puts 'Creating Users'
 martin = User.new
 martin.email = "martin@gmail.com"
 martin.password = "123456"
@@ -23,9 +26,10 @@ martin.budget = 50000
 martin.address = "16 villa Gaudelet, Paris"
 martin.occupation = "artist"
 martin.family_status = 0
-martin.save
 file = URI.open('https://www.jeancoutu.com/globalassets/revamp/photo/conseils-photo/20160302-01-reseaux-sociaux-profil/photo-profil_301783868.jpg')
 martin.photo.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+martin.save!
+
 
 didier = User.new
 didier.email = "didier@gmail.com"
@@ -38,9 +42,9 @@ didier.budget = 100000
 didier.address = "12 rue de l'église, Lyon"
 didier.occupation = "retired"
 didier.family_status = 1
-didier.save
 file = URI.open('https://i.kym-cdn.com/entries/icons/mobile/000/016/546/hidethepainharold.jpg')
 didier.photo.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+didier.save!
 
 jorge = User.new
 jorge.email = "jorge@gmail.com"
@@ -53,10 +57,12 @@ jorge.budget = 250000
 jorge.address = "61 rue Marx Dormoy, Marseille"
 jorge.occupation = "football coach"
 jorge.family_status = 1
-jorge.save
 file = URI.open('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Jorge_Sampaoli_2018.jpg/500px-Jorge_Sampaoli_2018.jpg')
 jorge.photo.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+jorge.save!
 
+
+puts 'creating houses'
 maison1 = Property.new
 maison1.title = "Magnifique maison d'architecte"
 maison1.price_part = 300000
@@ -70,7 +76,6 @@ maison1.garden = true
 maison1.parking = true
 maison1.garage = true
 maison1.summer_kitchen = true
-maison1.save
 file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/pwfVtGaaQfmnq3P5skAR_DSC_1704.jpg')
 maison1.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
 file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/yKZoLHdlTzCZvYwbefzT_DSC07931.jpg')
@@ -87,6 +92,7 @@ file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/Rk6tG5KSFurRqJsfGot
 maison1.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
 file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/m4MFo4XThiIVVp13yaug_DSC_1692.jpg')
 maison1.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+maison1.save!
 
 maison2 = Property.new
 maison2.title = "Maison sur le front de mer à Marseille"
@@ -101,7 +107,6 @@ maison2.garden = true
 maison2.parking = true
 maison2.garage = true
 maison2.summer_kitchen = false
-maison2.save
 file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/9dgUl3MiSlWEuQi7q1VC_unikibiza-propiedades_5f5c88718a3d1-edicion.jpg')
 maison2.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
 file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/ksjFoq7pQbSqBQJ1hKuB_Salon_(1).jpg')
@@ -112,6 +117,7 @@ file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/MfUx8dAWRsabsD0WA9K
 maison2.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
 file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/xzqNVzHRQPCEiRHZEqca_h7wxYtxvTd8apLTQ34x2_Bano.jpg')
 maison2.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+maison2.save!
 
 maison3 = Property.new
 maison3.title = "Maison à colombages dans le Calvados"
@@ -126,32 +132,38 @@ maison3.garden = true
 maison3.parking = true
 maison3.garage = false
 maison3.summer_kitchen = false
-maison3.save
 file = URI.open('https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1643129547110x121306362793904160%2Fphoto_e1c97bf17f8ad197908dac6f459395bb.jpeg')
 maison3.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpeg')
 file = URI.open('https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1643129538461x555735240952756500%2Fphoto_d01d993748a5edb959b457a20b2a0b9b.jpeg')
 maison3.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpeg')
 file = URI.open('https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1643129542427x888818223623173000%2Fphoto_d3537cbcb309b37b3814ddd0c4cfdb64.jpeg')
 maison3.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpeg')
+maison3.save!
 
+
+puts 'creating parts'
 part1 = Part.new
 part1.status = 1
 part1.nbr_part = 4
 part1.property = maison1
 part1.user = didier
+part1.save!
 
 part2 = Part.new
 part2.status = 1
 part2.nbr_part = 4
 part2.property = maison1
 part2.user = jorge
+part2.save!
 
+puts 'creating favorites'
 martin.favorite(maison1)
 martin.favorite(maison2)
 
+puts 'creating booking'
 booking1 = Booking.new
-booking1.finish_date = "14/08/2022"
-booking1.start_date = "01/08/2022"
-booking1.duration = 14
+booking1.start_date = Date.today + 10.days
+booking1.finish_date = Date.today + 20.days
 booking1.property = maison1
 booking1.user = didier
+booking1.save!
