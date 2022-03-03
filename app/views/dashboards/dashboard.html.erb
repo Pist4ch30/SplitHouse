@@ -75,7 +75,10 @@
             <div class="row">
               <% @status_buyer.each do |status| %>
               <div class="card" style="width: 18rem; margin: 5px 10px 5px 10px; border-radius: 10px;">
-
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  <%= "Il vous reste #{status[:stat_booking][:day_restant]}/Jours"%>
+                  <span class="visually-hidden">unread messages</span>
+                </span>
                 <%= cl_image_tag status[:property_details][:property].photos.first.key %>
                 <div class="card-body">
                   <h5 class="card-title"><%= status[:property_details][:title] %></h5>
@@ -84,6 +87,8 @@
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">Votre investissement total : <%= status[:property_details][:invest] %> €</li>
                   <li class="list-group-item">Nombre de parts : <%= @status_buyer[0][:parts] %></li>
+                  <li class="list-group-item">Nombre de jours par an : <%= status[:stat_booking][:day_allowed] %></li>
+                  <li class="list-group-item">Jours utilisés : <%= status[:stat_booking][:day_utilise] %></li>
                   <h4>Dernière réservation</h4>
                   <li class="list-group-item"><%= status[:last_booking] != nil ? "Du #{status[:last_booking][:start_date]} au #{status[:last_booking][:finish_date]}" : "Aucune réservation pour le moment" %></li>
                 </ul>
