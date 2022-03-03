@@ -27,7 +27,6 @@ class DashboardsController < ApplicationController
                                             detail: part.property[:detail],
                                             property: part.property },
                         last_booking:  last_booking(part.property_id) }
-
         data_out.push(data_buyer)
       end
     else
