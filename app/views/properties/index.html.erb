@@ -7,7 +7,19 @@
   </div>
 
   <div class="search">
-    <%= link_to "Rechercher", "#", class: "btn btn-ghost" %>
+    <%= simple_form_for :search, url: properties_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+        <% if params["search"] %>
+          <%= f.input :nbr_room, collection: 1..10, include_blank: true, input_html: {value: ""}, selected: params["search"]["nbr_room"] %>
+          <%= f.input :budget, collection: ["100_000 € - 200_000 €" , "200_001 € - 500_000 €" ], include_blank: true,input_html: {value: ""}, selected: params["search"]["budget"]%>
+        <% else %>
+          <%= f.input :nbr_room, collection: 1..10, include_blank: true, input_html: {value: ""}%>
+          <%= f.input :budget, collection: ["100_000 € - 200_000 €" , "200_001 € - 500_000 €" ], include_blank: true,input_html: {value: ""}%>
+
+        <% end %>
+
+        <%= f.submit "Search", class: "btn btn-primary" %>
+
+    <% end %>
   </div>
 
   <div class="mapbox-index" style="width: 80%; height: 400px"
@@ -18,11 +30,32 @@
 
   <div class="col-sm-12">
     <div class="property-cards mt-5">
-      <% @properties.each do |property| %>
+      <% @properties.each_with_index do |property, index| %>
         <div class="card property-card">
           <div class="card-image">
-            <h2 class="card_parts">Prix / part : <%= property.price_part %> €</h2>
-            <%= cl_image_tag property.photos.first.key %>
+            <h2 class="card_parts">Part : <%= property.price_part.to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ' ') %> €</h2>
+            <div id='<%="carouselExampleControls#{index}"%>' class="carousel slide" data-interval="false" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <%= cl_image_tag property.photos.first.key, class: "d-block w-100", alt: "Photo 1" %>
+                </div>
+                <% property.photos.each_with_index do |photo, index| %>
+                  <% if index > 0 %>
+                    <div class="carousel-item">
+                      <%= cl_image_tag photo.key, class: "d-block w-100", alt: "Photo #{index}" %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+              <a class="carousel-control-prev" href='<%="#carouselExampleControls#{index}"%>' role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href='<%="#carouselExampleControls#{index}"%>' role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
           </div>
           <div class="card-body">
             <h5 class="card-title"><%= property.title %></h5>

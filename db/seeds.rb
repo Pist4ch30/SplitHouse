@@ -76,6 +76,7 @@ maison1.garden = true
 maison1.parking = true
 maison1.garage = true
 maison1.summer_kitchen = true
+maison1.region = "Provence-Alpes-Côte d’Azur"
 file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/pwfVtGaaQfmnq3P5skAR_DSC_1704.jpg')
 maison1.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
 file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/yKZoLHdlTzCZvYwbefzT_DSC07931.jpg')
@@ -107,6 +108,7 @@ maison2.garden = true
 maison2.parking = true
 maison2.garage = true
 maison2.summer_kitchen = false
+maison2.region = "Provence-Alpes-Côte d’Azur"
 file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/9dgUl3MiSlWEuQi7q1VC_unikibiza-propiedades_5f5c88718a3d1-edicion.jpg')
 maison2.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
 file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/ksjFoq7pQbSqBQJ1hKuB_Salon_(1).jpg')
@@ -132,6 +134,7 @@ maison3.garden = true
 maison3.parking = true
 maison3.garage = false
 maison3.summer_kitchen = false
+maison3.region = "Normandie"
 file = URI.open('https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1643129547110x121306362793904160%2Fphoto_e1c97bf17f8ad197908dac6f459395bb.jpeg')
 maison3.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpeg')
 file = URI.open('https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1643129538461x555735240952756500%2Fphoto_d01d993748a5edb959b457a20b2a0b9b.jpeg')
@@ -202,4 +205,3 @@ booking1.finish_date = Date.today + 20.days
 booking1.property = maison1
 booking1.user = didier
 booking1.save!
-
