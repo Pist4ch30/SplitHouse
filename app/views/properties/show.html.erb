@@ -1,2 +1,62 @@
-<h1>Properties#show</h1>
-<p>Find me in app/views/properties/show.html.erb</p>
+<div class="container d-flex">
+  <div class="flex-container1">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <% @property.photos.each_with_index do |photo, index| %>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" <% if index == 0 %>class="active" aria-current="true"<% end %>  aria-label="Slide <%= index + 1%>"></button>
+        <% end %>
+      </div>
+      <div class="carousel-inner">
+        <% @property.photos.each_with_index do |photo, index| %>
+          <div class="carousel-item <%= 'active' if index == 0 %>">
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+          </div>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <div class="property-infos d-flex">
+      <div class="property-info-details">
+        <h2>Surface</h2>
+        <p><%= @property.home_size %> m2</p>
+      </div>
+      <div class="property-info-details">
+        <h2>Prix</h2>
+        <p><%= @property.price_part %> €</p>
+      </div>
+      <div class="property-info-details">
+        <h2>Pièces</h2>
+        <p><%= @property.nbr_room %></p>
+      </div>
+      <div class="property-info-details">
+        <h2>Salles de bain</h2>
+        <p><%= @property.nbr_bathroom %></p>
+      </div>
+      <div class="property-info-details">
+        <h2><%= image_tag "location.png", height: 30 %></h2>
+        <p class="notbold"><%= @property.address %></p>
+      </div>
+    </div>
+    <%= link_to "Se positionner sur ce bien", "#", class: "btn btn-flat" %>
+  </div>
+
+  <div class="flex-container3">
+    <div class="flex-item">MAP</div>
+    <div class="flex-item">Simulation</div>
+  </div>
+</div>
+<div class="container mt-5 mb-5">
+  <div class="card">
+    <div class="card-trip-infos">
+      <h1>A propos de ce bien:</h1>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+  </div>
+</div>

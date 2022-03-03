@@ -1,0 +1,105 @@
+#list li {
+  display: inline;
+}
+
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #1EDD88;
+  transition: background 0.3s ease;
+  height: 70px;
+  width: 500px;
+  font-size: 30px;
+  font-family: 'Nunito';
+}
+
+.btn-flat:hover {
+  background: #1BCB7F;
+  color: white;
+}
+
+.card {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+
+.card-trip h1 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-trip p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-trip .card-trip-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+p {
+  padding-left: 20px;
+}
+
+h1 {
+  margin-left: 10px;
+}
+
+.flex-container {
+  margin-left:30px;
+}
+
+.flex-container1 {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  flex-direction: column;
+}
+
+.flex-container3 {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+#carouselExampleIndicators {
+  width: 100%;
+}
+
+.property-info-details {
+  width: 20%;
+  height: 140px;
+  border: none;
+  padding: 5px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  h2 {
+    font-size: 19px;
+  }
+  p {
+    padding: 0;
+    font-weight: bold;
+    font-size: 25px;
+  }
+  p.notbold {
+    font-weight: unset;
+    font-size:unset;
+  }
+}
+
+
+.carousel-item img {
+  width: 100%;
+  object-fit: contain;
+}
