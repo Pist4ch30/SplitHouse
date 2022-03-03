@@ -186,7 +186,7 @@ jorge.favorite(maison3)
 
 # Achat => de parts
 Part.create(status: 0, nbr_part: 2, property: maison2, user: didier)
-=======
+
 part2 = Part.new
 part2.status = 1
 part2.nbr_part = 4

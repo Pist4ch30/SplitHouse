@@ -1,8 +1,16 @@
 class PropertiesController < ApplicationController
   def new
+    @property = Property.new
   end
 
   def create
+    @property = Property.create(params_property)
+    if Property.valid?
+      redirect_to dashboard_path
+    else
+      flash[:error] = Property.errors.full_messages
+      redirect_to dashboard_path
+    end
   end
 
   def update
@@ -37,5 +45,24 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
+  end
+
+
+  def favorite
+    @property = Property.find(params[:id])
+    current_user.favorite(@property)
+    redirect_to property_path(@property)
+  end
+
+  def unfavorite
+    @property = Property.find(params[:id])
+    current_user.unfavorite(@property)
+    redirect_to property_path(@property)
+
+  private
+
+  def params_property
+    params.require(:property).permit(:title, :price_part, :home_size, :nbr_room, :nbr_bathroom, :address, :detail, :pool, :garden, :parking, :garage, :summer_kitchen)
+
   end
 end
