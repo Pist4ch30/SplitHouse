@@ -1,0 +1,249 @@
+
+<div class="d-flex">
+  <div id="sidebar-container" class="bg-primary">
+    <div class="logo">
+        <h4 class="text-light font-weight-bold">Dashboard</h4>
+    </div>
+    <div class="menu">
+      <a href="" class="d-block text-light p-3 ">Mon agenda</a>
+      <a href="" class="d-block text-light p-3 ">Mes favoris</a>
+    </div>
+  </div>
+  <div id="content">
+    <section class="py-3">
+      <div class="container">
+        <div class="row row-1">
+          <div class="col-lg-9">
+            <h1 class="font-weight-bold mb-0">Bienvenue <%= current_user.first_name %></h1>
+            <p class="lead text-muted">Retrouver toutes les informations utiles de vos propriétées</p>
+          </div>
+          <div class="col-lg-3 d-flex">
+            <a href="" class="btn btn-primary w-100 align-self-center">Mon agenda</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-mix">
+      <div class="container">
+        <div class="card rounded-0">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-3 d-flex stat my-3">
+                <div class="mx-auto">
+                  <h6 class="text-muted">Mes parts</h6>
+                  <h3 class="font-weight-bold color-secondary">4 parts</h3>
+                </div>
+              </div>
+              <div class="col-lg-3 d-flex stat my-3">
+                <div class="mx-auto">
+                  <h6 class="text-muted">Mes parts</h6>
+                  <h3 class="font-weight-bold color-secondary">4 parts</h3>
+                </div>
+              </div>
+              <div class="col-lg-3 d-flex stat my-3">
+                <div class="mx-auto">
+                  <h6 class="text-muted">Mes parts</h6>
+                  <h3 class="font-weight-bold color-secondary">4 parts</h3>
+                </div>
+              </div>
+              <div class="col-lg-3 d-flex my-3">
+                <div class="mx-auto">
+                  <div class="card" style="width: 18rem;">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item text-muted">Email : <%= current_user.email %></li>
+                      <li class="list-group-item text-muted">Adresse : <%= current_user.address %></li>
+                      <li class="list-group-item text-muted">Budget : <%= current_user.budget %> €</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <img src="https://cdn-icons-png.flaticon.com/512/602/602175.png" class="avatar" alt="">
+            <h2>Vos propriétés</h2>
+            <% if @status_buyer != nil %>
+            <div class="row">
+              <% @status_buyer.each do |status| %>
+              <div class="card" style="width: 18rem; margin: 5px 10px 5px 10px; border-radius: 10px;">
+                <img src="<%= "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><%= status[:property_details][:title] %></h5>
+                  <p class="card-text"><%= status[:property_details][:detail] %></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Votre investissement total : <%= status[:property_details][:invest] %> €</li>
+                  <li class="list-group-item">Nombre de parts : <%= @status_buyer[0][:parts] %></li>
+                  <h4>Dernière réservation</h4>
+                  <li class="list-group-item"><%= status[:last_booking] != nil ? "Du #{status[:last_booking][:start_date]} au #{status[:last_booking][:finish_date]}" : "Aucune réservation pour le moment" %></li>
+                </ul>
+                <div class="card-body">
+                  <a href="#" class="card-link">Vos Réservations</a>
+                  <a href="#" class="card-link">Another link</a>
+                </div>
+              </div>
+              <% end %>
+            </div>
+            <% else %>
+                <div class="card text-center">
+                  <div class="card-header">
+                    <img src="https://cdn-icons.flaticon.com/png/512/1895/premium/1895100.png?token=exp=1646264530~hmac=111df545ce84de09f40b7207a4f59ea0" class="avatar" alt="">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Vous avez aucune propriété</h5>
+                    <p class="card-text">Découvrez les meilleures biens du moment</p>
+                    <a href="#" class="btn btn-primary">Découvrir des biens</a>
+                  </div>
+                  <div class="card-footer text-muted">
+                    SplitHouse
+                  </div>
+                </div>
+              <% end %>
+          </div>
+          <div class="col-lg-6">
+            <img src="https://cdn-icons.flaticon.com/png/512/3285/premium/3285805.png?token=exp=1646260953~hmac=60cb64f6f5dc8d2aaeae441c0a5c59bf" class="avatar" alt="">
+            <h2>Vos favoris</h2>
+          <% if current_user.all_favorited != nil %>
+            <div class="row">
+            <% current_user.all_favorited.each do |favorite| %>
+              <div class="card" style="width: 18rem; margin: 5px 10px 5px 10px; border-radius: 10px;">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><%= favorite.title %></h5>
+                  <p class="card-text"><%= favorite.detail %></p>
+
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Adresse <%= favorite.address %> €</li>
+                  <li class="list-group-item">Chambres : <%= favorite.nbr_room %></li>
+                  <li class="list-group-item">Salle de bain : <%= favorite.nbr_bathroom %></li>
+                  <li class="list-group-item">Prix par part : <%= favorite.price_part %> €</li>
+                </ul>
+                <div class="card-body">
+                  <a href="<%= property_path(id: favorite.id) %>" class="card-link">Regarder</a>
+                  <a href="#" class="card-link">Another link</a>
+                </div>
+              </div>
+              <% end %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Total Parts</h2>
+
+
+<h2>Vos Infos</h2>
+<p> Nom & prenom : <%= "#{current_user.first_name} #{current_user.last_name}" %></p>
+<p> Email : <%= current_user.email %></p>
+<p> Adresse : <%= current_user.address %></p>
+<p> Budget : <%= current_user.budget %> €</p>
+<p> Détails : <%= current_user.about_you %></p>
+<p> Emploi : <%= current_user.occupation %></p>
+<p> Status familiale : <%= current_user.family_status %></p>
+
+<h2>Vos Propriétés</h2>
+<% if @status_buyer != nil %>
+<div class="row">
+<% @status_buyer.each do |status| %>
+  <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%= status[:property_details][:title] %></h5>
+      <p class="card-text"><%= status[:property_details][:detail] %></p>
+
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Votre investissement total : <%= status[:property_details][:invest] %> €</li>
+      <li class="list-group-item">Nombre de parts : <%= @status_buyer[0][:parts] %></li>
+      <h4>Dernière réservation</h4>
+      <li class="list-group-item"><%= status[:last_booking] != nil ? "Du #{status[:last_booking][:start_date]} au #{status[:last_booking][:finish_date]}" : "Aucune réservation pour le moment" %></li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Vos Réservations</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+  <% end %>
+</div>
+<% end %>
+
+<h2>Vos Favoris</h2>
+<% if current_user.all_favorited != nil %>
+<div class="row">
+<% current_user.all_favorited.each do |favorite| %>
+  <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%= favorite.title %></h5>
+      <p class="card-text"><%= favorite.detail %></p>
+
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Adresse <%= favorite.address %> €</li>
+      <li class="list-group-item">Chambres : <%= favorite.nbr_room %></li>
+      <li class="list-group-item">Salle de bain : <%= favorite.nbr_bathroom %></li>
+      <li class="list-group-item">Prix par part : <%= favorite.price_part %> €</li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Vos Réservations</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+  <% end %>
+</div>
+<% end %>
