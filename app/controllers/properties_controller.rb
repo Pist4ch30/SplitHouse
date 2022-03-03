@@ -26,4 +26,16 @@ class PropertiesController < ApplicationController
   def show
     @property = Property.find(params[:id])
   end
+
+  def favorite
+    @property = Property.find(params[:id])
+    current_user.favorite(@property)
+    redirect_to property_path(@property)
+  end
+
+  def unfavorite
+    @property = Property.find(params[:id])
+    current_user.unfavorite(@property)
+    redirect_to property_path(@property)
+  end
 end
