@@ -8,3 +8,22 @@ $orange: #E67E22;
 $green: #1EDD88;
 $gray: #0E0000;
 $light-gray: #F4F4F4;
+
+
+// SH-Colours
+$SH-blue: #a0dddcff;
+$SH-pink: #f77398ff;
+$SH-almond: #e6d8c8ff;
+$SH-lilac: #c3a5c6ff;
+$SH-azure: #def3f3ff;
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, $SH-blue, $SH-pink, $SH-almond, #c3a5c6ff, #def3f3ff);
+$gradient-right: linear-gradient(90deg, $SH-blue, $SH-pink, $SH-almond, #c3a5c6ff, #def3f3ff);
+$gradient-bottom: linear-gradient(180deg, $SH-blue, $SH-pink, $SH-almond, #c3a5c6ff, #def3f3ff);
+$gradient-left: linear-gradient(270deg, $SH-blue, $SH-pink, $SH-almond, #c3a5c6ff, #def3f3ff);
+$gradient-top-right: linear-gradient(45deg, $SH-blue, $SH-pink, $SH-almond, #c3a5c6ff, #def3f3ff);
+$gradient-bottom-right: linear-gradient(135deg, $SH-blue, $SH-pink, $SH-almond, #c3a5c6ff, #def3f3ff);
+$gradient-top-left: linear-gradient(225deg, $SH-blue, $SH-pink, $SH-almond, #c3a5c6ff, #def3f3ff);
+$gradient-bottom-left: linear-gradient(315deg, $SH-blue, $SH-pink, $SH-almond, #c3a5c6ff, #def3f3ff);
+$gradient-radial: radial-gradient($SH-blue, $SH-pink, $SH-almond, #c3a5c6ff, #def3f3ff);
