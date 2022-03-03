@@ -35,9 +35,22 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
   end
 
+
+  def favorite
+    @property = Property.find(params[:id])
+    current_user.favorite(@property)
+    redirect_to property_path(@property)
+  end
+
+  def unfavorite
+    @property = Property.find(params[:id])
+    current_user.unfavorite(@property)
+    redirect_to property_path(@property)
+
   private
 
   def params_property
     params.require(:property).permit(:title, :price_part, :home_size, :nbr_room, :nbr_bathroom, :address, :detail, :pool, :garden, :parking, :garage, :summer_kitchen)
+
   end
 end
