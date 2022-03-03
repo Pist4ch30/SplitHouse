@@ -16,7 +16,7 @@ a:hover {
 }
 
 .bg-primary {
-  background-color: var(--secondary) !important;
+  background-color: var(--primary) !important;
 }
 
 .btn {
@@ -27,7 +27,7 @@ a:hover {
   background-color: var(--secondary);
 }
 
-.bg-mix {background: linear-gradient(180deg, var(--light) 60%, #fbe0c38c 0);}
+.bg-mix {background: linear-gradient(180deg, var(--light) 60%, var(--primary) 0);}
 
 .btn-primary :hover {
   background-color: var(--light);
@@ -42,7 +42,7 @@ a:hover {
 }
 
 #sidebar-container .menu {
-  width: 10rem;
+  width: 12rem;
 }
 
 #content {

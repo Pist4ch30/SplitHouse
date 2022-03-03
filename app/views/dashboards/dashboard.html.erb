@@ -9,6 +9,7 @@
       <a href="" class="d-block text-light p-3 ">Mes favoris</a>
     </div>
   </div>
+
   <div id="content">
     <section class="py-3">
       <div class="container">
@@ -74,7 +75,8 @@
             <div class="row">
               <% @status_buyer.each do |status| %>
               <div class="card" style="width: 18rem; margin: 5px 10px 5px 10px; border-radius: 10px;">
-                <img src="<%= "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" %>" class="card-img-top" alt="...">
+
+                <%= cl_image_tag status[:property_details][:property].photos.first.key %>
                 <div class="card-body">
                   <h5 class="card-title"><%= status[:property_details][:title] %></h5>
                   <p class="card-text"><%= status[:property_details][:detail] %></p>
@@ -86,8 +88,7 @@
                   <li class="list-group-item"><%= status[:last_booking] != nil ? "Du #{status[:last_booking][:start_date]} au #{status[:last_booking][:finish_date]}" : "Aucune réservation pour le moment" %></li>
                 </ul>
                 <div class="card-body">
-                  <a href="#" class="card-link">Vos Réservations</a>
-                  <a href="#" class="card-link">Another link</a>
+                  <%= link_to "Réserver un séjour", new_property_booking_path(property_id: status[:property_details][:property].id), class: "btn btn-primary"%>
                 </div>
               </div>
               <% end %>
@@ -106,7 +107,7 @@
                     SplitHouse
                   </div>
                 </div>
-              <% end %>
+            <% end %>
           </div>
           <div class="col-lg-6">
             <img src="https://cdn-icons.flaticon.com/png/512/3285/premium/3285805.png?token=exp=1646260953~hmac=60cb64f6f5dc8d2aaeae441c0a5c59bf" class="avatar" alt="">
@@ -122,14 +123,13 @@
 
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Adresse <%= favorite.address %> €</li>
+                  <li class="list-group-item">Adresse <%= favorite.address %> </li>
                   <li class="list-group-item">Chambres : <%= favorite.nbr_room %></li>
                   <li class="list-group-item">Salle de bain : <%= favorite.nbr_bathroom %></li>
                   <li class="list-group-item">Prix par part : <%= favorite.price_part %> €</li>
                 </ul>
                 <div class="card-body">
-                  <a href="<%= property_path(id: favorite.id) %>" class="card-link">Regarder</a>
-                  <a href="#" class="card-link">Another link</a>
+                  <%= link_to "Regarder", property_path(id: favorite.id), class: "btn btn-primary" %>
                 </div>
               </div>
               <% end %>
