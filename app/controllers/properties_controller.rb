@@ -46,7 +46,7 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
     current_user.unfavorite(@property)
     redirect_to property_path(@property)
-
+  end
   private
 
   def params_property
