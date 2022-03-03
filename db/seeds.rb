@@ -63,7 +63,7 @@ maison1.price_part = 300000
 maison1.home_size = 165
 maison1.nbr_room = 4
 maison1.nbr_bathroom = 2
-maison1.address = "1 plage des Graniers, Saint-Tropez"
+maison1.address = "La Madrague, Saint-Tropez"
 maison1.detail = "Cette magnifique maison d'architecte vient d'être refaite à neuf et offre de beaux volumes"
 maison1.pool = true
 maison1.garden = true
@@ -139,19 +139,22 @@ part1.status = 1
 part1.nbr_part = 4
 part1.property = maison1
 part1.user = didier
+part1.save
 
 part2 = Part.new
 part2.status = 1
 part2.nbr_part = 4
 part2.property = maison1
 part2.user = jorge
+part2.save
 
 martin.favorite(maison1)
 martin.favorite(maison2)
 
 booking1 = Booking.new
-booking1.finish_date = "14/08/2022"
-booking1.start_date = "01/08/2022"
+booking1.finish_date = Date.today + 60.days
+booking1.start_date = Date.today + 45.days
 booking1.duration = 14
 booking1.property = maison1
 booking1.user = didier
+booking1.save
