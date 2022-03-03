@@ -75,6 +75,7 @@
             <div class="row">
               <% @status_buyer.each do |status| %>
               <div class="card" style="width: 18rem; margin: 5px 10px 5px 10px; border-radius: 10px;">
+
                 <%= cl_image_tag status[:property_details][:property].photos.first.key %>
                 <div class="card-body">
                   <h5 class="card-title"><%= status[:property_details][:title] %></h5>

@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboards#dashboard'
   resources :properties, only:[:new, :create, :update, :destroy, :index, :show] do
     resources :parts, only:[:new, :create, :update, :destroy]
-    resources :bookings, only: [:create, :new, :update, :destroy, :index, :show]
+    resources :bookings, only:[:create, :new, :update, :destroy, :index, :show]
   end
 end

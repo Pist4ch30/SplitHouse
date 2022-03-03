@@ -1,1 +1,136 @@
 // Specific CSS for your home-page
+.banner-header {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  border-radius: 5px;
+}
+.banner-casa {
+  background-size: 72%;
+  background-position: top 50% right -94px;
+  padding: 150px 0;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+}
+
+.banner-header h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.cards-home {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+.cards-home-bis {
+  display: grid;
+  grid-template-columns: 33.33% 33.33%;
+  grid-gap: 16px;
+}
+
+.splithouse {
+  font-size: 40px;
+  color: #6b705c;
+  text-align: center;
+  margin: 15px;
+}
+.splithouse-bis {
+  color: #6b705c;
+  text-align: center;
+}
+
+.p-sci {
+  font-size: 20px;
+  color: #6b705c;
+  margin: 0;
+  text-align: center;
+}
+
+.p-faq {
+  font-size: 18px;
+  margin: 20px;
+}
+
+.btn-faq {
+  text-align: center;
+  position: relative;
+  top: -25px;
+}
+
+.cards-place {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.card-category {
+  height: 250px;
+  border-radius: 5px;
+  object-fit: cover;
+  color: white;
+}
+
+.background-casa {
+  background-color: #59D4D4;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards-home {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards-home {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards-home {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards-home {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards-home {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

@@ -35,8 +35,8 @@ class DashboardsController < ApplicationController
     return data_out
   end
 
+  # Recupere le dernier booking de l'user sur une property
   def last_booking(property_id)
-    # Recupere le dernier booking de l'user sur une property
     booking  = Booking.where(user_id: current_user.id, property_id: property_id).order(created_at: :desc).first
     if booking
       return {start_date: booking.start_date, finish_date: booking.finish_date}

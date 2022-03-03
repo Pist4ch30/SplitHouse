@@ -1,2 +1,127 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="container py-5">
+
+
+  <div class="banner-header" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.univers-vacances.fr/wp-content/uploads/2020/07/pierre-et-vacances-ete-piscine-image-principale.jpg);">
+    <div class="container">
+      <h1>Jetez-vous à l'eau,</h1>
+      <h1>devenez propriètaire</h1>
+    </div>
+  </div>
+
+  <div>
+  <br>
+  <br>
+  <br>
+  </div>
+
+  <div>
+    <h2 class="splithouse">Les avantages de l’achat avec SplitHouse </h2>
+  </div>
+
+  <div class="cards-advantages">
+    <div class="cards-home">
+      <div class="card-category-home" style="background-image: url(<%= image_path "casa.png" %>)">
+        Partage des frais avec les autres co-propriètaires
+      </div>
+
+      <div class="card-category-home" style="background-image: url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
+        Permet d’accèder à la propriété rapidement
+      </div>
+
+      <div class="card-category-home" style="background-image: url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
+        Accès à une gamme de produit plus élevé
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <div class="cards-home-bis">
+        <div></div>
+        <div class="card-category-home" style="background-image: url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          Aucun soucis de gestion ou d’entretien
+        </div>
+
+        <div class="card-category-home" style="background-image: url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
+          Garantie de revendre facilement
+        </div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="splithouse">Apercu de notre catalogue</h2>
+  </div>
+
+
+ <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="..." class="d-block w-100" alt="...">
+      <%# ! Mettre les cards ici  %>
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+      <%# ! Mettre les cards ici  %>
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+      <%# ! Mettre les cards ici  %>
+    </div>
+  </div>
+
+  <div>
+    <a class="btn btn-flat" href="#">Book now</a>
+    <%= link_to "Book now", "#", class: "btn btn-flat" %>
+  </div>
+
+
+
+  <div class="background-casa">
+    <div class="banner-casa" style="background-image: url(<%= image_path "casa.png" %>);">
+      <div class="container">
+        <h2 class="splithouse-bis">FAQ</h2>
+        <p class="p-faq">Comment financer l’achat ?</p>
+        <p class="p-faq">Suis-je réellement propriétaire ?</p>
+        <p class="p-faq">Qui prend en charge la gestion et l'entretien ?</p>
+        <p class="p-faq">Est-il possible d’acheter plusieurs parts ?</p>
+        <p class="p-faq">Est-ce difficile de revendre une part ?</p>
+      </div>
+    </div>
+  </div>
+
+      <div class="btn-faq">
+        <button type="button" class="btn btn-info">Nous contacter</button>
+      </div>
+
+
+  <div class="sci-info">
+    <h2 class="splithouse">Pourquoi choisir une SCI ?</h2>
+      <p class="p-sci"><strong>O</strong>ffre une structure juridique souple et simplifiée</p>
+      <p class="p-sci"><strong>P</strong>ermet de contourner l’indivision</p>
+      <p class="p-sci"><strong>S</strong>implifie la transmission des biens immobiliers</p>
+      <p class="p-sci"><strong>D</strong>ispose d’une fiscalité très avantageuse</p>
+  </div>
+
+  <div>
+    <h2 class="splithouse">Où voulez vous vous ressourcer ?</h2>
+  </div>
+
+  <div class="cards-place">
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1567351673954-0cb49f639dc4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dG91bG91c2V8ZW58MHx8MHx8&w=1000&q=80)">
+      Ville
+    </div>
+
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.crushpixel.com/big-static14/preview4/landscape-with-lake-mountain-1393928.jpg)">
+      Montagne
+    </div>
+
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.familiscope.fr/assets/fiches/49000/49550-palombaggia.jpg)">
+      Mer
+    </div>
+
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://ns328286.ip-37-187-113.eu/ew/wallpapers/800x480/03004_800x480.jpg)">
+      Campagne
+    </div>
+  </div>
+</div>
