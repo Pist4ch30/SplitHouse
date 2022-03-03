@@ -7,13 +7,16 @@ class BookingsController < ApplicationController
     @bookings_dates = @bookings.map do |booking|
       {
         from: booking.start_date,
-        to:   booking.end_date
+        to:   booking.finish_date
       }
     end
   end
 
   def create
-    @booking = Booking.new(params_booking)
+    @property = Property.find(params[:property_id])
+    @booking  = Booking.new(params_booking)
+    @booking.user = current_user
+    @booking.property = @property
     if @booking.save
       redirect_to dashboard_path
     else
