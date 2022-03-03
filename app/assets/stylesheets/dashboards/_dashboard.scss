@@ -1,12 +1,11 @@
 :root {
-  --primary: #59D4D4;
+  --primary: black;
   --light: #687477;
   --black: black;
   --secondary: #FBE0C3;
 }
 
 body {
-  overflow: hidden;
   font-family: 'Multi', sans-serif;
   font-weight: 300;
   color: var(--primary);

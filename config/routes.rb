@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   resources :favorites, only:[:new, :create, :update, :destroy, :index, :show]
   get 'dashboard', to: 'dashboards#dashboard'
   resources :properties, only:[:new, :create, :update, :destroy, :index, :show] do
+    member do
+      post :favorite
+      delete :unfavorite
+    end
+
     resources :parts, only:[:new, :create, :update, :destroy]
     resources :bookings, only:[:create, :new, :update, :destroy, :index, :show]
   end
