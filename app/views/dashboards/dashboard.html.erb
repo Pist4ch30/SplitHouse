@@ -88,7 +88,46 @@
                   <li class="list-group-item"><%= status[:last_booking] != nil ? "Du #{status[:last_booking][:start_date]} au #{status[:last_booking][:finish_date]}" : "Aucune réservation pour le moment" %></li>
                 </ul>
                 <div class="card-body">
-                  <%= link_to "Réserver un séjour", new_property_booking_path(property_id: status[:property_details][:property].id), class: "btn btn-primary"%>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Launch demo modal
+                  </button>
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="custom-container">
+                            <div class="form-wrapper">
+                              <h2>Réserver votre séjour</h2>
+
+                              <%= simple_form_for [status[:property_details][:property], @booking] do |f| %>
+                                <%= f.input :start_date, as: :string,
+                                                        required: false,
+                                                        input_html: { id: "range_start", class: "d-none" } %>
+                                <%= f.input :finish_date, as: :string,
+                                                      required: false,
+                                                      input_html: { id: "range_end", class: "d-none" } %>
+                                <%= f.button :submit, "Book", class: "btn btn-primary" %>
+                              <% end %>
+                            </div>
+                          </div>
+                          <div id="booking-form-div"
+                              data-bookings="<%= @bookings_dates.to_json %>">
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <%#= link_to "Réserver un séjour", new_property_booking_path(property_id: status[:property_details][:property].id), class: "btn btn-primary"%>
                 </div>
               </div>
               <% end %>

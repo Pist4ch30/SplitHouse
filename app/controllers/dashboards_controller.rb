@@ -3,6 +3,7 @@ class DashboardsController < ApplicationController
   def dashboard
     # Recupere le status de => Acheteur (Part(s) qui lui appartient)
     @status_buyer = status_buyer
+    @booking      = Booking.new
   end
 
   private
