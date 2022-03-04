@@ -3,6 +3,7 @@
     <div class="container">
       <h1>Jetez-vous à l'eau,</h1>
       <h1>devenez propriètaire</h1>
+      <%= link_to "Trouver ma maison !", properties_path, class: "btn btn-primary sh-btn-primary btn-banner" %>
     </div>
   </div>
 
@@ -12,114 +13,55 @@
 
   <div class="d-flex justify-content-evenly flex-wrap align-items-center py-5">
     <div class="d-flex flex-column align-items-center justify-content-center p-4 bg-primary my-3 card-advantage" style="width: 30%;">
-      <img src="casa.png" alt="" style="width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;">
+      <%= image_tag "logo-partage.png", style: "width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;" %>
       <h6 class="small text-center">Partage des frais avec les autres co-propriètaires</h6>
     </div>
     <div class="d-flex flex-column align-items-center justify-content-center p-4 bg-primary my-3 card-advantage" style="width: 30%;">
-      <img src="casa.png" alt="" style="width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;">
-      <h6 class="small text-center">Partage des frais avec les autres co-propriètaires</h6>
+      <%= image_tag "fusee.png", style: "width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;" %>
+      <h6 class="small text-center">Permet d’accèder à la propriété rapidement</h6>
     </div>
     <div class="d-flex flex-column align-items-center justify-content-center p-4 bg-primary my-3 card-advantage" style="width: 30%;">
-      <img src="casa.png" alt="" style="width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;">
-      <h6 class="small text-center">Partage des frais avec les autres co-propriètaires</h6>
+      <%= image_tag "diamond.png", style: "width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;" %>
+      <h6 class="small text-center">Accès à une gamme de produit plus élevé</h6>
     </div>
+
     <div class="d-flex flex-column align-items-center justify-content-center p-4 bg-primary my-3 card-advantage" style="width: 30%;">
-      <img src="casa.png" alt="" style="width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;">
-      <h6 class="small text-center">Partage des frais avec les autres co-propriètaires</h6>
+      <%= image_tag "revente.png", style: "width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;" %>
+      <h6 class="small text-center">Garantie de revendre facilement</h6>
     </div>
+
      <div class="d-flex flex-column align-items-center justify-content-center p-4 bg-primary my-3 card-advantage" style="width: 30%;">
-      <img src="casa.png" alt="" style="width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;">
-      <h6 class="small text-center">Partage des frais avec les autres co-propriètaires</h6>
+     <%= image_tag "key.png", style: "width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;" %>
+      <h6 class="small text-center">Aucun soucis de d’entretien</h6>
     </div>
   </div>
 
-
-
-  <div class="cards-advantages">
-    <div class="cards-home">
-      <div class="card-category-home" style="background-image: url(<%= image_path "casa.png" %>)">
-        Partage des frais avec les autres co-propriètaires
-      </div>
-
-      <div class="card-category-home" style="background-image: url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
-        Permet d’accèder à la propriété rapidement
-      </div>
-
-      <div class="card-category-home" style="background-image: url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
-        Accès à une gamme de produit plus élevé
-      </div>
-    </div>
-
-    <div class="d-flex justify-content-center">
-      <div class="cards-home-bis">
-        <div></div>
-        <div class="card-category-home" style="background-image: url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-          Aucun soucis de gestion ou d’entretien
-        </div>
-
-        <div class="card-category-home" style="background-image: url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
-          Garantie de revendre facilement
-        </div>
-        <div></div>
-      </div>
-    </div>
-  </div>
 
   <div>
     <h2 class="splithouse">Apercu de notre catalogue</h2>
   </div>
 
   <div class="gallery">
-    <div>
-      <div class="card">
-        <img src="https://marieclaire.be/fr/wp-content/uploads/2018/01/marieclaire_chalet_ian-keefe_unsplahs.jpg" class="card-img-top" alt="carousel-image-1">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Jetez un coup d'oeil à cette propriété</a>
-          </div>
+    <% @properties.each do |property| %>
+      <div>
+        <div class="card sh-property-card">
+          <% unless property.photos_attachments.empty? %>
+            <%= cl_image_tag property.photos.first.key, class: "card-img-top sh-card-img" %>
+          <% else %>
+            <img src="https://marieclaire.be/fr/wp-content/uploads/2018/01/marieclaire_chalet_ian-keefe_unsplahs.jpg" class="card-img-top" alt="carousel-image-1">
+          <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= property.title %></h5>
+              <p class="card-text"><%= property.detail %></p>
+
+
+              <%= link_to "Jetez un coup d'oeil à cette propriété", property_path(property), class: "btn btn-primary sh-btn-primary" %>
+            </div>
+        </div>
       </div>
-    </div>
-    <div>
-      <div class="card">
-        <img src="https://marieclaire.be/fr/wp-content/uploads/2018/01/marieclaire_chalet_ian-keefe_unsplahs.jpg" class="card-img-top" alt="carousel-image-1">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Jetez un coup d'oeil à cette propriété</a>
-          </div>
-      </div>
-    </div>
-    <div>
-      <div class="card">
-        <img src="https://marieclaire.be/fr/wp-content/uploads/2018/01/marieclaire_chalet_ian-keefe_unsplahs.jpg" class="card-img-top" alt="carousel-image-1">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Jetez un coup d'oeil à cette propriété</a>
-          </div>
-      </div>
-    </div>
-    <div>
-      <div class="card">
-        <img src="https://marieclaire.be/fr/wp-content/uploads/2018/01/marieclaire_chalet_ian-keefe_unsplahs.jpg" class="card-img-top" alt="carousel-image-1">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Jetez un coup d'oeil à cette propriété</a>
-          </div>
-      </div>
-    </div>
-    <div>
-      <div class="card">
-        <img src="https://marieclaire.be/fr/wp-content/uploads/2018/01/marieclaire_chalet_ian-keefe_unsplahs.jpg" class="card-img-top" alt="carousel-image-1">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Jetez un coup d'oeil à cette propriété</a>
-          </div>
-      </div>
-    </div>
+    <% end %>
+
+
   </div>
 
   <div class="background-casa">
@@ -135,8 +77,8 @@
     </div>
   </div>
 
-  <div class="btn-faq">
-    <button type="button" class="btn btn-info">Nous contacter</button>
+  <div class="btn-faq sh-btn-primary">
+     <%= link_to "Nous contacter", properties_path(Property.all), class: "btn btn-primary btn-contact" %>
   </div>
 
   <div class="sci-info">
@@ -156,7 +98,7 @@
       <a href="#" class="btn btn-primary">Ville</a>
     </div>
 
-    <div class="card-category d-flex align-items-center justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1567351673954-0cb49f639dc4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dG91bG91c2V8ZW58MHx8MHx8&w=1000&q=80)">
+    <div class="card-category d-flex align-items-center justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://c.pxhere.com/photos/6a/05/massif_parpaillon_landscapes_mountain_nature_spring_snow_summit_alps-1328229.jpg!d)">
       <a href="#" class="btn btn-primary">Montagne</a>
     </div>
 
@@ -165,7 +107,7 @@
     </div>
 
     <div class="card-category d-flex align-items-center justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://ns328286.ip-37-187-113.eu/ew/wallpapers/800x480/03004_800x480.jpg)">
-      <a href="#" class="btn btn-primary">Campagne</a>
+       <%= link_to "Campagne", properties_path(environement: "campagne"), class: "btn btn-primary btn-campagne" %>
     </div>
   </div>
 </div>
