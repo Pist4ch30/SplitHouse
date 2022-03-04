@@ -1,4 +1,6 @@
 class PropertiesController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
+
   def new
     @property = Property.new
   end
@@ -30,7 +32,10 @@ class PropertiesController < ApplicationController
         min = @search_param["budget"].split(" € - ").first.to_i
         max = @search_param["budget"].split(" € - ").second.to_i
         @properties = @properties.where("(price_part >= ?) AND (price_part <= ?)", min, max)
-        end
+      end
+      if !@search_param["region"].empty?
+        @properties = @properties.where(region: @search_param["region"])
+      end
     end
 
     @markers = @properties.geocoded.map do |property|
@@ -58,11 +63,11 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
     current_user.unfavorite(@property)
     redirect_to property_path(@property)
+  end
 
   private
 
   def params_property
     params.require(:property).permit(:title, :price_part, :home_size, :nbr_room, :nbr_bathroom, :address, :detail, :pool, :garden, :parking, :garage, :summer_kitchen)
-
   end
 end
