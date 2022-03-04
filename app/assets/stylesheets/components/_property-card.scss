@@ -1,11 +1,12 @@
 .property-cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 1rem;
+  grid-gap: 4rem;
   width: 80%;
   margin: auto;
-  height: 350px;
+  height: auto;
   border-radius: 5px;
+  margin-bottom: 100px;
 }
 
 .property-card .carousel-item img {
@@ -18,10 +19,10 @@
 .property-card {
   border-radius: 10px;
   overflow: hidden;
-  height: 480px;
+  height: auto;
 }
 
-.card_parts {
+.property-card_parts {
   position: absolute;
   top: 0;
   z-index: 1;
@@ -33,15 +34,24 @@
   border-radius: 10px;
 }
 
-.card-image {
+.property-card-image {
   position: relative;
 }
 
-.card-body {
+.property-card-title {
+margin-top: 10px;
+margin-left: 8px;
+}
+
+.property-card-body {
   background: lightgrey;
   opacity: 0.8;
 }
 
 .btn-decouvrir {
   width: 60%;
+}
+
+.property-card-text {
+  padding-left: 8px;
 }

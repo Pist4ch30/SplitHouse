@@ -6,19 +6,21 @@
     </div>
   </div>
 
-  <div class="search mt-5">
-    <%= simple_form_for :search, url: properties_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+  <div class="search-form form-inline mt-5 mb-5">
+    <%= simple_form_for :search, url: properties_path, method: "GET", defaults: { required: false }, html: { class: 'form-inline' } do |f| %>
         <% if params["search"] %>
-          <%= f.input :nbr_room, collection: 1..10, include_blank: true, input_html: {value: ""}, selected: params["search"]["nbr_room"] %>
-          <%= f.input :budget, collection: ["100_000 € - 200_000 €" , "200_001 € - 500_000 €" ], include_blank: true, input_html: {value: ""}, selected: params["search"]["budget"]%>
-          <%= f.input :region, collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ], include_blank: true, input_html: {value: ""}, selected: params["search"]["region"]%>
+          <%= f.input :nbr_room, label: "Chambres", collection: 1..10, include_blank: true, input_html: {value: ""}, selected: params["search"]["nbr_room"] %>
+          <%= f.input :budget, collection: ["1 € - 100 000 €", "100_001 € - 200_000 €" , "200_001 € - 500_000 €" ], include_blank: true, input_html: {value: ""}, selected: params["search"]["budget"]%>
+          <%= f.input :region, label: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ], include_blank: true, input_html: {value: ""}, selected: params["search"]["region"]%>
+          <%= f.input :home_size, label: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2" ], include_blank: true, input_html: {value: ""}, selected: params["search"]["home_size"]%>
         <% else %>
           <%= f.input :nbr_room, collection: 1..10, include_blank: true, input_html: {value: ""}%>
-          <%= f.input :budget, collection: ["100_000 € - 200_000 €" , "200_001 € - 500_000 €" ], include_blank: true,input_html: {value: ""}%>
-          <%= f.input :region, collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ], include_blank: true,input_html: {value: ""}%>
+          <%= f.input :budget, collection: ["1 € - 100 000 €", "100_001 € - 200_000 €" , "200_001 € - 500_000 €" ], include_blank: true,input_html: {value: ""}%>
+          <%= f.input :region, label: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ], include_blank: true,input_html: {value: ""}%>
+           <%= f.input :home_size, label: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2" ], include_blank: true, input_html: {value: ""}%>
         <% end %>
 
-        <%= f.submit "Rechercher", class: "btn btn-primary" %>
+        <%= f.submit "Rechercher", class: "btn btn-primary btn-rechercher" %>
 
     <% end %>
   </div>
@@ -33,8 +35,8 @@
     <div class="property-cards mt-5">
       <% @properties.each_with_index do |property, index| %>
         <div class="card property-card">
-          <div class="card-image">
-            <h2 class="card_parts">Part : <%= property.price_part.to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ' ') %> €</h2>
+          <div class="property-card-image">
+            <h2 class="property-card_parts">Part : <%= property.price_part.to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ' ') %> €</h2>
             <div id='<%="carouselExampleControls#{index}"%>' class="carousel slide" data-interval="false" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -58,12 +60,13 @@
               </a>
             </div>
           </div>
-          <div class="card-body">
-            <h5 class="card-title"><%= property.title %></h5>
-            <p class="card-text">
-              <ul style="list-style: none;">
-                <li> <strong>Adresse</strong> : <%= property.address %></li>
+          <div class="property-card-body">
+            <h5 class="property-card-title"><%= property.title %></h5>
+            <p class="property-card-text">
+              <ul style="list-style: none; margin-left: 8px">
+                <li> <strong>Ville</strong> : <%= property.address.split(",").second %></li>
                 <li> <strong>Surface</strong> : <%= property.home_size %> m2</li>
+                <li> <strong>Chambres</strong> : <%= property.nbr_room %></li>
                 <li> <strong>Description</strong> : <%= property.detail %></li>
               </ul>
             </p>
