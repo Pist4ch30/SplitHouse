@@ -96,7 +96,7 @@ maison1.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
 maison1.save!
 
 maison2 = Property.new
-maison2.title = "Maison sur le front de mer à Marseille"
+maison2.title = "Maison sur le front de mer"
 maison2.price_part = 200000
 maison2.home_size = 125
 maison2.nbr_room = 3
@@ -122,7 +122,7 @@ maison2.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
 maison2.save!
 
 maison3 = Property.new
-maison3.title = "Maison à colombages dans le Calvados"
+maison3.title = "Maison à colombages"
 maison3.price_part = 75000
 maison3.home_size = 168
 maison3.nbr_room = 4
