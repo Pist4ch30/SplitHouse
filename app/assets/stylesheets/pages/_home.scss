@@ -68,6 +68,7 @@
   text-align: center;
   position: relative;
   top: -25px;
+  width: 50%;
 }
 
 .cards-place {
@@ -78,9 +79,17 @@
 
 .card-category {
   height: 250px;
-  border-radius: 5px;
-  object-fit: cover;
+  border-radius: 50% 20% / 10% 40%;
   color: white;
+  background-size: cover;
+}
+
+.btn-banner {
+width: 30% !important;
+padding: 15px;
+margin: 80px 0px 0px 20px;
+border-radius: 30px;
+
 }
 
 .background-casa {
@@ -88,17 +97,38 @@
 }
 
 
-.btn-primary {
+.btn.btn-primary.sh-btn-primary {
   width: 100%;
   opacity: 90%;
-  font: bold;
-  background-color: $SH-pink;
+  font-weight: bold;
+  border: 0;
+  background-color: $SH-lilac;
+  transition: all 125ms ease;
+
+  &:hover {
+    background-color: $SH-pink;
+  }
 }
 
 .card {
   border-radius: 5px;
 }
+.sh-property-card {
+  .card-text {
+    padding: 0;
+  }
+  img.card-img-top.sh-card-img {
+    height: 230px;
+    object-fit: cover;
+  }
+  .card-body {
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
+}
 .container-carousel {
   scroll-snap-type: x mandatory;
   scroll-padding: 50%;
@@ -109,8 +139,16 @@
 }
 
 
+.card-advantage {
+  border-radius: 5px;
+  background-color: $SH-blue;
+  color: $SH-almond;
+}
 
-
+.sci-info {
+  margin: 80px;
+  background-color: #def3f3ff;
+}
 
 
 
