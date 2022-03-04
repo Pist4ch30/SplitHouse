@@ -121,7 +121,7 @@ input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 5px;
   cursor: pointer;
-  animate: 0.2s;
+  //animate: 0.2s;
   box-shadow: 0px 0px 0px #000000;
   background: #2497E3;
   border-radius: 1px;
@@ -145,7 +145,7 @@ input[type=range]::-moz-range-track {
   width: 100%;
   height: 5px;
   cursor: pointer;
-  animate: 0.2s;
+  //animate: 0.2s;
   box-shadow: 0px 0px 0px #000000;
   background: #2497E3;
   border-radius: 1px;
@@ -164,7 +164,7 @@ input[type=range]::-ms-track {
   width: 100%;
   height: 5px;
   cursor: pointer;
-  animate: 0.2s;
+  //animate: 0.2s;
   background: transparent;
   border-color: transparent;
   color: transparent;
@@ -207,6 +207,7 @@ input[type=range]:focus::-ms-fill-upper {
   padding-left: 10px;
   padding-right: 10px;
   background-color:#c3a5c6ff;
+
 }
 
 .card-trip-infos {
@@ -225,8 +226,8 @@ input[type=range]:focus::-ms-fill-upper {
   background-color:  #f77398ff;
   border: none;
   width: 275px;
-  height: 115px;
-  padding-top: 30px;
+  height: 90px;
+  padding-top: 20px;
 }
 
 .btn-danger:hover  {

@@ -36,6 +36,11 @@ class PropertiesController < ApplicationController
       if !@search_param["region"].empty?
         @properties = @properties.where(region: @search_param["region"])
       end
+      if !@search_param["home_size"].empty?
+        min = @search_param["home_size"].split(" m2 - ").first.to_i
+        max = @search_param["home_size"].split(" m2 - ").second.to_i
+        @properties = @properties.where("(home_size >= ?) AND (home_size <= ?)", min, max)
+      end
     end
 
     @markers = @properties.geocoded.map do |property|
