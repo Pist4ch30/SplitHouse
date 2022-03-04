@@ -1,12 +1,11 @@
 :root {
-  --primary: #59D4D4;
+  --primary: black;
   --light: #687477;
   --black: black;
   --secondary: #FBE0C3;
 }
 
 body {
-  // overflow: hidden;
   font-family: 'Multi', sans-serif;
   font-weight: 300;
   color: var(--primary);
@@ -17,7 +16,7 @@ a:hover {
 }
 
 .bg-primary {
-  background-color: var(--secondary) !important;
+  background-color: var(--primary) !important;
 }
 
 .btn {
@@ -28,7 +27,7 @@ a:hover {
   background-color: var(--secondary);
 }
 
-.bg-mix {background: linear-gradient(180deg, var(--light) 60%, #fbe0c38c 0);}
+.bg-mix {background: linear-gradient(180deg, var(--light) 60%, var(--primary) 0);}
 
 .btn-primary :hover {
   background-color: var(--light);
@@ -43,7 +42,7 @@ a:hover {
 }
 
 #sidebar-container .menu {
-  width: 10rem;
+  width: 12rem;
 }
 
 #content {
