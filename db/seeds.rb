@@ -69,7 +69,7 @@ maison1.price_part = 300000
 maison1.home_size = 165
 maison1.nbr_room = 4
 maison1.nbr_bathroom = 2
-maison1.address = "La Madrague, Saint-Tropez"
+maison1.address = "2 place de l'Hôtel de Ville, Saint-Tropez"
 maison1.detail = "Cette magnifique maison d'architecte vient d'être refaite à neuf et offre de beaux volumes"
 maison1.pool = true
 maison1.garden = true
@@ -144,20 +144,11 @@ maison3.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpeg')
 maison3.save!
 
 
-puts 'creating parts'
-part1 = Part.new
-part1.status = 1
-part1.nbr_part = 4
-part1.property = maison1
-part1.user = didier
-part1.save!
-
-
 martin.favorite(maison1)
 martin.favorite(maison2)
 
 
-
+puts 'creating parts'
 # _____ Simulation => Didier et Jorge achete 4 part chacun _____
 
 # Achat => de parts
