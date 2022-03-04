@@ -8,7 +8,7 @@
 .banner-casa {
   background-size: 72%;
   background-position: top 50% right -94px;
-  padding: 150px 0;
+  padding: 20px 0px 70px 0px;
   border-radius: 5px;
   background-repeat: no-repeat;
 }
@@ -59,7 +59,9 @@
 
 .p-faq {
   font-size: 18px;
-  margin: 20px;
+  margin: 20px 20px 20px 0px;
+  color: $SH-almond;
+  padding: 0;
 }
 
 .btn-faq {
@@ -82,8 +84,30 @@
 }
 
 .background-casa {
-  background-color: #59D4D4;
+  background-color: $SH-blue;
 }
+
+
+.btn-primary {
+  width: 100%;
+  opacity: 90%;
+  font: bold;
+  background-color: $SH-pink;
+}
+
+.card {
+  border-radius: 5px;
+}
+
+.container-carousel {
+  scroll-snap-type: x mandatory;
+  scroll-padding: 50%;
+}
+
+.child-carousel {
+  scroll-snap-align: center;
+}
+
 
 
 
@@ -134,3 +158,17 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+
+.gallery {
+  display: flex;
+  overflow-x: scroll;
+  scroll-padding: 0 50%;
+  scroll-snap-type: x mandatory;
+  }
+
+.gallery > div {
+  scroll-snap-align: center;
+  display: inline-block;
+  border-radius: 3px;
+  margin-right: 3rem;
+  }
