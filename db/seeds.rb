@@ -144,20 +144,11 @@ maison3.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpeg')
 maison3.save!
 
 
-puts 'creating parts'
-part1 = Part.new
-part1.status = 1
-part1.nbr_part = 4
-part1.property = maison1
-part1.user = didier
-part1.save!
-
-
 martin.favorite(maison1)
 martin.favorite(maison2)
 
 
-
+puts 'creating parts'
 # _____ Simulation => Didier et Jorge achete 4 part chacun _____
 
 # Achat => de parts
