@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :favorites, only:[:new, :create, :update, :destroy, :index, :show]
+
+  get 'favorite/:id', to: "properties#favorite", as: "favorite_property"
+  get 'unfavorite/:id', to: "properties#unfavorite", as: "unfavorite_property"
   get 'dashboard', to: 'dashboards#dashboard'
   get 'dashboard/agenda', to: 'dashboards#agenda'
   get 'dashboard/renting', to: 'dashboards#renting'
