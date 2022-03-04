@@ -1,10 +1,10 @@
 
-<div class="d-flex">
+<div class="d-flex dashboard-custom">
   <div id="sidebar-container" class="bg-primary">
     <div class="logo">
         <h4 class="text-light font-weight-bold">Dashboard</h4>
     </div>
-    <div class="menu">
+    <div class="menu-dashboard">
       <a href="<%= dashboard_agenda_path %>" class="d-block text-light p-3 ">Mon agenda</a>
       <a href="<%= dashboard_renting_path %>" class="d-block text-light p-3 ">Louer mes propriétés</a>
     </div>
@@ -26,7 +26,7 @@
     </section>
 
     <section class="bg-mix">
-      <div class="container">
+      <div class="container-content-dashboard">
         <div class="card rounded-0">
           <div class="card-body">
             <div class="row">
@@ -86,71 +86,75 @@
                 </div>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">Votre investissement total : <%= status[:property_details][:invest] %> €</li>
-                  <li class="list-group-item">Nombre de parts : <%= @status_buyer[0][:parts] %></li>
-                  <li class="list-group-item">Nombre de jours par an : <span class="badge rounded-pill bg-success"><%= status[:stat_booking][:day_allowed] %></span></li>
-                  <li class="list-group-item">Jours utilisés : <span class="badge rounded-pill bg-info text-dark"><%= status[:stat_booking][:day_utilise] %></span></li>
+                  <li class="list-group-item">Nombre de parts : <span class="badge rounded-pill bg-primary"><%= @status_buyer[0][:parts] %></span></li>
+                  <li class="list-group-item">Nuits par an : <span class="badge rounded-pill bg-success"><%= status[:stat_booking][:day_allowed] %></span></li>
+                  <li class="list-group-item">Nuits utilisés : <span class="badge rounded-pill bg-info text-dark"><%= status[:stat_booking][:day_utilise] %></span></li>
                   <h4>Dernière réservation</h4>
                   <li class="list-group-item"><%= status[:last_booking] != nil ? "Du #{status[:last_booking][:start_date]} au #{status[:last_booking][:finish_date]}" : "Aucune réservation pour le moment" %></li>
                 </ul>
                 <div class="card-body">
+                  <%#= link_to "Réserver un séjour", new_property_booking_path(property_id: status[:property_details][:property].id), class: "btn btn-primary"%>
                   <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-booking-dashboard">
                     Réserver un séjour
                   </button>
-                  <!-- Modal -->
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                </div>
+              </div>
+              <!-- Modal -->
+                  <div class="modal fade" id="modal-booking-dashboard" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel"><%= status[:property_details][:title] %></h5>
+                          <h5 class="modal-title" id="staticBackdropLabel"><%= status[:property_details][:title] %></h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                          <div class="custom-container">
-                            <div class="form-wrapper">
-                              <h2>Réserver votre séjour</h2>
+                        <div class="modal-dashboard-body">
+                          <h2>Réserver votre séjour <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            <%= "Il vous reste #{status[:stat_booking][:day_restant]}/Jours"%>
+                          <span class="visually-hidden">unread messages</span></h2>
 
                               <%= simple_form_for [status[:property_details][:property], @booking] do |f| %>
                                 <%= f.input :start_date, as: :string,
-                                                        required: false,
+                                                        required: true,
+                                                        as: :hidden,
                                                         input_html: { id: "range_start", class: "d-none" } %>
                                 <%= f.input :finish_date, as: :string,
-                                                      required: false,
+                                                      as: :hidden,
+                                                      required: true,
                                                       input_html: { id: "range_end", class: "d-none" } %>
                                 <%= f.button :submit, "Réserver", class: "btn btn-primary" %>
                               <% end %>
-                            </div>
+                              <% booking_dates = status[:property_details][:property].bookings.map do |booking|
+                                    {
+                                      from: booking.start_date,
+                                      to:   booking.finish_date
+                                    }
+                                  end %>
+                            <div id="booking-form-div"
+                              data-bookings="<%= booking_dates.to_json %>">
                           </div>
-                          <div id="booking-form-div"
-                              data-bookings="<%= @bookings_dates.to_json %>">
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <%#= link_to "Réserver un séjour", new_property_booking_path(property_id: status[:property_details][:property].id), class: "btn btn-primary"%>
-                </div>
-              </div>
               <% end %>
             </div>
             <% else %>
-                <div class="card text-center">
-                  <div class="card-header">
-                    <img src="https://cdn-icons.flaticon.com/png/512/1895/premium/1895100.png?token=exp=1646264530~hmac=111df545ce84de09f40b7207a4f59ea0" class="avatar" alt="">
-                  </div>
-                  <div class="card-body">
-                    <h5 class="card-title">Vous avez aucune propriété</h5>
-                    <p class="card-text">Découvrez les meilleures biens du moment</p>
-                    <a href="#" class="btn btn-primary">Découvrir des biens</a>
-                  </div>
-                  <div class="card-footer text-muted">
-                    SplitHouse
-                  </div>
-                </div>
-            <% end %>
+            <div class="card text-center">
+              <div class="card-header">
+                <img src="https://cdn-icons.flaticon.com/png/512/1895/premium/1895100.png?token=exp=1646264530~hmac=111df545ce84de09f40b7207a4f59ea0" class="avatar" alt="">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Vous avez aucune propriété</h5>
+                <p class="card-text">Découvrez les meilleures biens du moment</p>
+                <a href="#" class="btn btn-primary">Découvrir des biens</a>
+              </div>
+              <div class="card-footer text-muted">
+                SplitHouse
+              </div>
+            </div>
+          <% end %>
           </div>
           <div class="col-lg-6">
             <img src="https://cdn-icons.flaticon.com/png/512/3285/premium/3285805.png?token=exp=1646260953~hmac=60cb64f6f5dc8d2aaeae441c0a5c59bf" class="avatar" alt="">
