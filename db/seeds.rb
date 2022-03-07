@@ -237,7 +237,7 @@ maison8.price_part = 155000
 maison8.home_size = 210
 maison8.nbr_room = 2
 maison8.nbr_bathroom = 2
-maison8.address = "Perros-Guirec"
+maison8.address = "Place de l'Hôtel de ville, Perros-Guirec"
 maison8.detail = "Un havre de paix à 5 minutes des plages"
 maison8.pool = true
 maison8.garden = true
@@ -259,7 +259,7 @@ maison9.price_part = 275000
 maison9.home_size = 310
 maison9.nbr_room = 6
 maison9.nbr_bathroom = 3
-maison9.address = "Fontainebleau"
+maison9.address = "40 rue Grande, Fontainebleau"
 maison9.detail = "Magnifique château refait à neuf dans la forêt domaniale de Fontainebleau"
 maison9.pool = false
 maison9.garden = true
@@ -308,13 +308,6 @@ jorge.favorite(maison3)
 
 # Achat => de parts
 Part.create(status: 0, nbr_part: 2, property: maison2, user: didier)
-
-part2 = Part.new
-part2.status = 1
-part2.nbr_part = 4
-part2.property = maison1
-part2.user = jorge
-part2.save!
 
 puts 'creating favorites'
 martin.favorite(maison1)
