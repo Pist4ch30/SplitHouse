@@ -48,9 +48,9 @@
         <%= link_to "Se positionner sur ce bien", "#", class: "btn btn-flat" %>
 
         <% if current_user.favorited?(@property) %>
-          <%= link_to "UnFavorite", unfavorite_property_path(@property), method: :delete, class: "btn btn-danger" %>
+          <%= link_to "UnFavorite", unfavorite_property_path(@property), class: "btn btn-danger" %>
         <% else %>
-          <%= link_to "Favorite", favorite_property_path(@property), method: :post, class: "btn btn-danger" %>
+          <%= link_to "Favorite", favorite_property_path(@property), class: "btn btn-danger" %>
         <% end %>
     </div>
   </div>
@@ -64,34 +64,32 @@
       </div>
     </div>
 
-    <div class="flex-item" id="outline">
-      <h3>Faites la simulation de ce que vous coûte ce bien avec Splithouse</h3>
+    <div data-controller="invest">
+      <div class="flex-item"   id="outline">
+        <h3>Faites la simulation de ce que vous coûte ce bien avec Splithouse</h3>
 
-        <div>
-          <input type="range" id="Nbr de nuitées/an." name="Nbr de nuitées/an."
-                min="44" max="176" oninput="num.value = this.value" value=44>
-                <output id="num">44</output>
-          <label for="Nbr de nuitées/an.">Nbr de nuitées/an.</label>
-        </div>
+          <div>
+            <input type="range" id="Nbr de nuitées/an." name="Nbr de nuitées/an."
+                  min="44" max="176" step="44" oninput="num.value = this.value" value=44 data-invest-target="input" data-action="change->invest#computeInvest" data-price-part="<%= @property.price_part %>">
+                  <output id="num">44</output>
+            <label for="Nbr de nuitées/an.">Nbr de nuitées/an.</label>
+          </div>
 
-        <div>
-          <input type="range" id="Proches parrainés." name="Proches parrainés."
-                min="0" max="7" oninput="parrainages.value = this.value" value=0>
-                <output id="parrainages">0</output>
-          <label for="Proches parrainés.">Proches parrainés.</label>
-        </div>
+          <div>
+            <input type="range" id="Proches parrainés." name="Proches parrainés."
+                  min="0" max="7" oninput="parrainages.value = this.value" value=0>
+                  <output id="parrainages">0</output>
+            <label for="Proches parrainés.">Proches parrainés.</label>
+          </div>
 
-        <div>
-          <input type="range" id="Nuitées non consommeés/an." name="Nuitées non consommeés/an."
-                min="0" max="44" oninput="nuitees.value = this.value" value=0>
-                <output id="nuitees">0</output>
-          <label for="Nuitées non consommeés/an.">Nuitées non consommeés/an.</label>
-        </div>
-      <p class="p-0 m-0">Montant de mon investissement</p>
-      <p class="p-0 m-0">Charges mensuelles hors emprunt</p>
-      <p class="p-0 m-0">Dont frais Splithouse</p>
-      <p class="p-0 m-0">Revenus mensuels des nuitées non consommées</p>
-
+          <div>
+            <input type="range" id="Nuitées non consommeés/an." name="Nuitées non consommeés/an."
+                  min="0" max="44" oninput="nuitees.value = this.value" value=0>
+                  <output id="nuitees">0</output>
+            <label for="Nuitées non consommeés/an.">Nuitées non consommeés/an.</label>
+          </div>
+        <p class="p-0 m-0" data-invest-target="calcul">Montant de mon investissement</p>
+      </div>
     </div>
   </div>
 </div>

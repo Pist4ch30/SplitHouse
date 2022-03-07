@@ -35,6 +35,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'geocoder'
 gem 'acts_as_favoritor'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
