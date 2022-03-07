@@ -10,7 +10,7 @@ a:hover {
 }
 
 .bg-primary {
-  background-color: $SH-blue !important;
+  background-color: $SH-blue-light;
 }
 
 .btn {
@@ -21,14 +21,30 @@ a:hover {
   background-color: $SH-lilac;
 }
 
-.bg-mix {background: linear-gradient(180deg, $SH-blue 60%, $SH-lilac 0);}
+.bg-mix {background: linear-gradient(184deg, rgba(248,248,248,1) 0%, $SH-blue-light 100%);}
 
 .btn-primary :hover {
-  background-color: $SH-blue;
+  background-color: white;
+}
+
+.logo {
+  margin: 0 auto;
+}
+.logo img {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  animation: rotation 2s infinite linear;
 }
 
 #sidebar-container {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 10px 0px 8px #00000045;
+  z-index: 1;
+  padding-top: 25px;
 }
 
 #sidebar_container .logo {
@@ -37,12 +53,12 @@ a:hover {
 
 #sidebar-container .menu {
   margin: 5px 5px 5px 5px;
-  width: 12rem;
+  width: 15rem;
 }
 
 #content {
   background-color: white;
-  color: $SH-almond;
+  color: $SH-azure;
   overflow: auto;
   height: 100vh;
   width: 100%;
@@ -50,13 +66,33 @@ a:hover {
   padding-top: 2rem;
 }
 
-.row-1 {
-  box-shadow: black 1px 1px 1px 1px;
-  border-radius: 5px;
+.card-body-stat-dashboard {
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.row1 {
+  text-shadow: 10px 10px 10px 10px black ;
 }
 
 .stat {
   border-right: 1px solid $SH-lilac;
+  box-shadow: 0px 0px 3px 1px black;
+  border-radius: 5px;
+  margin-right: 5vh;
+  padding: 20px 20px 20px 20px;
+  width: 30vh;
+}
+
+.stat:hover {
+  border-right: 1px solid $SH-lilac;
+  box-shadow: 0px 0px 3px 1px $SH-blue-light;
+  border-radius: 5px;
+  margin-right: 5vh;
+  padding: 20px 20px 20px 20px;
+  width: 40vh;
 }
 
 .modal-dashboard-body {
@@ -66,7 +102,15 @@ a:hover {
 }
 
 .menu-dashboard {
+  margin-top: 10vh;
   > a {
     text-decoration: none;
+    border-bottom: 0,50rem solid;
+  }
+  > a:hover {
+    box-shadow: 0px 0px 3px 1px $SH-blue-light;
+    color: black;
+    border-radius: 5px;
+    margin-bottom: 2vh;
   }
 }
