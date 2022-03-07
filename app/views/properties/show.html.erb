@@ -1,5 +1,15 @@
 <div class="container d-flex">
   <div class="flex-container1">
+    <div class="flex-container2">
+        <h2><%= @property.title %></h2>
+
+        <% if current_user.favorited?(@property) %>
+          <%= link_to image_tag("noheart.png"), unfavorite_property_path(@property), class: "btn btn-danger btn-heart" %>
+        <% else %>
+          <%= link_to image_tag("heart.png"), favorite_property_path(@property), class: "btn btn-danger btn-heart" %>
+        <% end %>
+    </div>
+
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <% @property.photos.each_with_index do |photo, index| %>
@@ -40,18 +50,36 @@
         <p><%= @property.nbr_bathroom %></p>
       </div>
       <div class="property-info-details">
-        <h2><%= image_tag "location.png", height: 30 %></h2>
+        <h2><%= image_tag "location.png", height: 20 %></h2>
         <p class="notbold"><%= @property.address %></p>
       </div>
     </div>
     <div flex-container>
-        <%= link_to "Se positionner sur ce bien", "#", class: "btn btn-flat" %>
+        <%= link_to "Se positionner sur ce bien", "#", class: "btn btn-flat", data: {toggle: "modal", target:"#exampleModal"} %>
 
-        <% if current_user.favorited?(@property) %>
-          <%= link_to "UnFavorite", unfavorite_property_path(@property), class: "btn btn-danger" %>
-        <% else %>
-          <%= link_to "Favorite", favorite_property_path(@property), class: "btn btn-danger" %>
-        <% end %>
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"><strong>Notre équipe de conseillers à votre service</strong></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= form_with url: "#", method: :get do |form| %>
+                <%= form.label :query, "Nous contacter:" %>
+                <%= form.text_area :message, size: "70x5", class: "text-area", value: "Bonjour, je suis interesse par #{@property.title}, merci de me recontacter."%>
+              <% end %>
+              <p><em>Vous pouvez également nous envoyer un message via notre système de chat</em></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Echanger dès maintenant</button>
+              <button type="button" class="btn btn-primary">Annuler</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -96,8 +124,8 @@
 <div class="container mt-5 mb-5">
   <div class="card">
     <div class="card-trip-infos">
-      <h1>A propos de ce bien:</h1>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+      <h1>A propos de ce bien</h1>
+      <p><%= @property.detail %></p>
     </div>
   </div>
 </div>
