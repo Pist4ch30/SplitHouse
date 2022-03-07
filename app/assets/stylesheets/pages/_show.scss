@@ -235,3 +235,34 @@ input[type=range]:focus::-ms-fill-upper {
   color: white;
   border: none;
 }
+.btn-heart img {
+  height: 50px;
+}
+.text-area {
+  width:470px;
+}
+
+.btn-secondary {
+  background: #a0dddcff;
+  border-radius: 4px;
+  border: none;
+}
+.btn-secondary:hover {
+  background: #def3f3ff;
+  color: white;
+  border: none;
+}
+
+.modal-content{
+  border-radius: 20px;
+  background-color: #FFC65A;
+}
+.btn-primary {
+  border-radius: 4px;
+  border: none;
+}
+.btn-primary:hover {
+  background: #F4C2C2;
+  color: white;
+  border: none;
+}
