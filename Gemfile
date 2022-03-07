@@ -35,6 +35,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'geocoder'
 gem 'acts_as_favoritor'
+gem "simple_calendar", "~> 2.4"
+gem 'rails-i18n'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
