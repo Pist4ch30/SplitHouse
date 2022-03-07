@@ -6,11 +6,11 @@
   border-radius: 5px;
 }
 .banner-casa {
-  background-size: 72%;
-  background-position: top 50% right -94px;
+  background-size: 80%;
+  background-position: top -15% right -96px;
   padding: 20px 0px 70px 0px;
-  border-radius: 5px;
   background-repeat: no-repeat;
+  height: 500px;
 }
 
 .banner-header h1 {
@@ -78,8 +78,8 @@
 }
 
 .card-category {
-  height: 250px;
-  border-radius: 50% 20% / 10% 40%;
+  height: 350px;
+  border-radius: 5px;
   color: white;
   background-size: cover;
 }
@@ -111,15 +111,17 @@ border-radius: 30px;
 }
 
 .card {
-  border-radius: 5px;
+
 }
 .sh-property-card {
+  border-radius: 10px;
   .card-text {
     padding: 0;
   }
   img.card-img-top.sh-card-img {
     height: 230px;
     object-fit: cover;
+    border-radius: 10px 10px 0px 0px;
   }
   .card-body {
     height: 280px;
@@ -147,9 +149,44 @@ border-radius: 30px;
 
 .sci-info {
   margin: 80px;
-  background-color: #def3f3ff;
 }
 
+.btn-index-house {
+background-color: $SH-azure  !important;
+margin: 30px;
+justify-content: center;
+
+&:hover {
+  background-color: $SH-blue !important;
+}
+}
+
+.btn-contact {
+  background-color: $SH-blue !important;
+  border: 0;
+  width: 25%;
+}
+
+.catalogue {
+  text-align: right;
+  margin-bottom: 50px;
+}
+
+.btn-environ {
+  background-color: $SH-pink;
+    border: 0px;
+    width: 100%;
+
+  &:hover {
+    background-color: $SH-blue !important;
+  }
+  }
+
+.sci-info-mere {
+  background-size: cover;
+  padding: 30px 50px 30px 50px;
+  font-size: large;
+}
 
 
 
