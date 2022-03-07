@@ -143,10 +143,10 @@ file = URI.open('https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaw
 maison3.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpeg')
 maison3.save!
 
-<<<<<<< HEAD
+
 martin.favorite(maison1)
 martin.favorite(maison2)
-=======
+
 maison4 = Property.new
 maison4.title = "Grande maison en pierres"
 maison4.price_part = 150000
@@ -281,7 +281,6 @@ maison9.save!
 
 didier.favorite(maison1)
 didier.favorite(maison2)
->>>>>>> f1e62cdc4df948d817f4697154fc967d2daa812a
 
 
 puts 'creating parts'
