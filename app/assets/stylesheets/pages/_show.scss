@@ -220,14 +220,14 @@ input[type=range]:focus::-ms-fill-upper {
   border-radius: 4px;
   transition: background 0.3s ease;
   height: 70px;
-  width: 500px;
+  width: 100px;
   font-size: 30px;
   font-family: 'Nunito';
   background-color:  #f77398ff;
   border: none;
-  width: 275px;
   height: 90px;
   padding-top: 20px;
+  margin: 20px;
 }
 
 .btn-danger:hover  {
@@ -265,4 +265,21 @@ input[type=range]:focus::-ms-fill-upper {
   background: #F4C2C2;
   color: white;
   border: none;
+}
+
+.modal-header {
+  border-bottom: 0 none;
+}
+
+.modal-footer {
+  border-top: 0 none;
+}
+.flex-container2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+h2 {
+  padding-left: 70px;
+  padding-top: 40px;
 }

@@ -1,6 +1,15 @@
 <div class="container d-flex">
   <div class="flex-container1">
-  <h2><%= @property.title %></h2>
+    <div class="flex-container2">
+        <h2><%= @property.title %></h2>
+
+        <% if current_user.favorited?(@property) %>
+          <%= link_to image_tag("noheart.png"), unfavorite_property_path(@property), class: "btn btn-danger btn-heart" %>
+        <% else %>
+          <%= link_to image_tag("heart.png"), favorite_property_path(@property), class: "btn btn-danger btn-heart" %>
+        <% end %>
+    </div>
+
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <% @property.photos.each_with_index do |photo, index| %>
@@ -41,7 +50,7 @@
         <p><%= @property.nbr_bathroom %></p>
       </div>
       <div class="property-info-details">
-        <h2><%= image_tag "location.png", height: 30 %></h2>
+        <h2><%= image_tag "location.png", height: 20 %></h2>
         <p class="notbold"><%= @property.address %></p>
       </div>
     </div>
@@ -71,12 +80,6 @@
           </div>
         </div>
       </div>
-
-        <% if current_user.favorited?(@property) %>
-          <%= link_to image_tag("noheart.png"), unfavorite_property_path(@property), class: "btn btn-danger btn-heart" %>
-        <% else %>
-          <%= link_to image_tag("heart.png"), favorite_property_path(@property), class: "btn btn-danger btn-heart" %>
-        <% end %>
     </div>
   </div>
 
