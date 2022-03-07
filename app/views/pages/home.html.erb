@@ -2,9 +2,28 @@
   <div class="banner-header" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.univers-vacances.fr/wp-content/uploads/2020/07/pierre-et-vacances-ete-piscine-image-principale.jpg);">
     <div class="container">
       <h1>Jetez-vous à l'eau,</h1>
-      <h1>devenez propriètaire</h1>
+      <h1>devenez propriètaire !</h1>
       <%= link_to "Trouver ma maison !", properties_path, class: "btn btn-primary sh-btn-primary btn-banner" %>
     </div>
+  </div>
+
+   <div class="search-form form-inline mt-5 mb-5">
+    <%= simple_form_for :search, url: properties_path, method: "GET", defaults: { required: false }, html: { class: 'form-inline' } do |f| %>
+        <% if params["search"] %>
+          <%= f.input :nbr_room, label: "Chambres", collection: 1..10, include_blank: true, input_html: {value: ""}, selected: params["search"]["nbr_room"] %>
+          <%= f.input :budget, collection: ["1 € - 100 000 €", "100_001 € - 200_000 €" , "200_001 € - 500_000 €" ], include_blank: true, input_html: {value: ""}, selected: params["search"]["budget"]%>
+          <%= f.input :region, label: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ], include_blank: true, input_html: {value: ""}, selected: params["search"]["region"]%>
+          <%= f.input :home_size, label: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2" ], include_blank: true, input_html: {value: ""}, selected: params["search"]["home_size"]%>
+        <% else %>
+          <%= f.input :nbr_room, collection: 1..10, include_blank: true, input_html: {value: ""}%>
+          <%= f.input :budget, collection: ["1 € - 100 000 €", "100_001 € - 200_000 €" , "200_001 € - 500_000 €" ], include_blank: true,input_html: {value: ""}%>
+          <%= f.input :region, label: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ], include_blank: true,input_html: {value: ""}%>
+           <%= f.input :home_size, label: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2" ], include_blank: true, input_html: {value: ""}%>
+        <% end %>
+
+        <%= f.submit "Rechercher", class: "btn btn-primary btn-rechercher" %>
+
+    <% end %>
   </div>
 
   <div>
@@ -60,7 +79,12 @@
         </div>
       </div>
     <% end %>
+  </div>
 
+   <div class="catalogue" >
+  <%= link_to properties_path, class: "btn btn-primary btn-contact" do %>
+   Tout voir       <i class="fas fa-angle-double-right"></i>
+  <% end %>
 
   </div>
 
@@ -76,18 +100,21 @@
       </div>
     </div>
   </div>
+</div>
 
-  <div class="btn-faq sh-btn-primary">
-     <%= link_to "Nous contacter", properties_path(Property.all), class: "btn btn-primary btn-contact" %>
+
+  <div class="sci-info-mere" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(https://i.pinimg.com/originals/9a/a9/eb/9aa9ebfeec560b0ccb388a109b5c9e8c.jpg);">
+    <div class="sci-info">
+      <h2 class="splithouse">Pourquoi choisir une SCI ?</h2>
+      <p class="p-sci"><strong>O</strong>ffre une structure juridique souple et simplifiée</p>
+      <p class="p-sci"><strong>P</strong>ermet de contourner l’indivision</p>
+      <p class="p-sci"><strong>S</strong>implifie la transmission des biens immobiliers</p>
+      <p class="p-sci"><strong>D</strong>ispose d’une fiscalité très avantageuse</p>
+    </div>
   </div>
 
-  <div class="sci-info">
-    <h2 class="splithouse">Pourquoi choisir une SCI ?</h2>
-    <p class="p-sci"><strong>O</strong>ffre une structure juridique souple et simplifiée</p>
-    <p class="p-sci"><strong>P</strong>ermet de contourner l’indivision</p>
-    <p class="p-sci"><strong>S</strong>implifie la transmission des biens immobiliers</p>
-    <p class="p-sci"><strong>D</strong>ispose d’une fiscalité très avantageuse</p>
-  </div>
+
+<div class="container py-5">
 
   <div>
     <h2 class="splithouse">Où voulez vous vous ressourcer ?</h2>
@@ -95,19 +122,20 @@
 
   <div class="cards-place">
     <div class="card-category d-flex align-items-center justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1567351673954-0cb49f639dc4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dG91bG91c2V8ZW58MHx8MHx8&w=1000&q=80)">
-      <a href="#" class="btn btn-primary">Ville</a>
+      <a href="#" class="btn btn-primary btn-environ">Ville</a>
     </div>
 
     <div class="card-category d-flex align-items-center justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://c.pxhere.com/photos/6a/05/massif_parpaillon_landscapes_mountain_nature_spring_snow_summit_alps-1328229.jpg!d)">
-      <a href="#" class="btn btn-primary">Montagne</a>
+      <a href="#" class="btn btn-primary btn-environ">Montagne</a>
     </div>
 
     <div class="card-category d-flex align-items-center justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.familiscope.fr/assets/fiches/49000/49550-palombaggia.jpg)">
-      <a href="#" class="btn btn-primary">Mer</a>
+      <a href="#" class="btn btn-primary btn-environ">Mer</a>
     </div>
 
     <div class="card-category d-flex align-items-center justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://ns328286.ip-37-187-113.eu/ew/wallpapers/800x480/03004_800x480.jpg)">
-       <%= link_to "Campagne", properties_path(environement: "campagne"), class: "btn btn-primary btn-campagne" %>
+    <a href="#" class="btn btn-primary btn-environ">Campagne</a>
+       <%#= link_to "Campagne", properties_path(environement: "campagne"), class: "btn btn-primary btn-campagne" %>
     </div>
   </div>
 </div>

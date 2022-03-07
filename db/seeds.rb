@@ -143,6 +143,9 @@ file = URI.open('https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaw
 maison3.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpeg')
 maison3.save!
 
+martin.favorite(maison1)
+martin.favorite(maison2)
+
 maison4 = Property.new
 maison4.title = "Grande maison en pierres"
 maison4.price_part = 150000
@@ -288,13 +291,11 @@ Part.create(status: 1, nbr_part: 4, property: maison1, user: jorge)
 
 # Didier reserve 2 semaines en aout
 Booking.create(finish_date: "14/08/2022", start_date: "01/08/2022", duration: 14, property: maison1, user: didier)
-# Didier reserve 15 jours en octobre
-Booking.create(finish_date: "10/10/2022", start_date: "25/10/2022", property: maison1, user: didier)
 
 # Jorge reserve 2 semaines en aout
-Booking.create(finish_date: "30/08/2022", start_date: "15/08/2022", duration: 14, property: maison1, user: jorge)
+Booking.create(finish_date: "30/08/2022", start_date: "15/08/2022", property: maison1, user: jorge)
 # Jorge reserve 10 jours en septembre
-Booking.create(finish_date: "20/09/2022", start_date: "10/09/2022", duration: 14, property: maison1, user: jorge)
+Booking.create(finish_date: "20/09/2022", start_date: "10/09/2022", property: maison1, user: jorge)
 
 #Ajout de favoris
 didier.favorite(maison5)
@@ -309,9 +310,6 @@ jorge.favorite(maison3)
 # Achat => de parts
 Part.create(status: 0, nbr_part: 2, property: maison2, user: didier)
 
-puts 'creating favorites'
-martin.favorite(maison1)
-martin.favorite(maison2)
 
 puts 'creating booking'
 booking1 = Booking.new

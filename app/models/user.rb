@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :bookings
   acts_as_favoritor
   has_many :parts
+  has_many :properties, through: :parts
 
   enum family_status: {
     single: 0,
