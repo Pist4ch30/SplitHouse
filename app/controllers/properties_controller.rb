@@ -20,14 +20,7 @@ class PropertiesController < ApplicationController
   end
 
   def index
-    # environements = {
-    #   campagne: ['', ''],
-    #   mer: ["",""]
-    # }
-    # if params[:environement].present?
-    #   regions = environements[params[:environement].to_sym]
-    #   @properties = @properties.where(region: regions)
-    # end
+
     @properties = Property.all
     @search_param = params["search"]
     if @search_param.present?
