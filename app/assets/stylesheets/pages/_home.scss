@@ -145,6 +145,7 @@ border-radius: 30px;
   border-radius: 5px;
   background-color: $SH-blue;
   color: $SH-almond;
+  background-color: opacity 10%;
 }
 
 .sci-info {
@@ -164,7 +165,7 @@ justify-content: center;
 .btn-contact {
   background-color: $SH-blue !important;
   border: 0;
-  width: 25%;
+  width: 15%;
 }
 
 .catalogue {
@@ -186,6 +187,7 @@ justify-content: center;
   background-size: cover;
   padding: 30px 50px 30px 50px;
   font-size: large;
+  color: $SH-almond;
 }
 
 
