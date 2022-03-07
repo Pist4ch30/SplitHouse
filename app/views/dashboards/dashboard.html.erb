@@ -2,7 +2,7 @@
 <div class="d-flex dashboard-custom">
   <div id="sidebar-container">
     <div class="logo">
-        <%= image_tag "dashboard_logo" %>
+        <%= image_tag "logo-dashboard" %>
     </div>
     <div class="menu-dashboard">
       <a href="<%= dashboard_agenda_path %>" class="d-block p-3 ">Mon agenda</a>
@@ -18,7 +18,7 @@
             <h1 class="font-weight-bold mb-0">Dashboard de <%= current_user.first_name %>, 👇</h1>
           </div>
           <div class="col-lg-3 d-flex">
-            <a href="<%= dashboard_agenda_path %>" class="btn btn-primary w-100 align-self-center">Mon agenda</a>
+            <a href="<%= dashboard_agenda_path %>" class="btn-ageanda-dashboard w-100 align-self-center">Mon agenda</a>
           </div>
         </div>
       </div>
@@ -198,6 +198,16 @@
             <% end %>
           </div>
         </div>
+      </div>
+    </section>
+    <section>
+      <div class="flex-container-dashboard">
+
+          <div class="item1">item 1</div>
+          <div class="item2">item 2</div>
+          <div class="item3">item 3</div>
+          <div class="item4">item 4</div>
+
       </div>
     </section>
 
