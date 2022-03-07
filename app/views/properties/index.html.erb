@@ -10,12 +10,12 @@
     <%= simple_form_for :search, url: properties_path, method: "GET", defaults: { required: false }, html: { class: 'form-inline' } do |f| %>
         <% if params["search"] %>
           <%= f.input :nbr_room, label: "Chambres", collection: 1..10, include_blank: true, input_html: {value: ""}, selected: params["search"]["nbr_room"] %>
-          <%= f.input :budget, collection: ["1 € - 100 000 €", "100_001 € - 200_000 €" , "200_001 € - 500_000 €" ], include_blank: true, input_html: {value: ""}, selected: params["search"]["budget"]%>
+          <%= f.input :budget, collection: ["10 000 € - 100 000 €", "100 001 € - 200 000 €" , "200 001 € - 300 000 €", "300 001 € - 500 000 €" ], include_blank: true, input_html: {value: ""}, selected: params["search"]["budget"]%>
           <%= f.input :region, label: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ], include_blank: true, input_html: {value: ""}, selected: params["search"]["region"]%>
           <%= f.input :home_size, label: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2" ], include_blank: true, input_html: {value: ""}, selected: params["search"]["home_size"]%>
         <% else %>
           <%= f.input :nbr_room, collection: 1..10, include_blank: true, input_html: {value: ""}%>
-          <%= f.input :budget, collection: ["1 € - 100 000 €", "100_001 € - 200_000 €" , "200_001 € - 500_000 €" ], include_blank: true,input_html: {value: ""}%>
+          <%= f.input :budget, collection: ["10 000 € - 100 000 €", "100 001 € - 200 000 €" , "200 001 € - 300 000 €", "300 001 € - 500 000 €" ], include_blank: true,input_html: {value: ""}%>
           <%= f.input :region, label: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ], include_blank: true,input_html: {value: ""}%>
            <%= f.input :home_size, label: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2" ], include_blank: true, input_html: {value: ""}%>
         <% end %>
