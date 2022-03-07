@@ -1,14 +1,30 @@
-.search-form {
-  display: flex;
+// .search-form {
+//   display: flex;
+//   width: 80%;
+//   margin: auto;
+// }
+
+// .form-inline div {
+//   display: inline-block;
+//   align-items: center;
+// }
+
+// .btn-rechercher {
+//   width: 80%;
+// }
+
+.flexbox-class {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
   width: 80%;
   margin: auto;
+  height: auto;
 }
 
-.form-inline div {
-  display: inline-block;
-  align-items: center;
-}
-
-.btn-rechercher {
-  width: 80%;
+.postfix {
+  padding-top: 2px;
+  margin-left: 20px;
+  font-size: 25px;
 }

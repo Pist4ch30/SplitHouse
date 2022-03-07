@@ -143,10 +143,9 @@ file = URI.open('https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaw
 maison3.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpeg')
 maison3.save!
 
-<<<<<<< HEAD
 martin.favorite(maison1)
 martin.favorite(maison2)
-=======
+
 maison4 = Property.new
 maison4.title = "Grande maison en pierres"
 maison4.price_part = 150000
@@ -241,7 +240,7 @@ maison8.price_part = 155000
 maison8.home_size = 210
 maison8.nbr_room = 2
 maison8.nbr_bathroom = 2
-maison8.address = "Perros-Guirec"
+maison8.address = "Place de l'Hôtel de ville, Perros-Guirec"
 maison8.detail = "Un havre de paix à 5 minutes des plages"
 maison8.pool = true
 maison8.garden = true
@@ -263,7 +262,7 @@ maison9.price_part = 275000
 maison9.home_size = 310
 maison9.nbr_room = 6
 maison9.nbr_bathroom = 3
-maison9.address = "Fontainebleau"
+maison9.address = "40 rue Grande, Fontainebleau"
 maison9.detail = "Magnifique château refait à neuf dans la forêt domaniale de Fontainebleau"
 maison9.pool = false
 maison9.garden = true
@@ -281,7 +280,6 @@ maison9.save!
 
 didier.favorite(maison1)
 didier.favorite(maison2)
->>>>>>> f1e62cdc4df948d817f4697154fc967d2daa812a
 
 
 puts 'creating parts'
@@ -312,10 +310,6 @@ jorge.favorite(maison3)
 # Achat => de parts
 Part.create(status: 0, nbr_part: 2, property: maison2, user: didier)
 
-
-puts 'creating favorites'
-martin.favorite(maison1)
-martin.favorite(maison2)
 
 puts 'creating booking'
 booking1 = Booking.new
