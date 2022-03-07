@@ -62,10 +62,16 @@ class DashboardsController < ApplicationController
       end
       # Calcule les jours restants par property
       day_restant = day_allowed_user - duration
-      data_out    = { property_id: property_id,
+      if day_restant <= 0
+        data_out    = { property_id: property_id,
+                      day_restant: 0,
+                      day_utilise: day_allowed_user,
+                      day_allowed: day_allowed_user}
+      else
+        data_out    = { property_id: property_id,
                       day_restant: day_restant,
                       day_utilise: duration,
                       day_allowed: day_allowed_user}
-
+      end
   end
 end

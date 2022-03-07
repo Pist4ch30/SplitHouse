@@ -16,4 +16,9 @@ class Property < ApplicationRecord
     end
     8 - parts_taken
   end
+
+  def booked_this_day(date)
+    bookings.where("start_date < ?", date).where("finish_date > ?", date)
+  end
+
 end
