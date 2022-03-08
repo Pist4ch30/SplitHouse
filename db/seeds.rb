@@ -308,7 +308,7 @@ jorge.favorite(maison3)
 # _____ Simulation => Didier à des parts dans deux propiété _____
 
 # Achat => de parts
-Part.create(status: 0, nbr_part: 2, property: maison2, user: didier)
+Part.create(status: 1, nbr_part: 2, property: maison2, user: didier)
 
 
 puts 'creating booking'

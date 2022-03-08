@@ -4,6 +4,8 @@ class DashboardsController < ApplicationController
     @booking            = Booking.new
     # Recupere le status de => Acheteur (Part(s) qui lui appartient)
     @status_buyer       = status_buyer
+    # Data dashboard
+    @data_buyer         = data_dashboard
   end
 
   private
@@ -28,8 +30,8 @@ class DashboardsController < ApplicationController
                                               address: part.property[:address],
                                               detail: part.property[:detail],
                                               property: part.property },
-                          last_booking:  last_booking(part.property_id),
-                          stat_booking:  stat_booking_user(part.property_id) }
+                          last_booking: last_booking(part.property_id),
+                          stat_booking: stat_booking_user(part.property_id) }
           data_out.push(data_buyer)
         end
       end
@@ -60,6 +62,7 @@ class DashboardsController < ApplicationController
       bookings.each do |booking|
         duration += booking[:duration]
       end
+
       # Calcule les jours restants par property
       day_restant = day_allowed_user - duration
       if day_restant <= 0
@@ -74,4 +77,43 @@ class DashboardsController < ApplicationController
                       day_allowed: day_allowed_user}
       end
   end
+
+  # Renvoi le nombre total de parts d'un user (parts 'approved')
+  def data_dashboard
+    counter_parts = 0
+    total_invest  = 0
+    day_allowed = 0
+    total_nuits_restantes = 0
+
+    current_user.parts.each do |part|
+      # Recupere seulement les parts qui sont approuvées
+      if part.status == "approved"
+        # Incremente les jours alloué par property
+        day_allowed += part.days_allowed
+        # Total de parts
+        counter_parts += part.nbr_part
+        # Total investit
+        total_invest += (part.property.price_part * part.nbr_part)
+        # Nombre de nuits total restante
+        nuits_restantes = part.property.bookings.map {|booking| booking.duration}
+        nuits_restantes = nuits_restantes.inject(:+)
+        begin
+          nuits_restantes = day_allowed - nuits_restantes
+          total_nuits_restantes += nuits_restantes
+        rescue
+          nil
+        end
+      end
+    end
+    # Nombre de nuits utilisées
+    total_nuits_utilise = day_allowed - total_nuits_restantes
+    total_invest = total_invest.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse
+    # Retourne un hash de données pour la vue => dashboard
+    data_out = {  total_parts: counter_parts,
+                  total_invest: total_invest,
+                  total_nuits_restantes: total_nuits_restantes,
+                  total_nuits_utilise: total_nuits_utilise
+                  }
+  end
+
 end
