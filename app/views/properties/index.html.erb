@@ -8,20 +8,24 @@
 
   <div class="search-form form-inline mt-5 mb-5">
     <%= simple_form_for :search, url: properties_path, method: "GET", defaults: { required: false }, html: { class: 'form-inline' } do |f| %>
+    <div class="flexbox-class">
         <% if params["search"] %>
-          <%= f.input :nbr_room, label: "Chambres", collection: 1..10, include_blank: true, input_html: {value: ""}, selected: params["search"]["nbr_room"] %>
-          <%= f.input :budget, collection: ["1 € - 100 000 €", "100_001 € - 200_000 €" , "200_001 € - 500_000 €" ], include_blank: true, input_html: {value: ""}, selected: params["search"]["budget"]%>
-          <%= f.input :region, label: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ], include_blank: true, input_html: {value: ""}, selected: params["search"]["region"]%>
-          <%= f.input :home_size, label: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2" ], include_blank: true, input_html: {value: ""}, selected: params["search"]["home_size"]%>
+          <%= f.input :nbr_room, label: false, collection: 1..10, include_blank: 'Chambres', input_html: {value: ""}, selected: params["search"]["nbr_room"] %>
+          <%= f.input :budget, label: false, include_blank: "Budget", collection: ["10 000 € - 100 000 €", "100 001 € - 200 000 €" , "200 001 € - 300 000 €", "300 001 € - 500 000 €" ], input_html: {value: ""}, selected: params["search"]["budget"]%>
+          <%= f.input :region, label: false, include_blank: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ], input_html: {value: ""}, selected: params["search"]["region"]%>
+          <%= f.input :home_size, label: false, include_blank: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2", "201 m2 - 300 m2" ], input_html: {value: ""}, selected: params["search"]["home_size"]%>
         <% else %>
-          <%= f.input :nbr_room, collection: 1..10, include_blank: true, input_html: {value: ""}%>
-          <%= f.input :budget, collection: ["1 € - 100 000 €", "100_001 € - 200_000 €" , "200_001 € - 500_000 €" ], include_blank: true,input_html: {value: ""}%>
-          <%= f.input :region, label: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ], include_blank: true,input_html: {value: ""}%>
-           <%= f.input :home_size, label: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2" ], include_blank: true, input_html: {value: ""}%>
+          <%= f.input :nbr_room, label: false, collection: 1..10, include_blank: 'Chambres', input_html: {value: ""}%>
+          <%= f.input :budget, label: false, include_blank: "Budget", collection: ["10 000 € - 100 000 €", "100 001 € - 200 000 €" , "200 001 € - 300 000 €", "300 001 € - 500 000 €" ],input_html: {value: ""}%>
+          <%= f.input :region, label: false, include_blank: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ],input_html: {value: ""}%>
+           <%= f.input :home_size, label: false, include_blank: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2", "201 m2 - 300 m2" ], input_html: {value: ""}%>
         <% end %>
 
-        <%= f.submit "Rechercher", class: "btn btn-primary btn-rechercher" %>
-
+<div class="small-3 columns">
+  <%= button_tag type: 'submit', class: "button postfix" do %>
+      <i class="fas fa-search"></i>
+  <% end %>
+</div>    </div>
     <% end %>
   </div>
 
@@ -34,9 +38,10 @@
   <div class="col-sm-12">
     <div class="property-cards mt-5">
       <% @properties.each_with_index do |property, index| %>
-        <div class="card property-card">
+        <div id="property-<%= property.id %>" class="card property-card">
           <div class="property-card-image">
             <h2 class="property-card_parts">Part : <%= property.price_part.to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ' ') %> €</h2>
+            <h2 class="property-card_remaining">Reste : <%= property.part_left %> / 8 parts</h2>
             <div id='<%="carouselExampleControls#{index}"%>' class="carousel slide" data-interval="false" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">

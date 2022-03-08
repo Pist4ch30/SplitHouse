@@ -1,12 +1,12 @@
 
 <div class="d-flex dashboard-custom">
-  <div id="sidebar-container" class="bg-primary">
+  <div id="sidebar-container">
     <div class="logo">
-        <h4 class="text-light font-weight-bold">Dashboard</h4>
+        <%= image_tag "logo-dashboard" %>
     </div>
     <div class="menu-dashboard">
-      <a href="<%= dashboard_agenda_path %>" class="d-block text-light p-3 ">Mon agenda</a>
-      <a href="<%= dashboard_renting_path %>" class="d-block text-light p-3 ">Louer mes propriétés</a>
+      <a href="<%= dashboard_agenda_path %>" class="d-block p-3 ">Mon agenda</a>
+      <a href="<%= dashboard_renting_path %>" class="d-block p-3 ">Louer mes propriétés</a>
     </div>
   </div>
 
@@ -15,11 +15,10 @@
       <div class="container">
         <div class="row row-1">
           <div class="col-lg-9">
-            <h1 class="font-weight-bold mb-0">Bienvenue <%= current_user.first_name %></h1>
-            <p class="lead text-muted">Retrouver toutes les informations utiles de vos propriétées</p>
+            <h1 class="font-weight-bold mb-0">Dashboard de <%= current_user.first_name %>, 👇</h1>
           </div>
           <div class="col-lg-3 d-flex">
-            <a href="<%= dashboard_agenda_path %>" class="btn btn-primary w-100 align-self-center">Mon agenda</a>
+            <a href="<%= dashboard_agenda_path %>" class="btn-ageanda-dashboard w-100 align-self-center">Mon agenda</a>
           </div>
         </div>
       </div>
@@ -28,7 +27,7 @@
     <section class="bg-mix">
       <div class="container-content-dashboard">
         <div class="card rounded-0">
-          <div class="card-body">
+          <div class="card-body-stat-dashboard">
             <div class="row">
               <div class="col-lg-3 d-flex stat my-3">
                 <div class="mx-auto">
@@ -38,25 +37,20 @@
               </div>
               <div class="col-lg-3 d-flex stat my-3">
                 <div class="mx-auto">
-                  <h6 class="text-muted">Mes parts</h6>
+                  <h6 class="text-muted">Montant investit</h6>
                   <h3 class="font-weight-bold color-secondary">4 parts</h3>
                 </div>
               </div>
               <div class="col-lg-3 d-flex stat my-3">
                 <div class="mx-auto">
-                  <h6 class="text-muted">Mes parts</h6>
+                  <h6 class="text-muted">Nuits louées</h6>
                   <h3 class="font-weight-bold color-secondary">4 parts</h3>
                 </div>
               </div>
-              <div class="col-lg-3 d-flex my-3">
+              <div class="col-lg-3 d-flex stat my-3">
                 <div class="mx-auto">
-                  <div class="card" style="width: 18rem;">
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item text-muted">Email : <%= current_user.email %></li>
-                      <li class="list-group-item text-muted">Adresse : <%= current_user.address %></li>
-                      <li class="list-group-item text-muted">Budget : <%= current_user.budget %> €</li>
-                    </ul>
-                  </div>
+                  <h6 class="text-muted">Nuits louées</h6>
+                  <h3 class="font-weight-bold color-secondary">4 parts</h3>
                 </div>
               </div>
             </div>
@@ -66,10 +60,28 @@
     </section>
 
     <section>
+    <!-- Modal -->
+      <div class="modal fade" id="modal-property-dashboard" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
-            <img src="https://cdn-icons-png.flaticon.com/512/602/602175.png" class="avatar" alt="">
+            <%= image_tag "logo_dashboard_1", class:"image-card-property-dashboard" %>
             <h2>Vos propriétés</h2>
             <% if @status_buyer != nil %>
             <div class="row">
@@ -156,8 +168,10 @@
             </div>
           <% end %>
           </div>
+
+
           <div class="col-lg-6">
-            <img src="https://cdn-icons.flaticon.com/png/512/3285/premium/3285805.png?token=exp=1646260953~hmac=60cb64f6f5dc8d2aaeae441c0a5c59bf" class="avatar" alt="">
+            <%= image_tag "logo-favorite-dashboard", class:"image-card-property-dashboard" %>
             <h2>Vos favoris</h2>
           <% if current_user.all_favorited != nil %>
             <div class="row">
@@ -184,6 +198,16 @@
             <% end %>
           </div>
         </div>
+      </div>
+    </section>
+    <section>
+      <div class="flex-container-dashboard">
+
+          <div class="item1">item 1</div>
+          <div class="item2">item 2</div>
+          <div class="item3">item 3</div>
+          <div class="item4">item 4</div>
+
       </div>
     </section>
 

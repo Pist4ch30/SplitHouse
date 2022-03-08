@@ -10,25 +10,60 @@ a:hover {
 }
 
 .bg-primary {
+
   background-color: $SH-blue-light !important;
+
 }
 
 .btn {
   border: 1;
 }
 
-.btn-primary {
-  background-color: $SH-lilac;
+.btn-ageanda-dashboard {
+  width: 180px;
+  height: 60px;
+  margin: 20px;
+  line-height: 60px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  color: black;
+  border: 1px solid;
 }
 
-.bg-mix {background: linear-gradient(180deg, $SH-blue 60%, $SH-lilac 0);}
+.btn-ageanda-dashboard:hover {
+  box-shadow: 0px 0px 3px 1px $SH-blue-light;
+  color: rgb(99, 99, 99);
+  border-radius: 5px;
+  margin-bottom: 2vh;
+}
 
-.btn-primary :hover {
-  background-color: $SH-blue;
+.text-muted {
+  text-transform: uppercase;
+  color: black;
+}
+
+.bg-mix {background: linear-gradient(184deg, rgba(248,248,248,1) 0%, $SH-blue-light 100%);}
+
+.logo {
+  margin: 0 auto;
+}
+
+.logo img {
+  width: 20vh;
+  height: 20vh;
+  text-align: center;
 }
 
 #sidebar-container {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 10px 0px 8px #00000045;
+  z-index: 1;
+  padding-top: 25px;
 }
 
 #sidebar_container .logo {
@@ -37,12 +72,12 @@ a:hover {
 
 #sidebar-container .menu {
   margin: 5px 5px 5px 5px;
-  width: 12rem;
+  width: 15rem;
 }
 
 #content {
   background-color: white;
-  color: $SH-almond;
+  color: $SH-azure;
   overflow: auto;
   height: 100vh;
   width: 100%;
@@ -50,13 +85,33 @@ a:hover {
   padding-top: 2rem;
 }
 
-.row-1 {
-  box-shadow: black 1px 1px 1px 1px;
-  border-radius: 5px;
+.card-body-stat-dashboard {
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.row1 {
+  text-shadow: 10px 10px 10px 10px black ;
 }
 
 .stat {
   border-right: 1px solid $SH-lilac;
+  box-shadow: 0px 0px 3px 1px black;
+  border-radius: 5px;
+  margin-right: 5vh;
+  padding: 20px 20px 20px 20px;
+  width: 30vh;
+}
+
+.stat:hover {
+  border-right: 1px solid $SH-lilac;
+  box-shadow: 0px 0px 3px 1px $SH-blue-light;
+  border-radius: 5px;
+  margin-right: 5vh;
+  padding: 20px 20px 20px 20px;
+  width: 40vh;
 }
 
 .modal-dashboard-body {
@@ -66,7 +121,41 @@ a:hover {
 }
 
 .menu-dashboard {
+  margin-top: 10vh;
   > a {
+    text-align: center;
+    text-transform: uppercase;
     text-decoration: none;
+    border-bottom: 0,50rem solid;
   }
+  > a:hover {
+    box-shadow: 0px 0px 3px 1px $SH-blue-light;
+    color: black;
+    border-radius: 5px;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+  }
+}
+
+
+
+.flex-container-dashboard {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  /* flex-flow: row nowrap; */
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  height: 100%;
+  padding: 15px;
+  gap: 5px;
+
+}
+
+.flex-container-dashboard > div{
+  background: #ffecb3;
+  border: 3px solid #ffcc80;
+  border-radius: 5px;
+  padding: 8px;
 }

@@ -17,3 +17,12 @@
 
 // CSS Dashboard
 @import "dashboards/dashboard";
+@import "dashboards/calendar";
+@import "dashboards/cards_dashboard";
+@import "simple_calendar";
+
+
+.body {
+  color: $SH-almond;
+}
+

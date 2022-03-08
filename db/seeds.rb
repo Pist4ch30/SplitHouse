@@ -143,9 +143,143 @@ file = URI.open('https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaw
 maison3.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpeg')
 maison3.save!
 
-
 martin.favorite(maison1)
 martin.favorite(maison2)
+
+maison4 = Property.new
+maison4.title = "Grande maison en pierres"
+maison4.price_part = 150000
+maison4.home_size = 222
+maison4.nbr_room = 3
+maison4.nbr_bathroom = 2
+maison4.address = "7 avenue Olivier Guichard, La Baule-Escoublac"
+maison4.detail = "Superbe maison de 5 chambres avec piscine et dépendance"
+maison4.pool = true
+maison4.garden = true
+maison4.parking = true
+maison4.garage = false
+maison4.summer_kitchen = false
+maison4.region = "Bretagne"
+file = URI.open('https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1644854888110x309578422827460740%2FAchat%2520Vente%2520-%2520Maison%2520Demeure%2520Domaine%2520Saint-Molf%2520Gue%25CC%2581rande%2520-%2520Espaces%2520Atypiques%2520Nantes%2520-%2520La%2520Baule%2520V2-2.jpg%3Fauto%3Denhance%26q%3D90%26fm%3Djpg?q=90&fm=jpg&auto=compress&dpr=2.5&fit=crop&h=580&w=770')
+maison4.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1644854850346x121257009803428240%2F9614.jpg%3Fauto%3Denhance%26q%3D90%26fm%3Djpg?q=90&fm=jpg&auto=compress&dpr=2.5&fit=crop&h=580&w=770')
+maison4.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1644579787071x717528671815621800%2FPhotos%2520%252817%2529.jpg%3Fauto%3Denhance%26q%3D90%26fm%3Djpg?q=90&fm=jpg&auto=compress&dpr=2.5&fit=crop&h=580&w=770')
+maison4.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+maison4.save!
+
+maison5 = Property.new
+maison5.title = "Maison sur les hauteurs avec une magnifique vue mer"
+maison5.price_part = 225000
+maison5.home_size = 175
+maison5.nbr_room = 3
+maison5.nbr_bathroom = 3
+maison5.address = "Cavalaire-sur-Mer"
+maison5.detail = "Une vue surplombant la baie"
+maison5.pool = true
+maison5.garden = true
+maison5.parking = true
+maison5.garage = false
+maison5.summer_kitchen = true
+maison5.region = "Provence-Alpes-Côte d’Azur"
+file = URI.open('https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1640275999971x485077876803955400%2FPicture-5926226-14.jpg?q=90&fm=jpg&auto=compress&dpr=2.5&fit=crop&h=580&w=770')
+maison5.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1640275870475x171711914150200600%2FPicture-5926226-5%2520%25281%2529.jpg?q=90&fm=jpg&auto=compress&dpr=2.5&fit=crop&h=580&w=770')
+maison5.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1640278570536x766546340598746100%2FPicture-5926226-1.jpg?q=90&fm=jpg&auto=compress&dpr=2.5&fit=crop&h=580&w=770')
+maison5.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+maison5.save!
+
+maison6 = Property.new
+maison6.title = "Grand chalet typique en bois"
+maison6.price_part = 85000
+maison6.home_size = 145
+maison6.nbr_room = 3
+maison6.nbr_bathroom = 2
+maison6.address = "Grande Rue, Val Thorens"
+maison6.detail = "Un magnifique chalet avec départ et arrivée skis aux pieds"
+maison6.pool = false
+maison6.garden = true
+maison6.parking = true
+maison6.garage = false
+maison6.summer_kitchen = false
+maison6.region = "Auvergne-Rhône-Alpes"
+file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/lyrZPhkRLiNyCzLYhnn1_1.jpg/width:3840/format:webp/fit:cover')
+maison6.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/Bo1iubp4QVSPK7cJ2NtL_2.jpg/width:3840/format:webp/fit:cover')
+maison6.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/RV84jB69TCCFRiPysTuE_13.jpg/width:3840/format:webp/fit:cover')
+maison6.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+maison6.save!
+
+maison7 = Property.new
+maison7.title = "Maison atypique avec grand domaine et dépendance"
+maison7.price_part = 355000
+maison7.home_size = 210
+maison7.nbr_room = 4
+maison7.nbr_bathroom = 3
+maison7.address = "12 avenue Edouard VII, Biarritz"
+maison7.detail = "Une grande maison avec de beaux volumes et un immense jardin"
+maison7.pool = true
+maison7.garden = true
+maison7.parking = true
+maison7.garage = false
+maison7.summer_kitchen = false
+maison7.region = "Nouvelle-Aquitaine"
+file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/qCAW3qLRRRenNXbLbWzG_Olive_grove_pool_2.png/width:3840/format:webp/fit:cover')
+maison7.photos.attach(io: file, filename: 'tbd', content_type: 'image/png')
+file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/41yNXAXfTRe0R25g4VDP_SW_-_Pacaso_03.jpg/width:3840/format:webp/fit:cover')
+maison7.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/5t1bKIlOTAiiniSfgyD1_SW_-_Pacaso_103.jpg/width:3840/format:webp/fit:cover')
+maison7.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+maison7.save!
+
+maison8 = Property.new
+maison8.title = "Maison contemporaine"
+maison8.price_part = 155000
+maison8.home_size = 210
+maison8.nbr_room = 2
+maison8.nbr_bathroom = 2
+maison8.address = "Place de l'Hôtel de ville, Perros-Guirec"
+maison8.detail = "Un havre de paix à 5 minutes des plages"
+maison8.pool = true
+maison8.garden = true
+maison8.parking = true
+maison8.garage = false
+maison8.summer_kitchen = false
+maison8.region = "Bretagne"
+file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/WYpAcmq7STqew63TFplT_exterior-backyard.jpg/width:3840/format:webp/fit:cover')
+maison8.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/725zXjF0SqyYOchMWwt0_living.jpg/width:3840/format:webp/fit:cover')
+maison8.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/2BaOPusmSzqOfgrLpiDG_kitchen-dining.jpg/width:3840/format:webp/fit:cover')
+maison8.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+maison8.save!
+
+maison9 = Property.new
+maison9.title = "Château rénové proche de la forêt"
+maison9.price_part = 275000
+maison9.home_size = 310
+maison9.nbr_room = 6
+maison9.nbr_bathroom = 3
+maison9.address = "40 rue Grande, Fontainebleau"
+maison9.detail = "Magnifique château refait à neuf dans la forêt domaniale de Fontainebleau"
+maison9.pool = false
+maison9.garden = true
+maison9.parking = true
+maison9.garage = true
+maison9.summer_kitchen = false
+maison9.region = "Ile-de-France"
+file = URI.open('https://v.seloger.com/s/cdn/x/visuels/1/m/r/e/1mreh2ifpwomfdq0xu8xg20l6von0watqkikg8ge8.jpg')
+maison9.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://v.seloger.com/s/cdn/x/visuels/0/1/n/o/01no733zkuxsyodqcszh1dvhvyvecff7emfcucohs.jpg')
+maison9.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://v.seloger.com/s/cdn/x/visuels/1/g/6/k/1g6kigbdfzny4k85612i1fm2fkvjcbn234wdxnshs.jpg')
+maison9.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+maison9.save!
+
+didier.favorite(maison1)
+didier.favorite(maison2)
 
 
 puts 'creating parts'
@@ -157,18 +291,16 @@ Part.create(status: 1, nbr_part: 4, property: maison1, user: jorge)
 
 # Didier reserve 2 semaines en aout
 Booking.create(finish_date: "14/08/2022", start_date: "01/08/2022", duration: 14, property: maison1, user: didier)
-# Didier reserve 15 jours en octobre
-Booking.create(finish_date: "10/10/2022", start_date: "25/10/2022", property: maison1, user: didier)
 
 # Jorge reserve 2 semaines en aout
-Booking.create(finish_date: "30/08/2022", start_date: "15/08/2022", duration: 14, property: maison1, user: jorge)
+Booking.create(finish_date: "30/08/2022", start_date: "15/08/2022", property: maison1, user: jorge)
 # Jorge reserve 10 jours en septembre
-Booking.create(finish_date: "20/09/2022", start_date: "10/09/2022", duration: 14, property: maison1, user: jorge)
+Booking.create(finish_date: "20/09/2022", start_date: "10/09/2022", property: maison1, user: jorge)
 
 #Ajout de favoris
-didier.favorite(maison1)
-didier.favorite(maison2)
-didier.favorite(maison3)
+didier.favorite(maison5)
+didier.favorite(maison6)
+didier.favorite(maison7)
 
 jorge.favorite(maison1)
 jorge.favorite(maison3)
@@ -178,21 +310,11 @@ jorge.favorite(maison3)
 # Achat => de parts
 Part.create(status: 0, nbr_part: 2, property: maison2, user: didier)
 
-part2 = Part.new
-part2.status = 1
-part2.nbr_part = 4
-part2.property = maison1
-part2.user = jorge
-part2.save!
-
-puts 'creating favorites'
-martin.favorite(maison1)
-martin.favorite(maison2)
 
 puts 'creating booking'
 booking1 = Booking.new
 booking1.start_date = Date.today + 10.days
 booking1.finish_date = Date.today + 20.days
 booking1.property = maison1
-booking1.user = didier
+booking1.user = jorge
 booking1.save!

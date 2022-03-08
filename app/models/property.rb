@@ -12,8 +12,15 @@ class Property < ApplicationRecord
   def part_left
     parts_taken = 0
     parts.each do |part|
-      parts_taken += part.part_nbr
+      if part.status == "approved"
+        parts_taken += part.nbr_part
+      end
     end
     8 - parts_taken
   end
+
+  def booked_this_day(date)
+    bookings.where("start_date < ?", date).where("finish_date > ?", date)
+  end
+
 end

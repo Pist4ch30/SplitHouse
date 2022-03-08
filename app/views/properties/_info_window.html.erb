@@ -2,4 +2,5 @@
   <%= cl_image_tag property.photos.first.key %>
   <h2><%= property.title %></h2>
   <p><%= property.address %></p>
+  <%= link_to "Plus d'infos", "#property-#{property.id}", class: "link-info-window" %>
 </div>
