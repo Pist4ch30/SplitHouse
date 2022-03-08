@@ -6,6 +6,10 @@
   max-width: 200px;
 }
 
+.mapboxgl-canvas {
+  border-radius: 5px;
+}
+
 .mapboxgl-popup-content {
   text-align: center;
   font-family: "Open Sans", sans-serif;
@@ -31,4 +35,16 @@
 
 .mapbox-index {
   margin-top: 50px;
+}
+
+a.mapbox-improve-map {
+  display: none;
+}
+
+.mapboxgl-ctrl-attrib-inner {
+  display: none;
+}
+
+a.mapboxgl-ctrl-logo {
+  display: none;
 }

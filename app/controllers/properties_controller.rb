@@ -30,8 +30,8 @@ class PropertiesController < ApplicationController
         @properties = @properties.where(nbr_room: @search_param["nbr_room"].to_i)
       end
       if !@search_param["budget"].empty?
-        min = @search_param["budget"].split(" € - ").first.to_i
-        max = @search_param["budget"].split(" € - ").second.to_i
+        min = @search_param["budget"].split(" -").first.gsub(" €", "").gsub(" ", "").to_i
+        max = @search_param["budget"].split(" -").last.gsub(" €", "").gsub(" ", "").to_i
         @properties = @properties.where("(price_part >= ?) AND (price_part <= ?)", min, max)
       end
       if !@search_param["region"].empty?
@@ -81,6 +81,6 @@ class PropertiesController < ApplicationController
   private
 
   def params_property
-    params.require(:property).permit(:title, :price_part, :home_size, :nbr_room, :nbr_bathroom, :address, :detail, :pool, :garden, :parking, :garage, :summer_kitchen)
+    params.require(:property).permit(:title, :price_part, :home_size, :nbr_room, :nbr_bathroom, :address, :detail, :pool, :garden, :parking, :garage, :summer_kitchen, :region)
   end
 end

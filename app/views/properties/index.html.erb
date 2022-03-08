@@ -6,26 +6,25 @@
     </div>
   </div>
 
-  <div class="search-form form-inline mt-5 mb-5">
+  <div class="search-form form-inline">
     <%= simple_form_for :search, url: properties_path, method: "GET", defaults: { required: false }, html: { class: 'form-inline' } do |f| %>
-    <div class="flexbox-class">
-        <% if params["search"] %>
-          <%= f.input :nbr_room, label: false, collection: 1..10, include_blank: 'Chambres', input_html: {value: ""}, selected: params["search"]["nbr_room"] %>
-          <%= f.input :budget, label: false, include_blank: "Budget", collection: ["10 000 € - 100 000 €", "100 001 € - 200 000 €" , "200 001 € - 300 000 €", "300 001 € - 500 000 €" ], input_html: {value: ""}, selected: params["search"]["budget"]%>
-          <%= f.input :region, label: false, include_blank: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ], input_html: {value: ""}, selected: params["search"]["region"]%>
-          <%= f.input :home_size, label: false, include_blank: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2", "201 m2 - 300 m2" ], input_html: {value: ""}, selected: params["search"]["home_size"]%>
-        <% else %>
-          <%= f.input :nbr_room, label: false, collection: 1..10, include_blank: 'Chambres', input_html: {value: ""}%>
-          <%= f.input :budget, label: false, include_blank: "Budget", collection: ["10 000 € - 100 000 €", "100 001 € - 200 000 €" , "200 001 € - 300 000 €", "300 001 € - 500 000 €" ],input_html: {value: ""}%>
-          <%= f.input :region, label: false, include_blank: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ],input_html: {value: ""}%>
-           <%= f.input :home_size, label: false, include_blank: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2", "201 m2 - 300 m2" ], input_html: {value: ""}%>
-        <% end %>
+      <div class="flexbox-class mb-0">
+          <% if params["search"] %>
+            <%= f.input :nbr_room, label: false, collection: 1..10, include_blank: 'Chambres', input_html: {value: "", class:"mb-0"}, selected: params["search"]["nbr_room"] %>
+            <%= f.input :budget, label: false, include_blank: "Budget", collection: ["10 000 € - 100 000 €", "100 001 € - 200 000 €" , "200 001 € - 300 000 €", "300 001 € - 500 000 €" ], input_html: {value: ""}, selected: params["search"]["budget"]%>
+            <%= f.input :region, label: false, include_blank: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ], input_html: {value: ""}, selected: params["search"]["region"]%>
+            <%= f.input :home_size, label: false, include_blank: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2", "201 m2 - 300 m2" ], input_html: {value: ""}, selected: params["search"]["home_size"]%>
+          <% else %>
+            <%= f.input :nbr_room, label: false, collection: 1..10, include_blank: 'Chambres', input_html: {value: ""}%>
+            <%= f.input :budget, label: false, include_blank: "Budget", collection: ["10 000 € - 100 000 €", "100 001 € - 200 000 €" , "200 001 € - 300 000 €", "300 001 € - 500 000 €" ],input_html: {value: ""}%>
+            <%= f.input :region, label: false, include_blank: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ],input_html: {value: ""}%>
+            <%= f.input :home_size, label: false, include_blank: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2", "201 m2 - 300 m2" ], input_html: {value: ""}%>
+          <% end %>
 
-<div class="small-3 columns">
-  <%= button_tag type: 'submit', class: "button postfix" do %>
-      <i class="fas fa-search"></i>
-  <% end %>
-</div>    </div>
+          <%= button_tag type: 'submit', class: "button postfix" do %>
+              <i class="fas fa-search"></i>
+          <% end %>
+      </div>
     <% end %>
   </div>
 
@@ -65,20 +64,18 @@
               </a>
             </div>
           </div>
-          <div class="property-card-body">
+          <div class="property-card-body h-100">
             <h5 class="property-card-title"><%= property.title %></h5>
-            <p class="property-card-text">
-              <ul style="list-style: none; margin-left: 8px">
-                <li> <strong>Ville</strong> : <%= property.address.split(",").second %></li>
-                <li> <strong>Surface</strong> : <%= property.home_size %> m2</li>
-                <li> <strong>Chambres</strong> : <%= property.nbr_room %></li>
-                <li> <strong>Description</strong> : <%= property.detail %></li>
-              </ul>
-            </p>
+            <div class="property-card-text flex-grow-1 d-flex flex-column mb-2">
+              <p class="mb-0 ps-0"><i class="fas fa-map-marker-alt"></i></i><%= property.address.split(",").second %></p>
+              <p class="mb-0 ps-0"><i class="fas fa-home"></i></i></i><%= " #{property.home_size}" %> m2</p>
+              <p class="mb-0 ps-0"><i class="fas fa-bed"></i><%= " #{property.nbr_room}" %></p>
+              <p class="mb-0 ps-0"><%= property.detail %></p>
+            </div>
             <% if user_signed_in? %>
-              <%= link_to "Découvrir", property_path(property.id), class: "btn btn-primary btn-decouvrir" %>
+              <%= link_to "Découvrir", property_path(property.id), class: "btn btn-primary btn-decouvrir mx-auto" %>
             <% else %>
-              <button type="button" class="btn btn-primary btn-decouvrir" data-bs-toggle="modal" data-bs-target="#signupModal">
+              <button type="button" class="btn btn-primary btn-decouvrir mx-auto" data-bs-toggle="modal" data-bs-target="#signupModal">
                 Découvrir
               </button>
             <% end %>
