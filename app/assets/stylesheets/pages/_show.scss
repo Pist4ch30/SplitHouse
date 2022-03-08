@@ -6,7 +6,7 @@
   color: white;
   padding: 8px 24px;
   border-radius: 0 0 15px 15px;
-  background: #a0dddcff;
+  background: #59D4D4;
   transition: background 0.3s ease;
   height: 85px;
   font-size: 25px;
@@ -27,12 +27,14 @@
   font-size: 16px;
   font-weight: bold;
   margin: 0;
+  color: #46536C;
 }
 
 .card-trip p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
+  color: #46536C;
 }
 
 .card-trip .card-trip-infos {
@@ -45,10 +47,12 @@
 
 p {
   padding-left: 20px;
+  color: #46536C;
 }
 
 h1 {
   margin-left: 10px;
+  color: #46536C;
 }
 
 .flex-container {
@@ -88,15 +92,18 @@ h1 {
   align-items: center;
   h2 {
     font-size: 19px;
+    color: #46536C;
   }
   p {
     padding: 0;
     font-weight: bold;
     font-size: 18px;
+    color: #46536C;
   }
   p.notbold {
     font-weight: unset;
     font-size:14px;
+    color: #46536C;
   }
 }
 
@@ -122,23 +129,23 @@ input[type=range]::-webkit-slider-runnable-track {
   cursor: pointer;
   //animate: 0.2s;
   box-shadow: 0px 0px 0px #000000;
-  background: #2497E3;
+  background: #FFD365;
   border-radius: 1px;
   border: 0px solid #000000;
 }
 input[type=range]::-webkit-slider-thumb {
   box-shadow: 0px 0px 0px #000000;
-  border: 1px solid #2497E3;
+  border: 1px solid #FFD365;
   height: 18px;
   width: 18px;
   border-radius: 25px;
-  background: #A1D0FF;
+  background: #FFECBC;
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -7px;
 }
 input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #2497E3;
+  background: #FFD365;
 }
 input[type=range]::-moz-range-track {
   width: 100%;
@@ -146,17 +153,17 @@ input[type=range]::-moz-range-track {
   cursor: pointer;
   //animate: 0.2s;
   box-shadow: 0px 0px 0px #000000;
-  background: #2497E3;
+  background: #FFD365;
   border-radius: 1px;
   border: 0px solid #000000;
 }
 input[type=range]::-moz-range-thumb {
   box-shadow: 0px 0px 0px #000000;
-  border: 1px solid #2497E3;
+  border: 1px solid #FFD365;
   height: 18px;
   width: 18px;
   border-radius: 25px;
-  background: #A1D0FF;
+  background: #FFECBC;
   cursor: pointer;
 }
 input[type=range]::-ms-track {
@@ -169,13 +176,13 @@ input[type=range]::-ms-track {
   color: transparent;
 }
 input[type=range]::-ms-fill-lower {
-  background: #2497E3;
+  background: #FFD365;
   border: 0px solid #000000;
   border-radius: 2px;
   box-shadow: 0px 0px 0px #000000;
 }
 input[type=range]::-ms-fill-upper {
-  background: #2497E3;
+  background: #FFD365;
   border: 0px solid #000000;
   border-radius: 2px;
   box-shadow: 0px 0px 0px #000000;
@@ -183,18 +190,18 @@ input[type=range]::-ms-fill-upper {
 input[type=range]::-ms-thumb {
   margin-top: 1px;
   box-shadow: 0px 0px 0px #000000;
-  border: 1px solid #2497E3;
+  border: 1px solid #FFD365;
   height: 18px;
   width: 18px;
   border-radius: 25px;
-  background: #A1D0FF;
+  background:#FFECBC;
   cursor: pointer;
 }
 input[type=range]:focus::-ms-fill-lower {
-  background: #2497E3;
+  background: #FFD365;
 }
 input[type=range]:focus::-ms-fill-upper {
-  background: #2497E3;
+  background: #FFD365;
 }
 
 #outline {
@@ -252,23 +259,24 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .btn-secondary {
-  background: #a0dddcff;
+  background: #59D4D4;
   border-radius: 4px;
   border: none;
 }
 .btn-secondary:hover {
-  background: #def3f3ff;
+  background: #D1F3F3;
   color: white;
   border: none;
 }
 
 .modal-content{
   border-radius: 20px;
-  background-color: #FFC65A;
+  background-color: #FFECBC;
 }
 .btn-primary {
   border-radius: 4px;
   border: none;
+  background-color: #46536C;
 }
 .btn-primary:hover {
   background: #F4C2C2;
