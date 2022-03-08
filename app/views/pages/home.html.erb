@@ -7,22 +7,26 @@
     </div>
   </div>
 
-   <div class="search-form form-inline mt-5 mb-5">
+     <div class="search-form form-inline mt-5 mb-5">
     <%= simple_form_for :search, url: properties_path, method: "GET", defaults: { required: false }, html: { class: 'form-inline' } do |f| %>
+    <div class="flexbox-class">
         <% if params["search"] %>
-          <%= f.input :nbr_room, label: "Chambres", collection: 1..10, include_blank: true, input_html: {value: ""}, selected: params["search"]["nbr_room"] %>
-          <%= f.input :budget, collection: ["1 € - 100 000 €", "100_001 € - 200_000 €" , "200_001 € - 500_000 €" ], include_blank: true, input_html: {value: ""}, selected: params["search"]["budget"]%>
-          <%= f.input :region, label: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ], include_blank: true, input_html: {value: ""}, selected: params["search"]["region"]%>
-          <%= f.input :home_size, label: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2" ], include_blank: true, input_html: {value: ""}, selected: params["search"]["home_size"]%>
+          <%= f.input :nbr_room, label: false, collection: 1..10, include_blank: 'Chambres', input_html: {value: ""}, selected: params["search"]["nbr_room"] %>
+          <%= f.input :budget, label: false, include_blank: "Budget", collection: ["10 000 € - 100 000 €", "100 001 € - 200 000 €" , "200 001 € - 300 000 €", "300 001 € - 500 000 €" ], input_html: {value: ""}, selected: params["search"]["budget"]%>
+          <%= f.input :region, label: false, include_blank: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ], input_html: {value: ""}, selected: params["search"]["region"]%>
+          <%= f.input :home_size, label: false, include_blank: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2", "201 m2 - 300 m2" ], input_html: {value: ""}, selected: params["search"]["home_size"]%>
         <% else %>
-          <%= f.input :nbr_room, collection: 1..10, include_blank: true, input_html: {value: ""}%>
-          <%= f.input :budget, collection: ["1 € - 100 000 €", "100_001 € - 200_000 €" , "200_001 € - 500_000 €" ], include_blank: true,input_html: {value: ""}%>
-          <%= f.input :region, label: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ], include_blank: true,input_html: {value: ""}%>
-           <%= f.input :home_size, label: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2" ], include_blank: true, input_html: {value: ""}%>
+          <%= f.input :nbr_room, label: false, collection: 1..10, include_blank: 'Chambres', input_html: {value: ""}%>
+          <%= f.input :budget, label: false, include_blank: "Budget", collection: ["10 000 € - 100 000 €", "100 001 € - 200 000 €" , "200 001 € - 300 000 €", "300 001 € - 500 000 €" ],input_html: {value: ""}%>
+          <%= f.input :region, label: false, include_blank: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ],input_html: {value: ""}%>
+           <%= f.input :home_size, label: false, include_blank: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2", "201 m2 - 300 m2" ], input_html: {value: ""}%>
         <% end %>
 
-        <%= f.submit "Rechercher", class: "btn btn-primary btn-rechercher" %>
-
+<div class="small-3 columns">
+  <%= button_tag type: 'submit', class: "button postfix" do %>
+      <i class="fas fa-search"></i>
+  <% end %>
+</div>    </div>
     <% end %>
   </div>
 
@@ -33,22 +37,22 @@
   <div class="d-flex justify-content-evenly flex-wrap align-items-center py-5">
 
     <div class="d-flex flex-column align-items-center justify-content-center p-3 bg-primary my-4 card-advantage" style="width: 20%;">
-      <%= image_tag "dollar.png", style: "width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;" %>
+      <%= image_tag "shared.svg", style: "width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;" %>
       <h6 class="small text-center">Partage des frais avec les autres co-propriètaires</h6>
     </div>
 
     <div class="d-flex flex-column align-items-center justify-content-center p-3 bg-primary my-4 card-advantage" style="width: 20%;">
-      <%= image_tag "Diamant.png", style: "width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;" %>
+      <%= image_tag "Winners.svg", style: "width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;" %>
       <h6 class="small text-center">Accès à une gamme de produit plus élevé</h6>
     </div>
 
     <div class="d-flex flex-column align-items-center justify-content-center p-3 bg-primary my-4 card-advantage" style="width: 20%;">
-      <%= image_tag "Time.png", style: "width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;" %>
+      <%= image_tag "Timer.svg", style: "width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;" %>
       <h6 class="small text-center">Garantie de revendre facilement</h6>
     </div>
 
      <div class="d-flex flex-column align-items-center justify-content-center p-3 bg-primary my-4 card-advantage" style="width: 20%;">
-     <%= image_tag "gestion.png", style: "width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;" %>
+     <%= image_tag "Contrat.svg", style: "width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;" %>
       <h6 class="small text-center">Aucun soucis d’entretien ou de gestion</h6>
     </div>
   </div>
@@ -67,11 +71,35 @@
   </div>
 
   <div class="gallery">
-    <% @properties.each do |property| %>
+    <% @properties.each.each_with_index do |property,index| %>
       <div>
         <div class="card sh-property-card">
+        <h2 class="property-card_parts">Part : <%= property.price_part.to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ' ') %> €</h2>
+            <h2 class="property-card_remaining"><%= property.part_left %> / 8 </h2>
           <% unless property.photos_attachments.empty? %>
-            <%= cl_image_tag property.photos.first.key, class: "card-img-top sh-card-img" %>
+            <div id='<%="carouselExampleControls#{index}"%>' class="carousel slide" data-interval="false" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <%= cl_image_tag property.photos.first.key, class: "card-img-top sh-card-img d-block w-100", alt: "Photo 1" %>
+                </div>
+                <% property.photos.each_with_index do |photo, index| %>
+                  <% if index > 0 %>
+                    <div class="carousel-item">
+                      <%= cl_image_tag photo.key, class: "card-img-top sh-card-img d-block w-100", alt: "Photo #{index}" %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+              <a class="carousel-control-prev" href='<%="#carouselExampleControls#{index}"%>' role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href='<%="#carouselExampleControls#{index}"%>' role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+
           <% else %>
             <img src="https://marieclaire.be/fr/wp-content/uploads/2018/01/marieclaire_chalet_ian-keefe_unsplahs.jpg" class="card-img-top" alt="carousel-image-1">
           <% end %>
@@ -87,29 +115,97 @@
     <% end %>
   </div>
 
+
+
    <div class="catalogue" >
-  <%= link_to properties_path, class: "btn btn-primary btn-contact" do %>
-   Tout voir       <i class="fas fa-angle-double-right"></i>
-  <% end %>
+    <%= link_to properties_path, class: "btn btn-primary btn-contact" do %>
+    Tout voir       <i class="fas fa-angle-double-right"></i>
+    <% end %>
 
-  </div>
-
-  <div class="background-casa">
-    <div class="banner-casa" style="background-image: url(<%= image_path "casa.png" %>);">
-      <div class="container">
-        <h2 class="splithouse-bis">FAQ</h2>
-        <p class="p-faq">Comment financer l’achat ?</p>
-        <p class="p-faq">Suis-je réellement propriétaire ?</p>
-        <p class="p-faq">Qui prend en charge la gestion et l'entretien ?</p>
-        <p class="p-faq">Est-il possible d’acheter plusieurs parts ?</p>
-        <p class="p-faq">Est-ce difficile de revendre une part ?</p>
-      </div>
     </div>
-  </div>
+
 </div>
 
 
-  <div class="sci-info-mere" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(https://i.pinimg.com/originals/9a/a9/eb/9aa9ebfeec560b0ccb388a109b5c9e8c.jpg);">
+
+
+
+
+
+  <div class="background-casa">
+    <div class="banner-casa" style="background-image: url(<%= image_path "img-question.svg" %>);">
+      <div class="container">
+        <h2 class="splithouse-bis">FAQ</h2>
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                Comment financer l’achat ?
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>Le financement</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Suis-je réellement propriétaire ?
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>La propriété</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Qui prend en charge la gestion et l'entretien ?
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>La logisitique</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingfour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                Est-il possible d’acheter plusieurs parts ?
+              </button>
+            </h2>
+            <div id="collapsefour" class="accordion-collapse collapse" aria-labelledby="headingfour" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingfive">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
+                Est-ce difficile de revendre une part ?
+              </button>
+            </h2>
+            <div id="collapsefive" class="accordion-collapse collapse" aria-labelledby="headingfive" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="sci-info-mere" style="background-image: url(<%= image_path "SVG-picture.svg" %>);">
+
     <div class="sci-info">
       <h2 class="splithouse">Pourquoi choisir une SCI ?</h2>
       <p class="p-sci"><strong>O</strong>ffre une structure juridique souple et simplifiée</p>
