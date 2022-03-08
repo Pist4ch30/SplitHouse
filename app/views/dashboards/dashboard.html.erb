@@ -32,25 +32,29 @@
               <div class="col-lg-3 d-flex stat my-3">
                 <div class="mx-auto">
                   <h6 class="text-muted">Mes parts</h6>
+                  <%= image_tag "parts-logo-dashboard" %>
                   <h3 class="font-weight-bold color-secondary">4 parts</h3>
                 </div>
               </div>
               <div class="col-lg-3 d-flex stat my-3">
                 <div class="mx-auto">
                   <h6 class="text-muted">Montant investit</h6>
-                  <h3 class="font-weight-bold color-secondary">4 parts</h3>
+                  <%= image_tag "invests-logo-dashboard" %>
+                  <h3 class="font-weight-bold color-secondary">100 000k</h3>
                 </div>
               </div>
               <div class="col-lg-3 d-flex stat my-3">
                 <div class="mx-auto">
-                  <h6 class="text-muted">Nuits louées</h6>
-                  <h3 class="font-weight-bold color-secondary">4 parts</h3>
+                  <h6 class="text-muted">Nuits Restantes</h6>
+                  <%= image_tag "nuits-restantes-dashboard" %>
+                  <h3 class="font-weight-bold color-secondary">138 nuits</h3>
                 </div>
               </div>
               <div class="col-lg-3 d-flex stat my-3">
                 <div class="mx-auto">
-                  <h6 class="text-muted">Nuits louées</h6>
-                  <h3 class="font-weight-bold color-secondary">4 parts</h3>
+                  <h6 class="text-muted">Nuits Utilisées</h6>
+                  <%= image_tag "nuits-utilise-dashboard" %>
+                  <h3 class="font-weight-bold color-secondary">38 nuits</h3>
                 </div>
               </div>
             </div>
@@ -60,32 +64,14 @@
     </section>
 
     <section>
-    <!-- Modal -->
-      <div class="modal fade" id="modal-property-dashboard" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Understood</button>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
             <%= image_tag "logo_dashboard_1", class:"image-card-property-dashboard" %>
             <h2>Vos propriétés</h2>
-            <% if @status_buyer != nil %>
+          <% if @status_buyer != nil %>
             <div class="row">
-              <% @status_buyer.each do |status| %>
+            <% @status_buyer.each do |status| %>
               <div class="card" style="width: 18rem; margin: 5px 10px 5px 10px; border-radius: 10px;">
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   <%= "Il vous reste #{status[:stat_booking][:day_restant]}/Jours"%>
@@ -152,30 +138,15 @@
                   </div>
               <% end %>
             </div>
-            <% else %>
-            <div class="card text-center">
-              <div class="card-header">
-                <img src="https://cdn-icons.flaticon.com/png/512/1895/premium/1895100.png?token=exp=1646264530~hmac=111df545ce84de09f40b7207a4f59ea0" class="avatar" alt="">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Vous avez aucune propriété</h5>
-                <p class="card-text">Découvrez les meilleures biens du moment</p>
-                <a href="#" class="btn btn-primary">Découvrir des biens</a>
-              </div>
-              <div class="card-footer text-muted">
-                SplitHouse
-              </div>
-            </div>
           <% end %>
           </div>
-
 
           <div class="col-lg-6">
             <%= image_tag "logo-favorite-dashboard", class:"image-card-property-dashboard" %>
             <h2>Vos favoris</h2>
           <% if current_user.all_favorited != nil %>
             <div class="row">
-            <% current_user.all_favorited.each do |favorite| %>
+              <% current_user.all_favorited.each do |favorite| %>
               <div class="card" style="width: 18rem; margin: 5px 10px 5px 10px; border-radius: 10px;">
                 <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -200,16 +171,5 @@
         </div>
       </div>
     </section>
-    <section>
-      <div class="flex-container-dashboard">
-
-          <div class="item1">item 1</div>
-          <div class="item2">item 2</div>
-          <div class="item3">item 3</div>
-          <div class="item4">item 4</div>
-
-      </div>
-    </section>
-
   </div>
 </div>
