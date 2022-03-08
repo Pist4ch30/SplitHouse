@@ -100,6 +100,11 @@
       <div class="flex-item">
         <%= link_to "Se positionner sur ce bien", "#", class: "btn btn-flat", data: {toggle: "modal", target:"#exampleModal"} %>
 
+      </div>
+    </div>
+
+  </div>
+</div>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -112,7 +117,7 @@
               <div class="modal-body">
                 <%= form_with url: "#", method: :get do |form| %>
                   <%= form.label :query, "Nous contacter:" %>
-                  <%= form.text_area :message, size: "70x5", class: "text-area", value: "Bonjour, je suis interesse par #{@property.title}, merci de me recontacter."%>
+                  <%= form.text_area :message, size: "70x5", class: "text-area", value: "Bonjour, je suis intéressé par l'annonce '#{@property.title}', merci de me recontacter. #{current_user.first_name} #{current_user.last_name}"%>
                 <% end %>
                 <p><em>Vous pouvez également nous envoyer un message via notre système de chat</em></p>
               </div>
@@ -123,8 +128,3 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-
-  </div>
-</div>
