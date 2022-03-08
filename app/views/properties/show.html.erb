@@ -11,23 +11,27 @@
     </div>
     <div class="property-infos d-flex card1">
       <div class="property-info-details">
-        <h2>Surface</h2>
-        <p><%= @property.home_size %> m2</p>
+        <%# <h2>Surface</h2> %>
+        <i class="fas fa-house-user"></i>
+        <p><%= @property.home_size %>m2</p>
       </div>
       <div class="property-info-details">
-        <h2>Prix</h2>
+        <%# <h2>Prix</h2> %>
+        <i class="fas fa-money-check-alt"></i>
         <p><%= @property.price_part %> €</p>
       </div>
       <div class="property-info-details">
-        <h2>Pièces</h2>
+        <%# <h2>Chambres</h2> %>
+        <i class="fas fa-bed"></i>
         <p><%= @property.nbr_room %></p>
       </div>
       <div class="property-info-details">
-        <h2>Salles de bain</h2>
+        <%# <h2>Salles de bain</h2> %>
+        <i class="fas fa-toilet-paper"></i>
         <p><%= @property.nbr_bathroom %></p>
       </div>
       <div class="property-info-details">
-        <h2><%= image_tag "location.png", height: 20 %></h2>
+        <i class="fas fa-map-marker-alt"></i>
         <p class="notbold"><%= @property.address %></p>
       </div>
     </div>
