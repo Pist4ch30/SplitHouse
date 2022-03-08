@@ -10,11 +10,19 @@ body {
   border-radius: 5px;
 }
 .banner-casa {
-  background-size: 80%;
-  background-position: top -15% right -96px;
+  background-size: 45%;
+  // background-position: top -15% right -96px;
   padding: 20px 0px 70px 0px;
   background-repeat: no-repeat;
-  height: 500px;
+  height: 100%;
+  margin-left: 160px;
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+  }
 }
 
 .banner-header h1 {
@@ -46,20 +54,18 @@ body {
 .splithouse {
   font-size: 40px;
   color: $SH-almond;
-  text-align: center;
-  margin: 15px;
+  margin: 0px 0px 50px 145px;
 }
 .splithouse-bis {
   color: $SH-almond;
   text-align: center;
+  width: 100%;
 }
 
 .p-sci {
-  font-size: 30px;
-  color: $SH-pink;
-  margin: 0;
-  text-align: center;
-  text-shadow: 2px 2px 2px $SH-almond;
+  font-size: 25px;
+  color: #46536C;
+  margin: 20px 0px 0px 130px;
   font-weight: lighter;
 }
 
@@ -100,6 +106,7 @@ border-radius: 30px;
 
 .background-casa {
   background-color: $SH-blue-light;
+  height: 75vh;
 }
 
 
@@ -153,7 +160,7 @@ border-radius: 30px;
 }
 
 .sci-info {
-  margin: 80px;
+  margin: 60px;
 }
 
 .btn-index-house {
@@ -188,13 +195,32 @@ justify-content: center;
   }
 
 .sci-info-mere {
-  background-size: cover;
+  background-color: $SH-lilac;
   padding: 30px 50px 30px 50px;
   font-size: large;
-  color: $SH-almond;
+  color: #46536C;
+  background-size: 36%;
+  background-position: top 40% right 130px;
+  padding: 20px 0px 70px 0px;
+  background-repeat: no-repeat;
+  height: 600px;
 }
 
+#accordionExample {
+  margin: auto 0;
+  margin-left: 60%;
 
+  .accordion-item {
+    background-color: transparent;
+    border: 0;
+  }
+  .accordion-button {
+    background-color: transparent !important;
+  }
+  .accordion-body {
+    background-color: $SH-blue-light;
+}
+}
 
 
 
