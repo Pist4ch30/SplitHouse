@@ -10,9 +10,7 @@ a:hover {
 }
 
 .bg-primary {
-
   background-color: $SH-blue-light !important;
-
 }
 
 .btn {
@@ -54,6 +52,17 @@ a:hover {
   width: 20vh;
   height: 20vh;
   text-align: center;
+}
+
+.mx-auto {
+  > img {
+    width: 15vh;
+    height: 15vh;
+    text-align: center;
+  }
+  > h3 {
+    text-align: center;
+  }
 }
 
 #sidebar-container {
@@ -137,13 +146,10 @@ a:hover {
   }
 }
 
-
-
 .flex-container-dashboard {
   display: flex;
   justify-content: space-around;
   align-items: stretch;
-  /* flex-flow: row nowrap; */
   flex-direction: row;
   flex-wrap: nowrap;
   align-content: stretch;
@@ -157,5 +163,12 @@ a:hover {
   background: #ffecb3;
   border: 3px solid #ffcc80;
   border-radius: 5px;
+  width: 50%;
   padding: 8px;
+}
+
+.modal-content-dashboard {
+  text-align: center;
+  background-color: white;
+  border-radius: 5px;
 }
