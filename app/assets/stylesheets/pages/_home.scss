@@ -1,4 +1,8 @@
 // Specific CSS for your home-page
+body {
+  color: $SH-almond;
+}
+
 .banner-header {
   background-size: cover;
   background-position: center;
@@ -41,25 +45,27 @@
 
 .splithouse {
   font-size: 40px;
-  color: #6b705c;
+  color: $SH-almond;
   text-align: center;
   margin: 15px;
 }
 .splithouse-bis {
-  color: #6b705c;
+  color: $SH-almond;
   text-align: center;
 }
 
 .p-sci {
-  font-size: 20px;
-  color: #6b705c;
+  font-size: 30px;
+  color: $SH-pink;
   margin: 0;
   text-align: center;
+  text-shadow: 2px 2px 2px $SH-almond;
+  font-weight: lighter;
 }
 
 .p-faq {
-  font-size: 18px;
-  margin: 20px 20px 20px 0px;
+  font-size: 30px;
+  margin: 20px 20px 20px 5px;
   color: $SH-almond;
   padding: 0;
 }
@@ -93,20 +99,19 @@ border-radius: 30px;
 }
 
 .background-casa {
-  background-color: $SH-blue;
+  background-color: $SH-blue-light;
 }
 
 
 .btn.btn-primary.sh-btn-primary {
   width: 100%;
   opacity: 90%;
-  font-weight: bold;
   border: 0;
-  background-color: $SH-lilac;
+  background-color: $SH-pink;
   transition: all 125ms ease;
 
   &:hover {
-    background-color: $SH-pink;
+    color: $SH-almond !important;
   }
 }
 
@@ -143,9 +148,8 @@ border-radius: 30px;
 
 .card-advantage {
   border-radius: 5px;
-  background-color: $SH-blue;
+  background-color: $SH-blue-light;
   color: $SH-almond;
-  background-color: opacity 10%;
 }
 
 .sci-info {

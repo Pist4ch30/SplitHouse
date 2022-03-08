@@ -10,7 +10,9 @@ a:hover {
 }
 
 .bg-primary {
-  background-color: $SH-blue-light;
+
+  background-color: $SH-blue-light !important;
+
 }
 
 .btn {
