@@ -263,9 +263,6 @@ input[type=range]:focus::-ms-fill-upper {
   }
 }
 
-.btn-heart-70 {
-  opacity: 0.7;
-}
 
 .btn-danger:hover  {
   // background: #F4C2C2;
@@ -276,6 +273,7 @@ input[type=range]:focus::-ms-fill-upper {
 .btn-heart img {
   height: 50px;
 }
+
 .text-area {
   width:470px;
 }
@@ -328,7 +326,7 @@ input[type=range]:focus::-ms-fill-upper {
 .map-show-view {
   margin: 0;
   margin-bottom: 40px;
-  border-radius: 0 0 15px 15px;
+  border-radius: 15px 15px 15px 15px;
 }
 
 .property-part-left-show {
@@ -381,4 +379,12 @@ input[type=range]:focus::-ms-fill-upper {
 .fas {
   color:#46536C;
   font-size: 30px;
+}
+
+h3 {
+  padding-left: 55px;
+}
+
+h1 {
+  margin-top: 20px;
 }
