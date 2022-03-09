@@ -65,6 +65,12 @@ a:hover {
   }
 }
 
+#img-card-dashboard {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
 #sidebar-container {
   min-height: 100vh;
   display: flex;
@@ -170,5 +176,30 @@ a:hover {
 .modal-content-dashboard {
   text-align: center;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 5px;}
+
+.flex-container-card-dashboard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: normal;
+}
+
+.flex-items-card-dashboard {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+  color: black;
+
+  > img {
+    margin: 10px;
+    width: 20vh;
+    height: 20vh;
+    text-align: center;
+  }
 }
