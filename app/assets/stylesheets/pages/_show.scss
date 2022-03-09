@@ -291,9 +291,11 @@ input[type=range]:focus::-ms-fill-upper {
   border: none;
 }
 
-.modal-content{
+.modal-content {
   border-radius: 20px;
-  background-color: #FFECBC;
+  &.bg-yellow {
+    background-color: #FFECBC;
+  }
 }
 // .btn-primary {
 //   border-radius: 4px;
