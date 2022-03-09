@@ -1,13 +1,14 @@
-<div class="container py-5">
-  <div class="banner-header" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://www.univers-vacances.fr/wp-content/uploads/2020/07/pierre-et-vacances-ete-piscine-image-principale.jpg);">
+<div class="banner-header" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://www.univers-vacances.fr/wp-content/uploads/2020/07/pierre-et-vacances-ete-piscine-image-principale.jpg);">
     <div class="container">
       <h1>Jetez-vous à l'eau,</h1>
       <h1>devenez <span data-controller="notation">propriétaire !</span></h1>
       <%= link_to "Trouver ma maison !", properties_path, class: "btn btn-primary sh-btn-primary btn-banner" %>
     </div>
   </div>
+<div class="container py-5">
 
-     <div class="search-form form-inline mt-5 mb-5">
+
+     <div class="search-form form-inline-home mt-5 mb-5">
     <%= simple_form_for :search, url: properties_path, method: "GET", defaults: { required: false }, html: { class: 'form-inline' } do |f| %>
     <div class="flexbox-class">
         <% if params["search"] %>
@@ -34,16 +35,17 @@
     <h2 class="splithouse">Les avantages de SplitHouse </h2>
   </div>
 
-  <div class="d-flex justify-content-evenly flex-wrap align-items-center mt-3 mb-5">
+
+  <div class="d-flex justify-content-evenly flex-wrap align-items-center py-5 cards-advantages">
 
     <div class="d-flex flex-column align-items-center justify-content-center p-3 bg-primary my-4 card-advantage" style="width: 20%;">
-      <%= image_tag "shared.svg", style: "width: 80px; height: 80px; object-fit: contain; margin-bottom: 20px;" %>
-      <h6 class="small text-center">Partage des frais avec les autres co-propriètaires</h6>
+      <%= image_tag "shared.svg", style: "width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;" %>
+      <h6 class="small text-center">Partage des frais avec les autres co-propriétaires</h6>
     </div>
 
     <div class="d-flex flex-column align-items-center justify-content-center p-3 bg-primary my-4 card-advantage" style="width: 20%;">
       <%= image_tag "Winners.svg", style: "width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;" %>
-      <h6 class="small text-center">Accès à une gamme de produit plus élevé</h6>
+      <h6 class="small text-center">Accès à une gamme de produit plus élevés</h6>
     </div>
 
     <div class="d-flex flex-column align-items-center justify-content-center p-3 bg-primary my-4 card-advantage" style="width: 20%;">
@@ -53,7 +55,7 @@
 
      <div class="d-flex flex-column align-items-center justify-content-center p-3 bg-primary my-4 card-advantage" style="width: 20%;">
      <%= image_tag "Contrat.svg", style: "width: 80px; height: 80px; object-fit: cover; margin-bottom: 20px;" %>
-      <h6 class="small text-center">Aucun soucis d’entretien ou de gestion</h6>
+      <h6 class="small text-center">Aucun souci d’entretien ou de gestion</h6>
     </div>
   </div>
 
@@ -67,7 +69,7 @@
 
 
   <div>
-    <h2 class="splithouse">Apercu de notre catalogue</h2>
+    <h2 class="splithouse">Aperçu de notre catalogue</h2>
   </div>
 
   <div class="gallery mt-3">
@@ -108,7 +110,9 @@
               <p class="card-text"><%= property.detail %></p>
 
 
-              <%= link_to "Voir plus", property_path(property), class: "btn btn-primary sh-btn-primary" %>
+
+              <%= link_to "Jeter un coup d'oeil à cette propriété", property_path(property), class: "btn btn-primary sh-btn-primary" %>
+
             </div>
         </div>
       </div>

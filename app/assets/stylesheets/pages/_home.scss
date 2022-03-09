@@ -7,7 +7,6 @@ body {
   background-size: cover;
   background-position: center;
   padding: 150px 0;
-  border-radius: 5px;
 }
 .banner-casa {
   background-size: 45%;
@@ -54,7 +53,7 @@ body {
 .splithouse {
   font-size: 40px;
   color: $SH-almond;
-  margin: 0px 0px 0px 145px;
+  margin-bottom: 50px;
 }
 .splithouse-bis {
   color: $SH-almond;
@@ -91,7 +90,7 @@ body {
 
 .card-category {
   height: 350px;
-  border-radius: 5px;
+  border-radius: 10px;
   color: white;
   background-size: cover;
 }
@@ -99,7 +98,7 @@ body {
 .btn-banner {
 width: 30% !important;
 padding: 15px;
-margin: 80px 0px 0px 20px;
+margin: 80px 0px 0px 0px;
 border-radius: 30px;
 
 }
@@ -107,6 +106,10 @@ border-radius: 30px;
 .background-casa {
   background-color: $SH-blue-light;
   height: 75vh;
+}
+
+.btn-primary {
+  border-radius: 10px !important;
 }
 
 
@@ -239,9 +242,15 @@ justify-content: center;
 }
 }
 
+.form-inline-home {
+  margin-top: -55px !important;
+  width: 100%;
+}
 
-
-
+.cards-advantages {
+  justify-content: space-between !important;
+  padding-top: 0px !important;
+}
 
 
 
@@ -293,6 +302,6 @@ justify-content: center;
 .gallery > div {
   scroll-snap-align: center;
   display: inline-block;
-  border-radius: 3px;
+  border-radius: 10px;
   margin-right: 3rem;
   }
