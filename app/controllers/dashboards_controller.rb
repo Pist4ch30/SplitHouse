@@ -25,7 +25,7 @@ class DashboardsController < ApplicationController
           #                                     property_details: (Données sur la propiété)}
           data_buyer = {  parts: part.nbr_part.to_s,
                           property_details: { title: part.property[:title],
-                                              invest: invest,
+                                              invest: invest.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse,
                                               home_size: part.property[:home_size],
                                               address: part.property[:address],
                                               detail: part.property[:detail],
