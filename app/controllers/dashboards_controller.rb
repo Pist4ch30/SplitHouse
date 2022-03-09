@@ -95,13 +95,13 @@ class DashboardsController < ApplicationController
         # Total investit
         total_invest += (part.property.price_part * part.nbr_part)
         # Nombre de nuits total restante
-        nuits_restantes = part.property.bookings.map {|booking| booking.duration}
-        nuits_restantes = nuits_restantes.inject(:+)
+        nuits_prises = part.property.bookings.map {|booking| booking.duration}
+        nuits_prises = nuits_prises.inject(:+)
+        raise
         begin
-          nuits_restantes = day_allowed - nuits_restantes
-          total_nuits_restantes += nuits_restantes
+          total_nuits_restantes = day_allowed - nuits_prises
         rescue
-          nil
+          total_nuits_restantes = day_allowed
         end
       end
     end
