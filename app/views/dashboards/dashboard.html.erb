@@ -1,30 +1,16 @@
 
 <div class="d-flex dashboard-custom">
-  <div id="sidebar-container">
-    <div class="logo">
-        <%= image_tag "logo-dashboard" %>
-    </div>
-    <div class="menu-dashboard">
-      <a href="<%= dashboard_agenda_path %>" class="d-block p-3 "></i>Mon agenda</a>
-      <a href="<%= dashboard_renting_path %>" class="d-block p-3 ">Louer mes propriétés</a>
-    </div>
-  </div>
-
-  <div id="content">
-    <section class="py-3">
       <div class="container">
         <div class="row row-1">
           <div class="col-lg-9">
-            <h1 class="font-weight-bold mb-0">Dashboard de <%= current_user.first_name %>, 👇</h1>
+            <h1 class="font-weight-bold mb-0">Mon dashboard</h1>
           </div>
           <div class="col-lg-3 d-flex">
             <a href="<%= dashboard_agenda_path %>" class="btn-ageanda-dashboard w-100 align-self-center">Mon agenda</a>
           </div>
         </div>
       </div>
-    </section>
 
-    <section class="bg-mix">
       <div class="container-content-dashboard">
         <div class="card rounded-0">
           <div class="card-body-stat-dashboard">
@@ -61,111 +47,109 @@
           </div>
         </div>
       </div>
-    </section>
 
-    <section>
       <div class="container">
-        <div class="row">
+        <div class="row justify-content-between">
 
-          <div class="col-lg-6">
+          <div class="dashboard-columns bg-white m-1">
             <%= image_tag "logo-my-property-dashboard", class:"image-card-property-dashboard" %>
-            <% if @status_buyer != nil %>
-            <div class="row">
+            <div class="d-flex flex-wrap justify-content-between">
+              <% if @status_buyer != nil %>
               <% @status_buyer.each_with_index do |status, index| %>
-              <div class="card" style="width: 18rem; margin: 5px 10px 5px 10px; border-radius: 10px;">
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  <%= "Il vous reste #{status[:stat_booking][:day_restant]}/Jours"%>
-                  <span class="visually-hidden">unread messages</span>
-                </span>
-                <%= cl_image_tag status[:property_details][:property].photos.first.key %>
-                <div class="card-body">
-                  <h5 class="card-title"><%= status[:property_details][:title] %></h5>
-                  <p class="card-text"><%= status[:property_details][:detail] %></p>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Votre investissement total : <%= status[:property_details][:invest] %> €</li>
-                  <li class="list-group-item">Nombre de parts : <span class="badge rounded-pill bg-primary"><%= @status_buyer[index][:parts] %></span></li>
-                  <li class="list-group-item">Nuits par an : <span class="badge rounded-pill bg-success"><%= status[:stat_booking][:day_allowed] %></span></li>
-                  <li class="list-group-item">Nuits utilisés : <span class="badge rounded-pill bg-info text-dark"><%= status[:stat_booking][:day_utilise] %></span></li>
-                  <h4>Dernière réservation</h4>
-                  <li class="list-group-item"><%= status[:last_booking] != nil ? "Du #{status[:last_booking][:start_date]} au #{status[:last_booking][:finish_date]}" : "Aucune réservation pour le moment" %></li>
-                </ul>
-                <div class="card-body">
-                  <%#= link_to "Réserver un séjour", new_property_booking_path(property_id: status[:property_details][:property].id), class: "btn btn-primary"%>
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalBookingDashboard<%= index %>">
-                    Réserver un séjour
+              <div class="card dashboard-card">
+                <%= cl_image_tag status[:property_details][:property].photos.first.key, class:"img-card-dashboard" %>
+                <div class="card-body d-flex flex-column justify-content-between">
+                  <h5 class="card-title sh-blue-text"><%= status[:property_details][:title] %></h5>
+                  <p class="card-text p-0"><%= status[:property_details][:detail] %></p>
+                  <!-- Button Modal Property -->
+                  <button type="button" class="btn btn-primary border-none" data-bs-toggle="modal" data-bs-target="#ModalProperty<%=index%>">
+                    Voir plus
                   </button>
                 </div>
               </div>
-              <!-- Modal -->
-                <div class="modal fade" id="modalBookingDashboard<%= index %>" tabindex="-1" aria-labelledby="modalBookingDashboardLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="modalBookingDashboardLabel"><%= status[:property_details][:title] %></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <div class="modal-dashboard-body">
-                          <h2>
-                            Réserver votre séjour
+              <!-- Modal Property -->
+              <div class="modal fade" id="ModalProperty<%=index%>" tabindex="-1" aria-labelledby="ModalProperty<%=index%>Label" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="card-property-dashboard">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="ModalProperty<%=index%>Label"><%= status[:property_details][:title] %></h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body-modal-dasboard">
+
+                      <div class="flex-container-card-dashboard">
+                        <div class="flex-items-card-dashboard">
+                          <div class="menu-card-modal-dasboard" style="width: 18rem;">
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                               <%= "Il vous reste #{status[:stat_booking][:day_restant]}/Jours"%>
+                              <span class="visually-hidden">unread messages</span>
                             </span>
-                            <span class="visually-hidden">unread messages</span>
-                          </h2>
-
-                          <%= simple_form_for [status[:property_details][:property], @booking] do |f| %>
-                            <%= f.input :start_date, as: :string,
-                                                    required: true,
-                                                    as: :hidden,
-                                                    input_html: { id: "range_start", class: "d-none" } %>
-                            <%= f.input :finish_date, as: :string,
-                                                  as: :hidden,
-                                                  required: true,
-                                                  input_html: { id: "range_end", class: "d-none" } %>
-                            <%= f.button :submit, "Réserver", class: "btn btn-primary" %>
-                          <% end %>
-                          <% booking_dates = status[:property_details][:property].bookings.map do |booking|
-                                {
-                                  from: booking.start_date,
-                                  to:   booking.finish_date
-                                }
-                              end %>
-                            <div  id="booking-form-div"
-                                  data-bookings="<%= booking_dates.to_json %>">
+                            <%= cl_image_tag status[:property_details][:property].photos.first.key, class:"img-card-dashboard-modale w-100" %>
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item-card-modal-dasboard">Investissement total : <%= status[:property_details][:invest] %> €</li>
+                              <li class="list-group--card-modal-dasboard">Nombre de parts : <span class="badge rounded-pill bg-primary"><%= @status_buyer[index][:parts] %></span></li>
+                              <li class="list-group--card-modal-dasboard">Nuits allouées : <span class="badge rounded-pill bg-success"><%= status[:stat_booking][:day_allowed] %></span></li>
+                              <li class="list-group--card-modal-dasboard">Nuits utilisés : <span class="badge rounded-pill bg-info text-dark"><%= status[:stat_booking][:day_utilise] %></span></li>
+                              <h4>Dernière réservation</h4>
+                              <li class="list-group-item"><%= status[:last_booking] != nil ? "Du #{status[:last_booking][:start_date]} au #{status[:last_booking][:finish_date]}" : "Aucune réservation pour le moment" %></li>
+                            </ul>
+                            <div>
+                              <%= simple_form_for [status[:property_details][:property], @booking] do |f| %>
+                                  <%= f.input :start_date, as: :string,
+                                                          required: true,
+                                                          as: :hidden,
+                                                          input_html: { id: "range_start", class: "d-none" } %>
+                                  <%= f.input :finish_date, as: :string,
+                                                        as: :hidden,
+                                                        required: true,
+                                                        input_html: { id: "range_end", class: "d-none" } %>
+                                  <%= f.button :submit, "Réserver", class: "btn btn-primary" %>
+                                <% end %>
+                                <% booking_dates = status[:property_details][:property].bookings.map do |booking|
+                                      {
+                                        from: booking.start_date,
+                                        to:   booking.finish_date
+                                      }
+                                    end %>
+                                  <div  id="booking-form-div"
+                                        data-bookings="<%= booking_dates.to_json %>">
+                                  </div>
                             </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
               <% end %>
-            </div>
+
+            <% else %>
+                <p>Rien</p>
             <% end %>
+
+            </div>
+
           </div>
 
-          <div class="col-lg-6">
+          <div class="dashboard-columns bg-white m-1">
             <%= image_tag "logo-my-favorites-dashboard", class:"image-card-property-dashboard" %>
           <% if current_user.all_favorited != nil %>
-            <div class="row">
+            <div class="d-flex flex-wrap justify-content-between">
               <% current_user.all_favorited.each do |favorite| %>
-              <div class="card" style="width: 18rem; margin: 5px 10px 5px 10px; border-radius: 10px;">
-                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title"><%= favorite.title %></h5>
-                  <p class="card-text"><%= favorite.detail %></p>
+              <div class="card dashboard-card">
+                <%= cl_image_tag favorite.photos.first.key, class: "img-card-dashboard" %>
+                <div class="card-body d-flex flex-column justify-content-between">
+                  <h5 class="card-title sh-blue-text"><%= favorite.title %></h5>
+                  <p class="card-text p-0"><%= favorite.detail %></p>
 
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Adresse <%= favorite.address %> </li>
-                  <li class="list-group-item">Chambres : <%= favorite.nbr_room %></li>
-                  <li class="list-group-item">Salle de bain : <%= favorite.nbr_bathroom %></li>
-                  <li class="list-group-item">Prix par part : <%= favorite.price_part %> €</li>
-                </ul>
-                <div class="card-body">
-                  <%= link_to "Regarder", property_path(id: favorite.id), class: "btn btn-primary" %>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-0"><i class="fas fa-map-marker-alt location-icon-dashboard pe-2"></i><%= favorite.address %> </li>
+                    <li class="list-group-item ps-0"><%= pluralize(favorite.nbr_room, "chambre", "chambres") %></li>
+                    <li class="list-group-item ps-0"><%= pluralize(favorite.nbr_bathroom, "salle de bain", "salles de bain") %></li>
+                    <li class="list-group-item ps-0">Prix par part : <%= favorite.price_part %> €</li>
+                  </ul>
+                  <%= link_to "Revoir l'annonce", property_path(id: favorite.id), class: "btn btn-primary border-none" %>
                 </div>
               </div>
               <% end %>
@@ -174,89 +158,5 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <section>
-    <% if @status_buyer != nil %>
-      <% @status_buyer.each_with_index do |status, index| %>
-      <div class="card" style="width: 18rem; margin: 5px 10px 5px 10px; border-radius: 10px;">
-        <%= cl_image_tag status[:property_details][:property].photos.first.key, id:"img-card-dashboard" %>
-        <div class="card-body">
-          <h5 class="card-title"><%= status[:property_details][:title] %></h5>
-          <p class="card-text"><%= status[:property_details][:detail] %></p>
-          <!-- Button Modal Property -->
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalProperty">
-            Ma propriété
-          </button>
-        </div>
-      </div>
-      <!-- Modal Property -->
-      <div class="modal fade" id="ModalProperty" tabindex="-1" aria-labelledby="ModalPropertyLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="card-property-dashboard">
-            <div class="modal-header">
-              <h5 class="modal-title" id="ModalPropertyLabel"><%= status[:property_details][:title] %></h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body-modal-dasboard">
-
-              <div class="flex-container-card-dashboard">
-                <div class="flex-items-card-dashboard">
-                  <%= image_tag "logo-modal-property-dashboard" %>
-                </div>
-                <div class="flex-items-card-dashboard">
-                  <div class="menu-card-modal-dasboard" style="width: 18rem;">
-                    <%= cl_image_tag status[:property_details][:property].photos.first.key, id:"img-card-dashboard" %>
-                    <div class="card-header">
-                      Informations
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item-card-modal-dasboard">Votre investissement total : <%= status[:property_details][:invest] %> €</li>
-                      <li class="list-group--card-modal-dasboard">Nombre de parts : <span class="badge rounded-pill bg-primary"><%= @status_buyer[index][:parts] %></span></li>
-                      <li class="list-group--card-modal-dasboard">Nuits par an : <span class="badge rounded-pill bg-success"><%= status[:stat_booking][:day_allowed] %></span></li>
-                      <li class="list-group--card-modal-dasboard">Nuits utilisés : <span class="badge rounded-pill bg-info text-dark"><%= status[:stat_booking][:day_utilise] %></span></li>
-                      <h4>Dernière réservation</h4>
-                      <li class="list-group-item"><%= status[:last_booking] != nil ? "Du #{status[:last_booking][:start_date]} au #{status[:last_booking][:finish_date]}" : "Aucune réservation pour le moment" %></li>
-                    </ul>
-                    <div>
-                      <%= simple_form_for [status[:property_details][:property], @booking] do |f| %>
-                          <%= f.input :start_date, as: :string,
-                                                  required: true,
-                                                  as: :hidden,
-                                                  input_html: { id: "range_start", class: "d-none" } %>
-                          <%= f.input :finish_date, as: :string,
-                                                as: :hidden,
-                                                required: true,
-                                                input_html: { id: "range_end", class: "d-none" } %>
-                          <%= f.button :submit, "Réserver", class: "btn btn-primary" %>
-                        <% end %>
-                        <% booking_dates = status[:property_details][:property].bookings.map do |booking|
-                              {
-                                from: booking.start_date,
-                                to:   booking.finish_date
-                              }
-                            end %>
-                          <div  id="booking-form-div"
-                                data-bookings="<%= booking_dates.to_json %>">
-                          </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            <div class="modal-footer-modal-dasboard">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-            </div>
-
-          </div>
-        </div>
-      </div>
-      <% end %>
-
-    <% else %>
-        <p>Rien</p>
-    <% end %>
-    </section>
   </div>
 </div>
