@@ -65,6 +65,40 @@ a:hover {
   }
 }
 
+.img-card-dashboard {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 180px;
+  object-fit: cover;
+}
+
+.border-none {
+  border: none;
+}
+
+.dashboard-custom {
+  flex-direction: column;
+}
+
+.dashboard-columns {
+  width: 49%;
+  height: max-content;
+  padding: 20px 5px;
+}
+.dashboard-card {
+  width: 18rem;
+  margin: 5px 10px 5px 10px;
+  border-radius: 10px;
+}
+.location-icon-dashboard {
+  font-size: 14px;
+}
+.row-1 {
+  align-items: center;
+  height: 200px;
+}
+
 #sidebar-container {
   min-height: 100vh;
   display: flex;
@@ -112,6 +146,7 @@ a:hover {
   margin-right: 5vh;
   padding: 20px 20px 20px 20px;
   width: 30vh;
+  transition: all 125ms ease;
 }
 
 .stat:hover {
@@ -120,7 +155,7 @@ a:hover {
   border-radius: 5px;
   margin-right: 5vh;
   padding: 20px 20px 20px 20px;
-  width: 40vh;
+  width: 35vh;
 }
 
 .modal-dashboard-body {
@@ -170,5 +205,30 @@ a:hover {
 .modal-content-dashboard {
   text-align: center;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 5px;}
+
+.flex-container-card-dashboard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: normal;
+}
+
+.flex-items-card-dashboard {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+  color: black;
+
+  > img {
+    margin: 10px;
+    width: 20vh;
+    height: 20vh;
+    text-align: center;
+  }
 }

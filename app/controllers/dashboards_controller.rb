@@ -25,7 +25,7 @@ class DashboardsController < ApplicationController
           #                                     property_details: (Données sur la propiété)}
           data_buyer = {  parts: part.nbr_part.to_s,
                           property_details: { title: part.property[:title],
-                                              invest: invest,
+                                              invest: invest.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse,
                                               home_size: part.property[:home_size],
                                               address: part.property[:address],
                                               detail: part.property[:detail],
@@ -95,16 +95,17 @@ class DashboardsController < ApplicationController
         # Total investit
         total_invest += (part.property.price_part * part.nbr_part)
         # Nombre de nuits total restante
-        nuits_restantes = part.property.bookings.map {|booking| booking.duration}
-        nuits_restantes = nuits_restantes.inject(:+)
+        nuits_prises = part.property.bookings.map {|booking| booking.duration}
+        nuits_prises = nuits_prises.inject(:+)
+
         begin
-          nuits_restantes = day_allowed - nuits_restantes
-          total_nuits_restantes += nuits_restantes
+          total_nuits_restantes = day_allowed - nuits_prises
         rescue
-          nil
+          total_nuits_restantes = day_allowed
         end
       end
     end
+
     # Nombre de nuits utilisées
     total_nuits_utilise = day_allowed - total_nuits_restantes
     total_invest = total_invest.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse
@@ -115,5 +116,4 @@ class DashboardsController < ApplicationController
                   total_nuits_utilise: total_nuits_utilise
                   }
   end
-
 end

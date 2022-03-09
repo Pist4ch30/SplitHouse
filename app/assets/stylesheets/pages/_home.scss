@@ -128,6 +128,14 @@ border-radius: 30px;
 .card {
 
 }
+.card-box-home {
+  min-width: 20vw !important;
+  width: 35vw !important;
+  margin: 30px !important;
+}
+.unset-border-radius {
+  border-radius: unset !important;
+}
 .sh-property-card {
   border-radius: 10px;
   .card-text {
@@ -183,8 +191,17 @@ justify-content: center;
 }
 
 .catalogue {
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
   margin-bottom: 50px;
+  .btn-contact {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  i {
+    color: white;
+  }
 }
 
 .btn-environ {
