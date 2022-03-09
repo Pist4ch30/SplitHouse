@@ -105,6 +105,7 @@ class DashboardsController < ApplicationController
         end
       end
     end
+
     # Nombre de nuits utilisées
     total_nuits_utilise = day_allowed - total_nuits_restantes
     total_invest = total_invest.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse
@@ -115,5 +116,4 @@ class DashboardsController < ApplicationController
                   total_nuits_utilise: total_nuits_utilise
                   }
   end
-
 end
