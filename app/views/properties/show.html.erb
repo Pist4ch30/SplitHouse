@@ -1,13 +1,23 @@
-<div class="container d-flex">
+<div class="container d-flex flex-wrap mt-4">
+      <div class="w-100">
+        <h2><%= @property.title %></h2>
+        <div class="d-flex property-show-detail justify-content-between">
+          <div class="d-flex align-items-center">
+            <i class="fas fa-map-marker-alt"></i>
+            <p class="notbold"><%= @property.address %></p>
+            <p class="property-part-left-show ms-4">Il reste <%= @property.part_left %> parts sur cette propriété !</p>
+          </div>
+          <% if current_user.favorited?(@property) %>
+            <%= link_to image_tag("heart.png"), unfavorite_property_path(@property), class: "btn btn-heart btn-heart-70" %>
+          <% else %>
+            <%= link_to image_tag("heart.png"), favorite_property_path(@property), class: "btn btn-heart" %>
+          <% end %>
+        </div>
+      </div>
   <div class="flex-container1">
     <div class="flex-container2">
-        <h2><%= @property.title %></h2>
         <%= cl_image_tag @property.photos.first.key, class: "property-first-image" %>
-        <% if current_user.favorited?(@property) %>
-          <%= link_to image_tag("noheart.png"), unfavorite_property_path(@property), class: "btn btn-danger btn-heart" %>
-        <% else %>
-          <%= link_to image_tag("heart.png"), favorite_property_path(@property), class: "btn btn-danger btn-heart" %>
-        <% end %>
+
     </div>
     <div class="property-infos d-flex card1">
       <div class="property-info-details">
@@ -27,16 +37,13 @@
       </div>
       <div class="property-info-details">
         <%# <h2>Salles de bain</h2> %>
-        <i class="fas fa-toilet-paper"></i>
+        <i class="fas fa-bath"></i>
         <p><%= @property.nbr_bathroom %></p>
       </div>
-      <div class="property-info-details">
-        <i class="fas fa-map-marker-alt"></i>
-        <p class="notbold"><%= @property.address %></p>
-      </div>
+
     </div>
     <div class="container mt-5 p-0">
-      <div class="card">
+      <div class="card a-propos">
          <div class="card-trip-infos">
          <h1>A propos de ce bien</h1>
           <p><%= @property.detail %></p>
@@ -102,7 +109,7 @@
       </div>
 
       <div class="flex-item">
-        <%= link_to "Se positionner sur ce bien", "#", class: "btn btn-flat", data: {toggle: "modal", target:"#exampleModal"} %>
+        <%= link_to "Se positionner", "#", class: "btn btn-flat btn-position-form", data: {toggle: "modal", target:"#exampleModal"} %>
 
       </div>
     </div>
@@ -113,21 +120,21 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"><strong>Notre équipe de conseillers à votre service</strong></h5>
+                <h5 class="modal-title" id="exampleModalLabel"><strong>Ecrire à notre équipe de conseillers</strong></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
                 <%= form_with url: "#", method: :get do |form| %>
-                  <%= form.label :query, "Nous contacter:" %>
-                  <%= form.text_area :message, size: "70x5", class: "text-area", value: "Bonjour, je suis intéressé par l'annonce '#{@property.title}', merci de me recontacter. #{current_user.first_name} #{current_user.last_name}"%>
+                  <%= form.label :query, "Votre message" %>
+                  <%= form.text_area :message, size: "70x5", class: "text-area p-2", value: "Bonjour, \nje suis intéressé par l'annonce '#{@property.title}', \nmerci de me recontacter. \n#{current_user.first_name} #{current_user.last_name}"%>
                 <% end %>
                 <p><em>Vous pouvez également nous envoyer un message via notre système de chat</em></p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Echanger dès maintenant</button>
-                <button type="button" class="btn btn-primary">Annuler</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Envoyer</button>
+                <button type="button" class="btn btn-primary btn-pink">Retour</button>
               </div>
             </div>
           </div>

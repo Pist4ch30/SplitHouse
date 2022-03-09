@@ -18,6 +18,11 @@
   color: white;
 }
 
+.btn-pink {
+  border: none;
+  background: pink;
+}
+
 .card {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
@@ -64,14 +69,14 @@ h1 {
   justify-content: space-between;
   width: 70%;
   flex-direction: column;
-  margin-top: 50px;
+  margin-top: 0;
 }
 
 .flex-container3 {
   display: flex;
   flex-direction: column;
   width: 30%;
-  margin-top: 96px;
+  margin-top: 0;
   padding: 0 20px;
 
 }
@@ -81,7 +86,7 @@ h1 {
 }
 
 .property-info-details {
-  width: 20%;
+  width: 25%;
   height: 100px;
   border: none;
   padding: 5px;
@@ -107,7 +112,14 @@ h1 {
   }
 }
 
+.btn-position-form {
+  width: 100%;
+  height: max-content;
+}
 
+.a-propos {
+  border-radius: 15px 15px 0 0;
+}
 .carousel-item img {
   width: 100%;
   object-fit: contain;
@@ -238,18 +250,28 @@ input[type=range]:focus::-ms-fill-upper {
 }
 .btn-heart {
   position: absolute;
-  right: -10px;
-  top: 60px;
-  z-index: 2;
+  right: 15px;
+  top: -30px;
+  //z-index: 2;
   background-color: transparent;
   padding: 0;
   margin: 0;
+  transition: all 125ms ease;
+  &:hover {
+    opacity: 1;
+    background: transparent;
+  }
+}
+
+.btn-heart-70 {
+  opacity: 0.7;
 }
 
 .btn-danger:hover  {
-  background: #F4C2C2;
-  color: white;
+  // background: #F4C2C2;
+  // color: white;
   border: none;
+  opacity: 1;
 }
 .btn-heart img {
   height: 50px;
@@ -273,16 +295,16 @@ input[type=range]:focus::-ms-fill-upper {
   border-radius: 20px;
   background-color: #FFECBC;
 }
-.btn-primary {
-  border-radius: 4px;
-  border: none;
-  background-color: #46536C;
-}
-.btn-primary:hover {
-  background: #F4C2C2;
-  color: white;
-  border: none;
-}
+// .btn-primary {
+//   border-radius: 4px;
+//   border: none;
+//   // background-color: #46536C;
+// }
+// .btn-primary:hover {
+//   // background: #F4C2C2;
+//   color: white;
+//   border: none;
+// }
 
 .modal-header {
   border-bottom: 0 none;
@@ -305,23 +327,43 @@ input[type=range]:focus::-ms-fill-upper {
 
 .map-show-view {
   margin: 0;
+  margin-bottom: 40px;
+  border-radius: 0 0 15px 15px;
+}
+
+.property-part-left-show {
+  color: $SH-pink;
+  background: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: solid 1px $SH-pink;
 }
 
 #sticky {
   position: sticky;
 }
 
-.map-show-view {
-  margin-bottom: 40px;
-}
+
 
 .card1 {
   border: solid;
   border-color: grey;
   border-radius: 10px;
   margin-top: 40px;
+  background-color: white;
 }
 
+.property-show-detail {
+  align-items: center;
+  margin-bottom: 10px;
+  position: relative;
+  i.fas.fa-map-marker-alt {
+    font-size: 20px;
+  }
+  p {
+    margin: 0;
+  }
+}
 .property-info-details {
   border-left: solid;
   border-left-color: grey;

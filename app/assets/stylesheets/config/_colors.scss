@@ -29,3 +29,9 @@ $gradient-bottom-right: linear-gradient(135deg, $SH-blue, $SH-pink, $SH-almond, 
 $gradient-top-left: linear-gradient(225deg, $SH-blue, $SH-pink, $SH-almond, $SH-lilac, $SH-azure);
 $gradient-bottom-left: linear-gradient(315deg, $SH-blue, $SH-pink, $SH-almond, $SH-lilac, $SH-azure);
 $gradient-radial: radial-gradient($SH-blue, $SH-pink, $SH-almond, $SH-lilac, $SH-azure);
+
+
+
+.sh-blue-text {
+  color: $SH-blue !important;
+}

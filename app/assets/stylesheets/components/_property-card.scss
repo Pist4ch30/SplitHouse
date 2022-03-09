@@ -27,7 +27,7 @@
   position: absolute;
   top: 0;
   z-index: 1;
-  font-size: 16px;
+  font-size: 12px;
   background-color: $SH-pink;
   padding: 5px;
   margin: 5px;
@@ -38,7 +38,7 @@
   position: absolute;
   right: 0;
   z-index: 1;
-  font-size: 16px;
+  font-size: 12px;
   background-color: white;
   padding: 5px;
   margin: 5px;
@@ -53,7 +53,9 @@
 .property-card-title {
 margin-top: 10px;
 margin-left: 8px;
-color: $SH-blue-light;
+// color: $SH-blue-light;
+min-height: 72px;
+
 }
 
 .property-card-body {
@@ -67,12 +69,23 @@ color: $SH-blue-light;
 
 .btn-decouvrir {
   width: 60%;
-  background-color: $SH-blue-light;
+  background-color: $SH-blue;
+  border: none;
+  &:hover {
+    background-color: $SH-pink;
+  }
 }
 
 .property-card-text {
   padding-left: 8px;
   font-size: 15px;
+  p {
+    font-size: 12px;
+    i {
+      font-size: 14px;
+      width: 25px;
+    }
+  }
 }
 
 
