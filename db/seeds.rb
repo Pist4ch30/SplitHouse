@@ -297,6 +297,7 @@ Booking.create(finish_date: "30/08/2022", start_date: "15/08/2022", property: ma
 # Jorge reserve 10 jours en septembre
 Booking.create(finish_date: "20/09/2022", start_date: "10/09/2022", property: maison1, user: jorge)
 
+
 #Ajout de favoris
 didier.favorite(maison5)
 didier.favorite(maison6)
