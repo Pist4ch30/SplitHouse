@@ -83,41 +83,4 @@ class DashboardsController < ApplicationController
                       day_allowed: day_allowed_user}
       end
   end
-
-  # Renvoi le nombre total de parts d'un user (parts 'approved')
-  # def data_dashboard
-  #   counter_parts = 0
-  #   total_invest  = 0
-  #   day_allowed = 0
-  #   total_nuits_restantes = 0
-
-  #   current_user.parts.each do |part|
-  #     # Recupere seulement les parts qui sont approuvées
-  #     if part.status == "approved"
-  #       # Incremente les jours alloué par property
-  #       day_allowed += part.days_allowed
-  #       # Total de parts
-  #       counter_parts += part.nbr_part
-  #       # Total investit
-  #       total_invest += (part.property.price_part * part.nbr_part)
-  #       # Nombre de nuits total restante
-  #       nuits_prises = part.property.bookings.map {|booking| booking.duration}
-  #       nuits_prises = nuits_prises.inject(:+)
-  #       begin
-  #         total_nuits_restantes = day_allowed - nuits_prises
-  #       rescue
-  #         total_nuits_restantes = day_allowed
-  #       end
-  #     end
-  #   end
-  #   # Nombre de nuits utilisées
-  #   total_nuits_utilise = day_allowed - total_nuits_restantes
-  #   total_invest = total_invest.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse
-  #   # Retourne un hash de données pour la vue => dashboard
-  #   data_out = {  total_parts: counter_parts,
-  #   total_invest: total_invest,
-  #   total_nuits_restantes: total_nuits_restantes,
-  #   total_nuits_utilise: total_nuits_utilise
-  # }
-  # end
 end
