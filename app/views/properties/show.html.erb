@@ -28,7 +28,7 @@
       <div class="property-info-details">
         <%# <h2>Prix</h2> %>
         <i class="fas fa-money-check-alt"></i>
-        <p><%= @property.price_part %> €</p>
+        <p><%= @property.price_part.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse %> €</p>
       </div>
       <div class="property-info-details">
         <%# <h2>Chambres</h2> %>
@@ -43,7 +43,7 @@
 
     </div>
     <div class="container info">
-      <p><%= @property.detail %></p>
+      <p><%= @property.detail.html_safe %></p>
     </div>
 
     <div class="container mt-10 p-0">
@@ -97,7 +97,7 @@
                   <p class="p-0 m-0" data-invest-target="calcul">Montant de mon investissement</p>
                   </div>
                   <div class="prix">
-                  <p class="p-0 m-0 ">Prix au m² : <%= @square_meter_price %>€</p>
+                  <p class="p-0 m-0 ">Prix au m² : <%= @square_meter_price.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse %>€</p>
                   </div>
           </div>
 

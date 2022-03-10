@@ -65,6 +65,7 @@ class PropertiesController < ApplicationController
 
     @square_meter_price = (@property.price_part * 8) / @property.home_size
 
+
   end
 
 

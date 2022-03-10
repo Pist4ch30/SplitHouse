@@ -309,7 +309,18 @@ maison11.home_size = 91
 maison11.nbr_room = 2
 maison11.nbr_bathroom = 2
 maison11.address = "30 avenue Félix Faure, Menton"
-maison11.detail = "Résidence récente avec piscine et court de tennis"
+maison11.detail = "Résidence récente avec piscine et court de tennis.<br>
+Cet appartement de 4 pièces en bon état est en étage d'une résidence face à la mer.<br><br>
+
+Résidence des années 70 en bon état et bien tenue avec ascenseur, à seulement 3 minutes à pied de la mer, du centre ville ainsi que de toutes les commodités.<br><br>
+
+Il se compose d'une entrée, d'un séjour lumineux donnant sur une terrasse plein Sud de 15m² avec vue mer et ville, d'une cuisine indépendante équipée et aménagée avec balcon, de 2 chambres avec terrasse, d'une salle de bains ainsi que d'un W.C indépendant et nombreux rangements.<br><br>
+
+Vue mer et ville sublime plein Sud.<br>
+Au Nord, une vue très agréable donnant sur de la verdure au calme complet.<br><br>
+
+L'appartement dispose également d'une cave dans la copropriété.<br>
+Parking collectif et parking visiteurs dans l'enceinte de la copropriété."
 maison11.pool = false
 maison11.garden = false
 maison11.parking = false
@@ -334,6 +345,16 @@ Part.create(status: 1, nbr_part: 4, property: maison6, user: jorge)
 Part.create(status: 1, nbr_part: 1, property: maison6, user: florian)
 Part.create(status: 1, nbr_part: 3, property: maison11, user: didier)
 Part.create(status: 1, nbr_part: 4, property: maison11, user: jorge)
+Part.create(status: 1, nbr_part: 2, property: maison10, user: didier)
+Part.create(status: 1, nbr_part: 1, property: maison10, user: jorge)
+Part.create(status: 1, nbr_part: 2, property: maison9, user: didier)
+Part.create(status: 1, nbr_part: 3, property: maison9, user: jorge)
+Part.create(status: 1, nbr_part: 1, property: maison8, user: didier)
+Part.create(status: 1, nbr_part: 1, property: maison8, user: jorge)
+Part.create(status: 1, nbr_part: 2, property: maison7, user: didier)
+Part.create(status: 1, nbr_part: 1, property: maison7, user: jorge)
+Part.create(status: 1, nbr_part: 2, property: maison5, user: didier)
+Part.create(status: 1, nbr_part: 2, property: maison5, user: jorge)
 
 
 Booking.create(finish_date: "22/08/2022", start_date: "15/08/2022", duration: 7, property: maison11, user: didier)
