@@ -11,11 +11,10 @@
   height: 85px;
   font-size: 25px;
   font-family: 'Nunito';
-}
-
-.btn-flat:hover {
-  background: #def3f3ff;
+  &:hover {
+  background: #46536C;
   color: white;
+}
 }
 
 .btn-pink {
@@ -393,4 +392,30 @@ h1 {
 
 .modal-backdrop.show {
   opacity: 0.3;
+}
+
+li {
+  font-style:italic;
+}
+
+.italics {
+  margin-top: 20px;
+}
+
+
+.avoid-clicks {
+  pointer-events: none;
+}
+
+.prix {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.montant {
+  margin-top: 20px;
+}
+
+.info {
+  margin-top: 20px;
 }
