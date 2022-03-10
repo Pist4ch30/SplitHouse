@@ -1,55 +1,52 @@
 
 <div class="d-flex dashboard-custom">
       <div class="container">
-        <div class="row row-1">
+        <div class="row row-1 justify-content-center align-items-center">
           <div class="col-lg-9">
-            <h1 class="font-weight-bold mb-0">Mon dashboard</h1>
+            <h1 class="font-weight-bold m-0">Mon dashboard</h1>
           </div>
           <div class="col-lg-3 d-flex">
             <a href="<%= dashboard_agenda_path %>" class="btn-ageanda-dashboard w-100 align-self-center">Mon agenda</a>
           </div>
         </div>
-      </div>
 
-      <div class="container-content-dashboard">
-        <div class="card rounded-0">
-          <div class="card-body-stat-dashboard">
-            <div class="row">
-              <div class="col-lg-3 d-flex stat my-3">
-                <div class="mx-auto">
-                  <h6 class="text-muted">Mes parts</h6>
-                  <%= image_tag "parts-logo-dashboard" %>
-                  <h3 class="font-weight-bold color-secondary"><%= @total_parts %> Parts</h3>
+        <div class="container-content-dashboard">
+          <div class="rounded-0">
+            <div class="card-body-stat-dashboard d-flex justify-content-between">
+                <div class="col-lg-3 d-flex stat my-3">
+                  <div class="mx-auto">
+                    <h6 class="text-muted">Mes parts</h6>
+                    <%= image_tag "parts-logo-dashboard" %>
+                    <h3 class="font-weight-bold color-secondary p-0"><%= @total_parts %> Parts</h3>
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-3 d-flex stat my-3">
-                <div class="mx-auto">
-                  <h6 class="text-muted">Montant investi</h6>
-                  <%= image_tag "invests-logo-dashboard" %>
-                  <h3 class="font-weight-bold color-secondary"><%= @total_invest %> €</h3>
+                <div class="col-lg-3 d-flex stat my-3">
+                  <div class="mx-auto">
+                    <h6 class="text-muted">Montant investi</h6>
+                    <%= image_tag "invests-logo-dashboard" %>
+                    <h3 class="font-weight-bold color-secondary p-0"><%= @total_invest.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse %> €</h3>
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-3 d-flex stat my-3">
-                <div class="mx-auto">
-                  <h6 class="text-muted">Nuits Restantes</h6>
-                  <%= image_tag "nuits-restantes-dashboard" %>
-                  <h3 class="font-weight-bold color-secondary"><%= @days_allowed - @days_utilises %> Nuits</h3>
+                <div class="col-lg-3 d-flex stat my-3">
+                  <div class="mx-auto">
+                    <h6 class="text-muted">Nuits Restantes</h6>
+                    <%= image_tag "nuits-restantes-dashboard" %>
+                    <h3 class="font-weight-bold color-secondary p-0"><%= @days_allowed - @days_utilises %> Nuits</h3>
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-3 d-flex stat my-3">
-                <div class="mx-auto">
-                  <h6 class="text-muted">Nuits Utilisées</h6>
-                  <%= image_tag "nuits-utilise-dashboard" %>
-                  <h3 class="font-weight-bold color-secondary"><%= @days_utilises %> Nuits</h3>
+                <div class="col-lg-3 d-flex stat my-3">
+                  <div class="mx-auto">
+                    <h6 class="text-muted">Nuits Utilisées</h6>
+                    <%= image_tag "nuits-utilise-dashboard" %>
+                    <h3 class="font-weight-bold color-secondary p-0"><%= @days_utilises %> Nuits</h3>
+                  </div>
                 </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
-
       <div class="container">
-        <div class="row justify-content-between">
+        <div class="row justify-content-between mb-4">
 
           <div class="dashboard-columns bg-white m-1">
             <%= image_tag "logo-my-property-dashboard", class:"image-card-property-dashboard" %>
