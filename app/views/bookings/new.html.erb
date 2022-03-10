@@ -1,8 +1,17 @@
-<div class="container-dashboard">
-  <div class="col-lg-9">
-    <h1 class="font-weight-bold mb-0">Dashboard de <%= current_user.first_name %>, 👇</h1>
+<div class="container">
+  <div class="form-wrapper">
+    <h2>Réserver votre séjour</h2>
+    <%= simple_form_for [@property, @booking] do |f| %>
+      <%= f.input :start_date, as: :string,
+                               required: false,
+                               input_html: { id: "range_start", class: "d-none" } %>
+      <%= f.input :finish_date, as: :string,
+                             required: false,
+                             input_html: { id: "range_end", class: "d-none" } %>
+      <%= f.button :submit, "Book", class: "btn btn-primary" %>
+    <% end %>
   </div>
-  <div class="col-lg-3 d-flex">
-    <a href="<%= dashboard_agenda_path %>" class="btn-ageanda-dashboard w-100 align-self-center">Mon agenda</a>
-  </div>
+</div>
+<div id="booking-form-div"
+     data-bookings="<%= @bookings_dates.to_json %>">
 </div>
