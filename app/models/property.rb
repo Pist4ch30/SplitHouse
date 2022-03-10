@@ -2,7 +2,7 @@ class Property < ApplicationRecord
   has_many_attached :photos
   has_many :bookings
   acts_as_favoritable
-  has_many :parts
+  has_many :parts, dependent: :destroy
   validates :address, presence: true
   validates :price_part, presence: true
 

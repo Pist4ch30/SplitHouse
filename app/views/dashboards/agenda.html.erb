@@ -1,8 +1,11 @@
-<div class="container-calendar d-flex">
-  <div class="row">
-    <div class="container-buttom">
+<div class="flex-container">
+  <div class="col-lg-2">
+   <div class="flex-items">
       <%= link_to "Mon Dashboard", dashboard_path, class:"btn-ageanda-dashboard" %>
-    </div>
+   </div>
+  </div>
+  <div class="col-lg-10">
+   <div class="flex-items">
     <%= month_calendar do |date| %>
     <%= date %>
     <% current_user.properties.each do |property| %>
@@ -13,5 +16,7 @@
         <% end %>
     <% end %>
   <% end %>
+   </div>
   </div>
+
 </div>
