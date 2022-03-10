@@ -58,17 +58,20 @@ body {
   font-size: 40px;
   color: $SH-almond;
   margin-bottom: 50px;
+  margin-left: 80px;
 }
 .splithouse-bis {
   color: $SH-almond;
-  text-align: center;
+  text-align: right;
   width: 100%;
+  margin-bottom: 50px;
+  margin-right: 60px;
 }
 
 .p-sci {
   font-size: 25px;
   color: #46536C;
-  margin: 20px 0px 0px 130px;
+  margin: 20px 0px 0px 60px;
   font-weight: lighter;
 }
 
@@ -110,7 +113,7 @@ border-radius: 30px;
 
 .background-casa {
   background-color: $SH-blue-light;
-  height: 75vh;
+  height: 70vh;
 }
 
 .btn-primary {
@@ -124,6 +127,7 @@ border-radius: 30px;
   border: 0;
   background-color: $SH-pink;
   transition: all 125ms ease;
+  font-size: large;
 
   &:hover {
     color: $SH-almond !important;
@@ -191,7 +195,7 @@ justify-content: center;
 }
 
 .btn-contact {
-  background-color: $SH-blue !important;
+  background-color: $SH-pink !important;
   border: 0;
   width: 15%;
 }
@@ -229,12 +233,12 @@ justify-content: center;
   background-position: top 40% right 130px;
   padding: 20px 0px 70px 0px;
   background-repeat: no-repeat;
-  height: 600px;
+  height: 70vh;
 }
 
 #accordionExample {
   margin: auto 0;
-  margin-left: 60%;
+  margin-left: 45%;
 
   .accordion-item {
     background-color: transparent;
@@ -310,7 +314,15 @@ justify-content: center;
   overflow-x: scroll;
   scroll-padding: 0 50%;
   scroll-snap-type: x mandatory;
+  .property-card {
+    min-width: 20vw !important;
+    .property-card-body {
+      padding-bottom: 0;
+      justify-content: space-between;
+      height: 245px;
+    }
   }
+}
 
 .gallery > div {
   scroll-snap-align: center;
