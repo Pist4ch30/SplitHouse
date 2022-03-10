@@ -39,8 +39,15 @@
       <% @properties.each_with_index do |property, index| %>
         <div id="property-<%= property.id %>" class="card property-card">
           <div class="property-card-image">
-            <h2 class="property-card_parts"><%= property.price_part.to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ' ') %> €/part</h2>
-            <h2 class="property-card_remaining">Reste : <%= property.part_left %> parts</h2>
+            <h2 class="property-card_parts"><%= property.price_part.to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ' ') %> € / part</h2>
+            <h2 class="property-card_remaining">Reste : <%= property.part_left <= 1 ? "#{property.part_left} part" : "#{property.part_left} parts"  %></h2>
+            <% if user_signed_in? %>
+              <% if current_user.favorited?(property) %>
+                <%= link_to image_tag("heart.png"), unfavorite_property_path(property), class: "btn btn-heart-card", remote: true, data: { controller: "toggle-heart", action:"click->toggle-heart#favorite"} %>
+              <% else %>
+                <%= link_to image_tag("heart.png"), favorite_property_path(property), class: "btn btn-heart-card btn-heart-70", remote: true, data: { controller: "toggle-heart", action:"click->toggle-heart#favorite"}  %>
+              <% end %>
+            <% end %>
             <div id='<%="carouselExampleControls#{index}"%>' class="carousel slide" data-interval="false" data-ride="carousel">
               <div class="carousel-inner unset-border-radius">
                 <div class="carousel-item active">
@@ -70,7 +77,7 @@
               <p class="mb-0 ps-0"><i class="fas fa-map-marker-alt"></i></i><%= property.address.split(",").second %></p>
               <p class="mb-0 ps-0"><i class="fas fa-home"></i></i></i><%= " #{property.home_size}" %> m2</p>
               <p class="mb-0 ps-0"><i class="fas fa-bed"></i><%= " #{property.nbr_room}" %></p>
-              <p class="my-2 ps-0"><%= property.detail %></p>
+              <p class="mb-0 ps-0"><i class="fas fa-bath"></i><%= " #{property.nbr_bathroom}" %></p>
             </div>
             <% if user_signed_in? %>
               <%= link_to "Découvrir", property_path(property.id), class: "btn btn-primary btn-decouvrir mx-auto" %>

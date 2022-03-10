@@ -53,9 +53,9 @@
 .property-card-title {
 margin-top: 10px;
 margin-left: 8px;
-// color: $SH-blue-light;
-min-height: 72px;
-
+color: $SH-blue;
+min-height: 45px;
+font-weight: bolder;
 }
 
 .property-card-body {
@@ -80,17 +80,46 @@ min-height: 72px;
   padding-left: 8px;
   font-size: 15px;
   p {
-    font-size: 12px;
+    font-size: 14px;
     i {
-      font-size: 14px;
-      width: 25px;
+      font-size: 18px;
+      width: 30px;
+      padding: 2px;
     }
   }
 }
 
+.btn-heart-card {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 2;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  transition: all 125ms ease;
+  &:hover {
+    opacity: 1;
+    background: transparent;
+  }
+  &.btn-heart-70 {
+    opacity: 0.7;
+  }
+  &.btn-heart-pop {
+    animation: 125ms pop_fade;
+  }
+  img {
+    height: 35px;
+  }
+}
 
 
-.carousel-control-prev span.carousel-control-prev-icon,
-.carousel-control-next span.carousel-control-next-icon {
+@keyframes pop_fade {
+  from {
+    transform: scale(1.2);
+  }
 
+  to {
+    transform: scale(1);
+  }
 }
