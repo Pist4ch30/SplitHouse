@@ -1,10 +1,11 @@
-<div class="container">
-
-  <div class="banner-index mt-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.univers-vacances.fr/wp-content/uploads/2020/07/pierre-et-vacances-ete-piscine-image-principale.jpg);">
+<div class="banner-header" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://www.univers-vacances.fr/wp-content/uploads/2020/07/pierre-et-vacances-ete-piscine-image-principale.jpg);">
     <div class="container">
-      <h1>Jetez vous à l'eau, devenez propriétaire !</h1>
+      <h1>Jetez-vous à l'eau,</h1>
+      <h1>devenez <span data-controller="notation">propriétaire !</span></h1>
     </div>
   </div>
+
+  <div class="container">
 
   <div class="search-form form-inline">
     <%= simple_form_for :search, url: properties_path, method: "GET", defaults: { required: false }, html: { class: 'form-inline' } do |f| %>
@@ -28,7 +29,7 @@
     <% end %>
   </div>
 
-  <div class="mapbox-index" style="width: 80%; height: 400px"
+  <div class="mapbox-index" style="width: 90%; height: 400px"
     data-controller="mapbox"
     data-mapbox-markers-value="<%= @markers.to_json %>"
     data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
