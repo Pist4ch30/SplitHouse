@@ -43,6 +43,12 @@ a:hover {
   color: black;
 }
 
+.text-muted-1 {
+  text-transform: uppercase;
+  color: black;
+  font-size: 15px;
+}
+
 .bg-mix {background: linear-gradient(184deg, rgba(248,248,248,1) 0%, $SH-blue-light 100%);}
 
 .logo {
@@ -241,4 +247,35 @@ a:hover {
   .container {
     max-width: 75vw;
   }
+}
+
+.list-group {
+  align-items: center;
+}
+
+.details-property {
+  margin-top: -5vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  .data-user {
+    border-radius: 12px;
+    padding: 15px 15px 15px 15px;
+    width: 31%;
+    transition: all 125ms ease;
+    background-color: white;
+    margin: 5px 40px 5px 40px;
+    transition: all 125ms ease;
+  }
+
+  .p {
+    color: white;
+    font-size: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+}
+
+.sipmle-form-modal {
+  text-align: center;
 }
