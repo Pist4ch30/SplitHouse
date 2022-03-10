@@ -19,28 +19,28 @@
                 <div class="mx-auto">
                   <h6 class="text-muted">Mes parts</h6>
                   <%= image_tag "parts-logo-dashboard" %>
-                  <h3 class="font-weight-bold color-secondary"><%= @data_buyer[:total_parts] %> Parts</h3>
+                  <h3 class="font-weight-bold color-secondary"><%= @total_parts %> Parts</h3>
                 </div>
               </div>
               <div class="col-lg-3 d-flex stat my-3">
                 <div class="mx-auto">
-                  <h6 class="text-muted">Montant investit</h6>
+                  <h6 class="text-muted">Montant investi</h6>
                   <%= image_tag "invests-logo-dashboard" %>
-                  <h3 class="font-weight-bold color-secondary"><%= @data_buyer[:total_invest] %> €</h3>
+                  <h3 class="font-weight-bold color-secondary"><%= @total_invest %> €</h3>
                 </div>
               </div>
               <div class="col-lg-3 d-flex stat my-3">
                 <div class="mx-auto">
                   <h6 class="text-muted">Nuits Restantes</h6>
                   <%= image_tag "nuits-restantes-dashboard" %>
-                  <h3 class="font-weight-bold color-secondary"><%= @data_buyer[:total_nuits_restantes] %> Nuits</h3>
+                  <h3 class="font-weight-bold color-secondary"><%= @days_allowed - @days_utilises %> Nuits</h3>
                 </div>
               </div>
               <div class="col-lg-3 d-flex stat my-3">
                 <div class="mx-auto">
                   <h6 class="text-muted">Nuits Utilisées</h6>
                   <%= image_tag "nuits-utilise-dashboard" %>
-                  <h3 class="font-weight-bold color-secondary"><%= @data_buyer[:total_nuits_utilise] %> Nuits</h3>
+                  <h3 class="font-weight-bold color-secondary"><%= @days_utilises %> Nuits</h3>
                 </div>
               </div>
             </div>
@@ -60,7 +60,14 @@
                 <%= cl_image_tag status[:property_details][:property].photos.first.key, class:"img-card-dashboard" %>
                 <div class="card-body d-flex flex-column justify-content-between">
                   <h5 class="card-title sh-blue-text"><%= status[:property_details][:title] %></h5>
-                  <p class="card-text p-0"><%= status[:property_details][:detail] %></p>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-0"><i class="fas fa-map-marker-alt location-icon-dashboard pe-2"></i><%= status[:property_details][:address] %> </li>
+
+                    <li class="list-group-item ps-0"><%= pluralize(status[:property_details][:property][:nbr_room], "chambre", "chambres") %></li>
+                    <li class="list-group-item ps-0"><%= pluralize(status[:property_details][:property][:nbr_bathroom], "salle de bain", "salles de bain") %></li>
+                    <li class="list-group-item ps-0">Prix par part : <%= status[:property_details][:property][:price_part].to_s.reverse.gsub(/...(?=.)/,'\& ').reverse %> €</li>
+                  </ul>
+
                   <!-- Button Modal Property -->
                   <button type="button" class="btn btn-primary border-none" data-bs-toggle="modal" data-bs-target="#ModalProperty<%=index%>">
                     Voir plus
@@ -70,7 +77,7 @@
               <!-- Modal Property -->
               <div class="modal fade" id="ModalProperty<%=index%>" tabindex="-1" aria-labelledby="ModalProperty<%=index%>Label" aria-hidden="true">
                 <div class="modal-dialog">
-                  <div class="card-property-dashboard">
+                  <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="ModalProperty<%=index%>Label"><%= status[:property_details][:title] %></h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
@@ -85,33 +92,46 @@
                               <span class="visually-hidden">unread messages</span>
                             </span>
                             <%= cl_image_tag status[:property_details][:property].photos.first.key, class:"img-card-dashboard-modale w-100" %>
+                            <div class="d-flex flex-wrap">
+                              <div class="row">
+                                <div class="col-lg-6"><p>Hogo,dkkskdfkazkdf</p></div>
+                                <div class="col-lg-6"><p>Hogozkrjazkjazrkazkr</p></div>
+                              </div>
+                              <div class="row">
+                                <div class="col-lg-6"><p>Hogo</p></div>
+                                <div class="col-lg-6"><p>Hogo</p></div>
+                              </div>
+                            </div>
                             <ul class="list-group list-group-flush">
-                              <li class="list-group-item-card-modal-dasboard">Investissement total : <%= status[:property_details][:invest] %> €</li>
-                              <li class="list-group--card-modal-dasboard">Nombre de parts : <span class="badge rounded-pill bg-primary"><%= @status_buyer[index][:parts] %></span></li>
-                              <li class="list-group--card-modal-dasboard">Nuits allouées : <span class="badge rounded-pill bg-success"><%= status[:stat_booking][:day_allowed] %></span></li>
-                              <li class="list-group--card-modal-dasboard">Nuits utilisés : <span class="badge rounded-pill bg-info text-dark"><%= status[:stat_booking][:day_utilise] %></span></li>
+                              <% property = status[:property_details][:property] %>
+                              <%#= Part.find_by(user: current_user, property: status[:property_details][:property]).nbr_part %>
+                              <%#= status[:property_details][:property].price_part * Part.find_by(user: current_user, property: property).nbr_part %>
+                              <li class="list-group-item-card-modal-dasboard">Investissement total : <%= property.price_part * Part.find_by(user: current_user, property: property).nbr_part %> €</li>
+                              <li class="list-group--card-modal-dasboard">Nombre de parts : <span class="badge rounded-pill bg-primary"><%= Part.find_by(user: current_user, property: property).nbr_part %></span></li>
+                              <li class="list-group--card-modal-dasboard">Nuits allouées : <span class="badge rounded-pill bg-success"><%= Part.find_by(property: property, user: current_user).nbr_part*44 %></span></li>
+                              <li class="list-group--card-modal-dasboard">Nuits utilisés : <span class="badge rounded-pill bg-info text-dark"><%= current_user.bookings.where(property: property).sum(&:duration) %></span></li>
                               <h4>Dernière réservation</h4>
                               <li class="list-group-item"><%= status[:last_booking] != nil ? "Du #{status[:last_booking][:start_date]} au #{status[:last_booking][:finish_date]}" : "Aucune réservation pour le moment" %></li>
                             </ul>
-                            <div>
+                            <% booking_dates = status[:property_details][:property].bookings.map do |booking|
+                                  {
+                                    from: booking.start_date,
+                                    to:   booking.finish_date
+                                  }
+                                end %>
+                            <div data-controller="flatpickr" data-flatpickr-bookings-value="<%= booking_dates.to_json %>">
 
                               <%= simple_form_for [status[:property_details][:property], @booking] do |f| %>
                                   <%= f.input :start_date, as: :string,
                                                           required: true,
                                                           as: :hidden,
-                                                          input_html: { id: "range_start", class: "d-none" } %>
+                                                          input_html: { 'data-flatpickr-target': "rangeStart", class: "d-none" } %>
                                   <%= f.input :finish_date, as: :string,
                                                         as: :hidden,
                                                         required: true,
-                                                        input_html: { id: "range_end", class: "d-none" } %>
+                                                        input_html: { 'data-flatpickr-target': "rangeEnd", class: "d-none" } %>
                                   <%= f.button :submit, "Réserver", class: "btn btn-primary" %>
                                 <% end %>
-                                <% booking_dates = status[:property_details][:property].bookings.map do |booking|
-                                      {
-                                        from: booking.start_date,
-                                        to:   booking.finish_date
-                                      }
-                                    end %>
                                   <div  id="booking-form-div"
                                         data-bookings="<%= booking_dates.to_json %>">
                                   </div>
@@ -140,7 +160,6 @@
                 <%= cl_image_tag favorite.photos.first.key, class: "img-card-dashboard" %>
                 <div class="card-body d-flex flex-column justify-content-between">
                   <h5 class="card-title sh-blue-text"><%= favorite.title %></h5>
-                  <p class="card-text p-0"><%= favorite.detail %></p>
 
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item ps-0"><i class="fas fa-map-marker-alt location-icon-dashboard pe-2"></i><%= favorite.address %> </li>
