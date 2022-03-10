@@ -10,6 +10,12 @@ class Booking < ApplicationRecord
   private
 
   def set_duration
+    begin
     self.duration = (finish_date - start_date).to_i
+    rescue
+      if self.duration == nil
+        self.duration = 0
+      end
+    end
   end
 end
