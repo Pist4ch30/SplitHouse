@@ -23,12 +23,12 @@
       <div class="property-info-details">
         <%# <h2>Surface</h2> %>
         <i class="fas fa-house-user"></i>
-        <p><%= @property.home_size %>m2</p>
+        <p><%= @property.home_size %>m²</p>
       </div>
       <div class="property-info-details">
         <%# <h2>Prix</h2> %>
         <i class="fas fa-money-check-alt"></i>
-        <p><%= @property.price_part %> €</p>
+        <p><%= @property.price_part.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse %> €</p>
       </div>
       <div class="property-info-details">
         <%# <h2>Chambres</h2> %>
@@ -42,9 +42,9 @@
       </div>
 
     </div>
-
-     <h1>A propos de ce bien</h1>
+    <div class="container info">
       <p><%= @property.detail.html_safe %></p>
+    </div>
 
     <div class="container mt-10 p-0">
       <div class="card a-propos">
@@ -93,15 +93,27 @@
             <input type="range" id="Nbr de nuitées/an." name="Nbr de nuitées/an."
                   min="44" max="176" step="44" oninput="num.value = this.value" value=44 data-invest-target="input" data-action="change->invest#computeInvest" data-price-part="<%= @property.price_part %>">
                   <output id="num">44</output>
+                  <div class="montant">
+                  <p class="p-0 m-0" data-invest-target="calcul">Montant de mon investissement</p>
+                  </div>
+                  <div class="prix">
+                  <p class="p-0 m-0 ">Prix au m² : <%= @square_meter_price.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse %>€</p>
+                  </div>
           </div>
 
           <div>
             <label for="Nuitées non consommeés/an.">Nuitées non consommeés/an.</label>
             <input type="range" id="Nuitées non consommeés/an." name="Nuitées non consommeés/an."
-                  min="0" max="44" oninput="nuitees.value = this.value" value=0>
-                  <output id="nuitees">0</output>
+                  min="0" max="44" oninput="nuitees.value = this.value" value=0 data-invest-target="nuitInput" data-action="change->invest#computeNuitee">
+                  <output id="nuitees" data-invest-target="nuitee" data-invest-coef-value="<%= 31 * @property.home_size / 30 %>">0</output>
+                  <p class="p-0 m-0" data-invest-target="economies"></p>
           </div>
-        <p class="p-0 m-0" data-invest-target="calcul">Montant de mon investissement</p>
+        <div class="italics">
+          <ul>
+            <li><%= link_to "*Obtenir plus de details sur les charges", "#", class: "avoid-clicks" %><li>
+            <li><%= link_to "*Obtenir le diagnostic de ce bien", "#", class: "avoid-clicks" %></li>
+          </ul>
+        </div>
       </div>
 
       <div class="flex-item">
