@@ -35,6 +35,7 @@
     <h2 class="splithouse">Les avantages de SplitHouse </h2>
   </div>
 
+
   <div class="d-flex justify-content-evenly flex-wrap align-items-center py-5 cards-advantages">
 
     <div class="d-flex flex-column align-items-center justify-content-center p-3 bg-primary my-4 card-advantage" style="width: 20%;">
@@ -71,15 +72,15 @@
     <h2 class="splithouse">Aperçu de notre catalogue</h2>
   </div>
 
-  <div class="gallery">
+  <div class="gallery mt-3">
     <% @properties.each.each_with_index do |property,index| %>
-      <div>
+      <div class="card-box-home">
         <div class="card sh-property-card">
         <h2 class="property-card_parts">Part : <%= property.price_part.to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ' ') %> €</h2>
             <h2 class="property-card_remaining"><%= property.part_left %> / 8 </h2>
           <% unless property.photos_attachments.empty? %>
             <div id='<%="carouselExampleControls#{index}"%>' class="carousel slide" data-interval="false" data-ride="carousel">
-              <div class="carousel-inner">
+              <div class="carousel-inner unset-border-radius">
                 <div class="carousel-item active">
                   <%= cl_image_tag property.photos.first.key, class: "card-img-top sh-card-img d-block w-100", alt: "Photo 1" %>
                 </div>
@@ -109,7 +110,9 @@
               <p class="card-text"><%= property.detail %></p>
 
 
+
               <%= link_to "Jeter un coup d'oeil à cette propriété", property_path(property), class: "btn btn-primary sh-btn-primary" %>
+
             </div>
         </div>
       </div>

@@ -39,10 +39,17 @@
       <% @properties.each_with_index do |property, index| %>
         <div id="property-<%= property.id %>" class="card property-card">
           <div class="property-card-image">
-            <h2 class="property-card_parts">Part : <%= property.price_part.to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ' ') %> €</h2>
-            <h2 class="property-card_remaining">Reste : <%= property.part_left %> / 8 parts</h2>
+            <h2 class="property-card_parts"><%= property.price_part.to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ' ') %> € / part</h2>
+            <h2 class="property-card_remaining">Reste : <%= property.part_left <= 1 ? "#{property.part_left} part" : "#{property.part_left} parts"  %></h2>
+            <% if user_signed_in? %>
+              <% if current_user.favorited?(property) %>
+                <%= link_to image_tag("heart.png"), unfavorite_property_path(property), class: "btn btn-heart-card", remote: true, data: { controller: "toggle-heart", action:"click->toggle-heart#favorite"} %>
+              <% else %>
+                <%= link_to image_tag("heart.png"), favorite_property_path(property), class: "btn btn-heart-card btn-heart-70", remote: true, data: { controller: "toggle-heart", action:"click->toggle-heart#favorite"}  %>
+              <% end %>
+            <% end %>
             <div id='<%="carouselExampleControls#{index}"%>' class="carousel slide" data-interval="false" data-ride="carousel">
-              <div class="carousel-inner">
+              <div class="carousel-inner unset-border-radius">
                 <div class="carousel-item active">
                   <%= cl_image_tag property.photos.first.key, class: "d-block w-100", alt: "Photo 1" %>
                 </div>
@@ -65,18 +72,18 @@
             </div>
           </div>
           <div class="property-card-body h-100">
-            <h5 class="property-card-title"><%= property.title %></h5>
+            <h5 class="property-card-title sh-blue-text"><%= property.title %></h5>
             <div class="property-card-text flex-grow-1 d-flex flex-column mb-2">
               <p class="mb-0 ps-0"><i class="fas fa-map-marker-alt"></i></i><%= property.address.split(",").second %></p>
               <p class="mb-0 ps-0"><i class="fas fa-home"></i></i></i><%= " #{property.home_size}" %> m2</p>
               <p class="mb-0 ps-0"><i class="fas fa-bed"></i><%= " #{property.nbr_room}" %></p>
-              <p class="mb-0 ps-0"><%= property.detail %></p>
+              <p class="mb-0 ps-0"><i class="fas fa-bath"></i><%= " #{property.nbr_bathroom}" %></p>
             </div>
             <% if user_signed_in? %>
               <%= link_to "Découvrir", property_path(property.id), class: "btn btn-primary btn-decouvrir mx-auto" %>
             <% else %>
               <button type="button" class="btn btn-primary btn-decouvrir mx-auto" data-bs-toggle="modal" data-bs-target="#signupModal">
-                Découvrir
+                Voir plus
               </button>
             <% end %>
           </div>

@@ -27,7 +27,7 @@
   position: absolute;
   top: 0;
   z-index: 1;
-  font-size: 16px;
+  font-size: 12px;
   background-color: $SH-pink;
   padding: 5px;
   margin: 5px;
@@ -38,7 +38,7 @@
   position: absolute;
   right: 0;
   z-index: 1;
-  font-size: 16px;
+  font-size: 12px;
   background-color: white;
   padding: 5px;
   margin: 5px;
@@ -53,7 +53,9 @@
 .property-card-title {
 margin-top: 10px;
 margin-left: 8px;
-color: $SH-blue-light;
+color: $SH-blue;
+min-height: 45px;
+font-weight: bolder;
 }
 
 .property-card-body {
@@ -67,17 +69,57 @@ color: $SH-blue-light;
 
 .btn-decouvrir {
   width: 60%;
-  background-color: $SH-blue-light;
+  background-color: $SH-blue;
+  border: none;
+  &:hover {
+    background-color: $SH-pink;
+  }
 }
 
 .property-card-text {
   padding-left: 8px;
   font-size: 15px;
+  p {
+    font-size: 14px;
+    i {
+      font-size: 18px;
+      width: 30px;
+      padding: 2px;
+    }
+  }
+}
+
+.btn-heart-card {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 2;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  transition: all 125ms ease;
+  &:hover {
+    opacity: 1;
+    background: transparent;
+  }
+  &.btn-heart-70 {
+    opacity: 0.7;
+  }
+  &.btn-heart-pop {
+    animation: 125ms pop_fade;
+  }
+  img {
+    height: 35px;
+  }
 }
 
 
+@keyframes pop_fade {
+  from {
+    transform: scale(1.2);
+  }
 
-.carousel-control-prev span.carousel-control-prev-icon,
-.carousel-control-next span.carousel-control-next-icon {
-
+  to {
+    transform: scale(1);
+  }
 }

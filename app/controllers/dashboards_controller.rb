@@ -20,6 +20,7 @@ class DashboardsController < ApplicationController
         if part.status == "approved"
           # Invests (Montant total investissement)=> prix_part * nbr_part
           invest = part.property[:price_part] * part.nbr_part
+          invest = invest.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse
 
           # Créer un hash => structure données {parts: (Nombre de part sur la propriété),
           #                                     property_details: (Données sur la propiété)}
@@ -95,19 +96,20 @@ class DashboardsController < ApplicationController
         # Total investit
         total_invest += (part.property.price_part * part.nbr_part)
         # Nombre de nuits total restante
-        nuits_restantes = part.property.bookings.map {|booking| booking.duration}
-        nuits_restantes = nuits_restantes.inject(:+)
+        nuits_prises = part.property.bookings.map {|booking| booking.duration}
+        nuits_prises = nuits_prises.inject(:+)
+
         begin
-          nuits_restantes = day_allowed - nuits_restantes
-          total_nuits_restantes += nuits_restantes
+          total_nuits_restantes = day_allowed - nuits_prises
         rescue
-          nil
+          total_nuits_restantes = day_allowed
         end
       end
     end
+
     # Nombre de nuits utilisées
     total_nuits_utilise = day_allowed - total_nuits_restantes
-    total_invest = total_invest.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse
+    total_invest = total_invest.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse
     # Retourne un hash de données pour la vue => dashboard
     data_out = {  total_parts: counter_parts,
                   total_invest: total_invest,
@@ -115,5 +117,4 @@ class DashboardsController < ApplicationController
                   total_nuits_utilise: total_nuits_utilise
                   }
   end
-
 end

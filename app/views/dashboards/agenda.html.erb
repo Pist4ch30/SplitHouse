@@ -1,13 +1,17 @@
 <div class="container-calendar d-flex">
   <div class="row">
+    <div class="container-buttom">
+      <%= link_to "Mon Dashboard", dashboard_path, class:"btn-ageanda-dashboard" %>
+    </div>
     <%= month_calendar do |date| %>
-      <%= date %>
-      <% current_user.properties.each do |property| %>
-          <% if !property.booked_this_day(date).empty? %>
-          <span class="badge bg-success">Réservé par : <%= property.booked_this_day(date).first.user.first_name %></span>
-          <a href="<%= property_path(property.id) %>"><span class="badge bg-danger"><%= property.title %></span></a>
-          <% end %>
-      <% end %>
+    <%= date %>
+    <% current_user.properties.each do |property| %>
+        <% if !property.booked_this_day(date).empty? %>
+        <span class="bg-success-calendar">Réservé par : <%= property.booked_this_day(date).first.user.first_name %></span>
+        <%# raise %>
+        <a href="<%= property_path(property.id) %>"><span class="badge bg-danger"><%= property.title %></span></a>
+        <% end %>
     <% end %>
+  <% end %>
   </div>
 </div>
