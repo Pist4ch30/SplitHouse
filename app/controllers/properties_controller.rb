@@ -63,6 +63,9 @@ class PropertiesController < ApplicationController
                   image_url: helpers.asset_url("house.png")
                 }]
 
+    @square_meter_price = (@property.price_part * 8) / @property.home_size
+
+
   end
 
 

@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def default_url_options
+    { host: ENV["www.splithouse.fr"] || "localhost:3000" }
+  end
 end

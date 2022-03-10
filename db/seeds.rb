@@ -7,7 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
 
-puts 'destroying everything !'
 Booking.destroy_all
 Part.destroy_all
 Favorite.destroy_all
@@ -15,20 +14,20 @@ Property.destroy_all
 User.destroy_all
 
 puts 'Creating Users'
-martin = User.new
-martin.email = "martin@gmail.com"
-martin.password = "123456"
-martin.first_name = "Martin"
-martin.last_name = "Durand"
-martin.date_of_birth = Date.today - 33.years
-martin.about_you = "blabla"
-martin.budget = 50000
-martin.address = "16 villa Gaudelet, Paris"
-martin.occupation = "artist"
-martin.family_status = 0
-file = URI.open('https://www.jeancoutu.com/globalassets/revamp/photo/conseils-photo/20160302-01-reseaux-sociaux-profil/photo-profil_301783868.jpg')
-martin.photo.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
-martin.save!
+florian = User.new
+florian.email = "florian@gmail.com"
+florian.password = "123456"
+florian.first_name = "Florian"
+florian.last_name = "Bel"
+florian.date_of_birth = Date.today - 32.years
+florian.about_you = "blabla"
+florian.budget = 50000
+florian.address = "16 villa Gaudelet, Paris"
+florian.occupation = "Fullstack developer"
+florian.family_status = 2
+file = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641761662/hh58c3zauyocldxakd32.jpg')
+florian.photo.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+florian.save!
 
 
 didier = User.new
@@ -62,7 +61,6 @@ jorge.photo.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
 jorge.save!
 
 
-puts 'creating houses'
 maison1 = Property.new
 maison1.title = "Magnifique maison d'architecte"
 maison1.price_part = 300000
@@ -143,8 +141,6 @@ file = URI.open('https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaw
 maison3.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpeg')
 maison3.save!
 
-martin.favorite(maison1)
-martin.favorite(maison2)
 
 maison4 = Property.new
 maison4.title = "Grande maison en pierres"
@@ -169,13 +165,13 @@ maison4.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
 maison4.save!
 
 maison5 = Property.new
-maison5.title = "Maison sur les hauteurs avec une magnifique vue mer"
-maison5.price_part = 225000
-maison5.home_size = 175
+maison5.title = "Petite maison familiale avec une magnifique vue mer"
+maison5.price_part = 76000
+maison5.home_size = 95
 maison5.nbr_room = 3
-maison5.nbr_bathroom = 3
-maison5.address = "Cavalaire-sur-Mer"
-maison5.detail = "Une vue surplombant la baie"
+maison5.nbr_bathroom = 2
+maison5.address = "5 avenue de la Madone, Menton"
+maison5.detail = "Une vue incroyable surplombant la baie"
 maison5.pool = true
 maison5.garden = true
 maison5.parking = true
@@ -191,24 +187,24 @@ maison5.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
 maison5.save!
 
 maison6 = Property.new
-maison6.title = "Grand chalet typique en bois"
-maison6.price_part = 85000
-maison6.home_size = 145
+maison6.title = "Appartement de charme proche du centre et des pistes"
+maison6.price_part = 40000
+maison6.home_size = 85
 maison6.nbr_room = 3
 maison6.nbr_bathroom = 2
-maison6.address = "Grande Rue, Val Thorens"
-maison6.detail = "Un magnifique chalet avec départ et arrivée skis aux pieds"
+maison6.address = "5 rue de Loutraz-Bramans, Val-Cenis"
+maison6.detail = "Magnifique appartement avec départ et arrivée skis aux pieds"
 maison6.pool = false
-maison6.garden = true
+maison6.garden = false
 maison6.parking = true
 maison6.garage = false
 maison6.summer_kitchen = false
 maison6.region = "Auvergne-Rhône-Alpes"
-file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/lyrZPhkRLiNyCzLYhnn1_1.jpg/width:3840/format:webp/fit:cover')
+file = URI.open('https://a0.muscache.com/im/pictures/prohost-api/Hosting-558501732720867883/original/54309927-a481-438e-b657-bb0154d9277a.jpeg?im_w=1200')
 maison6.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
-file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/Bo1iubp4QVSPK7cJ2NtL_2.jpg/width:3840/format:webp/fit:cover')
+file = URI.open('https://a0.muscache.com/im/pictures/prohost-api/Hosting-558501732720867883/original/42051c19-34f6-4c90-9f68-02ddac269fae.jpeg?im_w=1200')
 maison6.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
-file = URI.open('https://d2lek8u79qswmc.cloudfront.net/image/RV84jB69TCCFRiPysTuE_13.jpg/width:3840/format:webp/fit:cover')
+file = URI.open('https://a0.muscache.com/im/pictures/prohost-api/Hosting-558501732720867883/original/d55c9479-098f-4972-a898-4f95342df016.jpeg?im_w=1200')
 maison6.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
 maison6.save!
 
@@ -278,44 +274,94 @@ file = URI.open('https://v.seloger.com/s/cdn/x/visuels/1/g/6/k/1g6kigbdfzny4k856
 maison9.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
 maison9.save!
 
-didier.favorite(maison1)
-didier.favorite(maison2)
+maison10 = Property.new
+maison10.title = "Bel appartement en centre ville"
+maison10.price_part = 65000
+maison10.home_size = 82
+maison10.nbr_room = 3
+maison10.nbr_bathroom = 1
+maison10.address = "30 avenue Aristide Briand, Menton"
+maison10.detail = "Magnifique appartement moderne avec balcon, proche du centre et de la mer"
+maison10.pool = false
+maison10.garden = false
+maison10.parking = false
+maison10.garage = true
+maison10.summer_kitchen = false
+maison10.region = "Provence-Alpes-Côte d’Azur"
+file = URI.open('https://a0.muscache.com/im/pictures/8cbfb816-15a2-4f2d-a512-a37a6720fbc7.jpg?im_w=1200')
+maison10.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://a0.muscache.com/im/pictures/a1b3cce3-04e6-4573-9bf5-26f46634b8c0.jpg?im_w=1200')
+maison10.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://a0.muscache.com/im/pictures/b9dfe612-be40-482e-af5f-236c48cf1cdb.jpg?im_w=960')
+maison10.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://a0.muscache.com/im/pictures/0dba748d-c615-4505-8922-dce5d2d0ee56.jpg?im_w=1200')
+maison10.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://a0.muscache.com/im/pictures/38362184-61a4-488c-b225-9ab2d9c9343f.jpg?im_w=1200')
+maison10.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://a0.muscache.com/im/pictures/53c93701-7ef6-43e4-9786-dcf612b7d1a2.jpg?im_w=1200')
+maison10.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+maison10.save!
+
+maison11 = Property.new
+maison11.title = "Appartement lumineux et cosy avec vue mer"
+maison11.price_part = 57000
+maison11.home_size = 91
+maison11.nbr_room = 2
+maison11.nbr_bathroom = 2
+maison11.address = "30 avenue Félix Faure, Menton"
+maison11.detail = "Résidence récente avec piscine et court de tennis.<br>
+Cet appartement de 4 pièces en bon état est en étage d'une résidence face à la mer.<br><br>
+
+Il se compose d'une entrée, d'un séjour lumineux donnant sur une terrasse plein Sud de 15m² avec vue mer et ville, d'une cuisine indépendante équipée et aménagée avec balcon, de 2 chambres avec terrasse, d'une salle de bains ainsi que d'un W.C indépendant et nombreux rangements.<br><br>
+
+Vue mer et ville sublime plein Sud.<br>
+Au Nord, une vue très agréable donnant sur de la verdure au calme complet.<br><br>
+
+L'appartement dispose également d'une cave dans la copropriété.<br>
+Parking collectif et parking visiteurs dans l'enceinte de la copropriété."
+maison11.pool = false
+maison11.garden = false
+maison11.parking = false
+maison11.garage = true
+maison11.summer_kitchen = false
+maison11.region = "Provence-Alpes-Côte d’Azur"
+file = URI.open('https://a0.muscache.com/im/pictures/miso/Hosting-53318704/original/df73de0a-e9a6-492a-9a06-d4db214eb387.jpeg?im_w=960')
+maison11.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://a0.muscache.com/im/pictures/miso/Hosting-53318704/original/9c147791-29a3-4c72-8e84-ace1e4e846d0.jpeg?im_w=1200')
+maison11.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://a0.muscache.com/im/pictures/miso/Hosting-53318704/original/a5c8f5e6-8188-43da-8385-3b676305bf0a.jpeg?im_w=1200')
+maison11.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://a0.muscache.com/im/pictures/0bffedfd-2e20-49b9-9e39-532bccdaead2.jpg?im_w=1200')
+maison11.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+file = URI.open('https://a0.muscache.com/im/pictures/f69984c2-a155-4fb9-919a-0b5489b48f66.jpg?im_w=1200')
+maison11.photos.attach(io: file, filename: 'tbd', content_type: 'image/jpg')
+maison11.save!
 
 
-puts 'creating parts'
-# _____ Simulation => Didier et Jorge achete 4 part chacun _____
-
-# Achat => de parts
-Part.create(status: 1, nbr_part: 4, property: maison1, user: didier)
-Part.create(status: 1, nbr_part: 4, property: maison1, user: jorge)
-
-# Didier reserve 2 semaines en aout
-Booking.create(finish_date: "14/08/2022", start_date: "01/08/2022", duration: 14, property: maison1, user: didier)
-
-# Jorge reserve 2 semaines en aout
-Booking.create(finish_date: "30/08/2022", start_date: "15/08/2022", property: maison1, user: jorge)
-# Jorge reserve 10 jours en septembre
-Booking.create(finish_date: "20/09/2022", start_date: "10/09/2022", property: maison1, user: jorge)
-
-
-#Ajout de favoris
-didier.favorite(maison5)
-didier.favorite(maison6)
-didier.favorite(maison7)
-
-jorge.favorite(maison1)
-jorge.favorite(maison3)
-
-# _____ Simulation => Didier à des parts dans deux propiété _____
-
-# Achat => de parts
-Part.create(status: 1, nbr_part: 2, property: maison2, user: didier)
+Part.create(status: 1, nbr_part: 3, property: maison6, user: didier)
+Part.create(status: 1, nbr_part: 4, property: maison6, user: jorge)
+Part.create(status: 1, nbr_part: 1, property: maison6, user: florian)
+Part.create(status: 1, nbr_part: 3, property: maison11, user: didier)
+Part.create(status: 1, nbr_part: 4, property: maison11, user: jorge)
+Part.create(status: 1, nbr_part: 2, property: maison10, user: didier)
+Part.create(status: 1, nbr_part: 1, property: maison10, user: jorge)
+Part.create(status: 1, nbr_part: 2, property: maison9, user: didier)
+Part.create(status: 1, nbr_part: 3, property: maison9, user: jorge)
+Part.create(status: 1, nbr_part: 1, property: maison8, user: didier)
+Part.create(status: 1, nbr_part: 1, property: maison8, user: jorge)
+Part.create(status: 1, nbr_part: 2, property: maison7, user: didier)
+Part.create(status: 1, nbr_part: 1, property: maison7, user: jorge)
+Part.create(status: 1, nbr_part: 2, property: maison5, user: didier)
+Part.create(status: 1, nbr_part: 2, property: maison5, user: jorge)
 
 
-puts 'creating booking'
+Booking.create(finish_date: "22/08/2022", start_date: "15/08/2022", duration: 7, property: maison11, user: didier)
+Booking.create(finish_date: "27/07/2022", start_date: "20/07/2022", duration: 7, property: maison11, user: jorge)
+
+
 booking1 = Booking.new
 booking1.start_date = Date.today + 10.days
 booking1.finish_date = Date.today + 20.days
-booking1.property = maison1
+booking1.property = maison11
 booking1.user = jorge
 booking1.save!

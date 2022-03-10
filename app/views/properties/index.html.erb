@@ -1,10 +1,12 @@
-<div class="container">
-
-  <div class="banner-index mt-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.univers-vacances.fr/wp-content/uploads/2020/07/pierre-et-vacances-ete-piscine-image-principale.jpg);">
+  <div class="banner-header" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://www.univers-vacances.fr/wp-content/uploads/2020/07/pierre-et-vacances-ete-piscine-image-principale.jpg);">
     <div class="container">
-      <h1>Jetez vous à l'eau, devenez propriétaire !</h1>
+      <h1>Jetez-vous à l'eau,</h1>
+      <h1>devenez <span data-controller="notation">propriétaire !</span></h1>
     </div>
   </div>
+<div class="container py-5">
+
+  <div class="container">
 
   <div class="search-form form-inline">
     <%= simple_form_for :search, url: properties_path, method: "GET", defaults: { required: false }, html: { class: 'form-inline' } do |f| %>
@@ -13,12 +15,12 @@
             <%= f.input :nbr_room, label: false, collection: 1..10, include_blank: 'Chambres', input_html: {value: "", class:"mb-0"}, selected: params["search"]["nbr_room"] %>
             <%= f.input :budget, label: false, include_blank: "Budget", collection: ["10 000 € - 100 000 €", "100 001 € - 200 000 €" , "200 001 € - 300 000 €", "300 001 € - 500 000 €" ], input_html: {value: ""}, selected: params["search"]["budget"]%>
             <%= f.input :region, label: false, include_blank: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ], input_html: {value: ""}, selected: params["search"]["region"]%>
-            <%= f.input :home_size, label: false, include_blank: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2", "201 m2 - 300 m2" ], input_html: {value: ""}, selected: params["search"]["home_size"]%>
+            <%= f.input :home_size, label: false, include_blank: "Superficie", collection: ["1 m² - 50 m²", "51 m² - 100 m²" , "101 m² - 200 m²", "201 m² - 300 m²" ], input_html: {value: ""}, selected: params["search"]["home_size"]%>
           <% else %>
             <%= f.input :nbr_room, label: false, collection: 1..10, include_blank: 'Chambres', input_html: {value: ""}%>
             <%= f.input :budget, label: false, include_blank: "Budget", collection: ["10 000 € - 100 000 €", "100 001 € - 200 000 €" , "200 001 € - 300 000 €", "300 001 € - 500 000 €" ],input_html: {value: ""}%>
             <%= f.input :region, label: false, include_blank: "Région", collection: ["Auvergne-Rhône-Alpes", "Bourgogne-Franche-Comté", "Bretagne", "Centre-Val de Loire", "Corse", "Grand Est", "Hauts-de-France", "Ile-de-France", "Normandie", "Nouvelle-Aquitaine", "Occitanie", "Pays de la Loire", "Provence-Alpes-Côte d’Azur" ],input_html: {value: ""}%>
-            <%= f.input :home_size, label: false, include_blank: "Superficie", collection: ["1 m2 - 50 m2", "51 m2 - 100 m2" , "101 m2 - 200 m2", "201 m2 - 300 m2" ], input_html: {value: ""}%>
+            <%= f.input :home_size, label: false, include_blank: "Superficie", collection: ["1 m² - 50 m²", "51 m² - 100 m²" , "101 m² - 200 m²", "201 m² - 300 m²" ], input_html: {value: ""}%>
           <% end %>
 
           <%= button_tag type: 'submit', class: "button postfix" do %>
@@ -28,7 +30,7 @@
     <% end %>
   </div>
 
-  <div class="mapbox-index" style="width: 80%; height: 400px"
+  <div class="mapbox-index" style="width: 100%; height: 400px"
     data-controller="mapbox"
     data-mapbox-markers-value="<%= @markers.to_json %>"
     data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
@@ -39,9 +41,18 @@
       <% @properties.each_with_index do |property, index| %>
         <div id="property-<%= property.id %>" class="card property-card">
           <div class="property-card-image">
-            <h2 class="property-card_parts"><%= property.price_part.to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ' ') %> €/part</h2>
-            <h2 class="property-card_remaining">Reste : <%= property.part_left %> parts</h2>
-            <div id='<%="carouselExampleControls#{index}"%>' class="carousel slide" data-interval="false" data-ride="carousel">
+            <h2 class="property-card_parts"><%= property.price_part.to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ' ') %> € / part</h2>
+            <h2 class="property-card_remaining">Reste : <%= property.part_left <= 1 ? "#{property.part_left} part" : "#{property.part_left} parts"  %></h2>
+            <% if user_signed_in? %>
+              <% if current_user.favorited?(property) %>
+                <%= link_to image_tag("heart.png"), unfavorite_property_path(property), class: "btn btn-heart-card", remote: true, data: { controller: "toggle-heart", action:"click->toggle-heart#favorite"} %>
+              <% else %>
+                <%= link_to image_tag("heart.png"), favorite_property_path(property), class: "btn btn-heart-card btn-heart-70", remote: true, data: { controller: "toggle-heart", action:"click->toggle-heart#favorite"}  %>
+              <% end %>
+            <% end %>
+            <%# <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"> %>
+
+            <div id='<%="carouselExampleControls#{index}"%>' class="carousel slide" data-interval="false">
               <div class="carousel-inner unset-border-radius">
                 <div class="carousel-item active">
                   <%= cl_image_tag property.photos.first.key, class: "d-block w-100", alt: "Photo 1" %>
@@ -54,23 +65,24 @@
                   <% end %>
                 <% end %>
               </div>
-              <a class="carousel-control-prev" href='<%="#carouselExampleControls#{index}"%>' role="button" data-slide="prev">
+              <button class="carousel-control-prev" type="button" data-bs-target='<%="#carouselExampleControls#{index}"%>' data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href='<%="#carouselExampleControls#{index}"%>' role="button" data-slide="next">
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target='<%="#carouselExampleControls#{index}"%>' data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
+                <span class="visually-hidden">Next</span>
+              </button>
+
             </div>
           </div>
           <div class="property-card-body h-100">
             <h5 class="property-card-title sh-blue-text"><%= property.title %></h5>
             <div class="property-card-text flex-grow-1 d-flex flex-column mb-2">
               <p class="mb-0 ps-0"><i class="fas fa-map-marker-alt"></i></i><%= property.address.split(",").second %></p>
-              <p class="mb-0 ps-0"><i class="fas fa-home"></i></i></i><%= " #{property.home_size}" %> m2</p>
+              <p class="mb-0 ps-0"><i class="fas fa-home"></i></i></i><%= " #{property.home_size}" %> m² </p>
               <p class="mb-0 ps-0"><i class="fas fa-bed"></i><%= " #{property.nbr_room}" %></p>
-              <p class="my-2 ps-0"><%= property.detail %></p>
+              <p class="mb-0 ps-0"><i class="fas fa-bath"></i><%= " #{property.nbr_bathroom}" %></p>
             </div>
             <% if user_signed_in? %>
               <%= link_to "Découvrir", property_path(property.id), class: "btn btn-primary btn-decouvrir mx-auto" %>
@@ -87,32 +99,32 @@
 
 </div>
 <!-- Modal -->
-            <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Connectez vous pour en voir plus !</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                      <div class="form-inputs">
-                        <%= f.input :email,
-                                    required: false,
-                                    autofocus: true,
-                                    input_html: { autocomplete: "email" } %>
-                        <%= f.input :password,
-                                    required: false,
-                                    input_html: { autocomplete: "current-password" } %>
-                        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-                      </div>
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Connectez vous pour en voir plus !</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :email,
+                        required: false,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" } %>
+            <%= f.input :password,
+                        required: false,
+                        input_html: { autocomplete: "current-password" } %>
+            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+          </div>
 
-                      <div class="form-actions">
-                        <%= f.button :submit, "Log in", class: "btn btn-primary" %>
-                      </div>
-                    <% end %>
-                    <%= render "devise/shared/links" %>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Log in", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>

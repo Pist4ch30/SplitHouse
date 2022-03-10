@@ -7,7 +7,6 @@ body {
   background-size: cover;
   background-position: center;
   padding: 150px 0;
-  border-radius: 5px;
 }
 .banner-casa {
   background-size: 45%;
@@ -25,10 +24,14 @@ body {
   }
 }
 
+.flexbox-class {
+  box-shadow: 0px 4px 16px rgba(0,0,0,0.1);
+}
+
 .banner-header h1 {
   margin: 0;
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
   font-size: 50px;
   font-weight: bold;
 }
@@ -37,7 +40,7 @@ body {
   font-size: 20px;
   color: white;
   opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 
 .cards-home {
@@ -54,18 +57,21 @@ body {
 .splithouse {
   font-size: 40px;
   color: $SH-almond;
-  margin: 0px 0px 0px 145px;
+  margin-bottom: 50px;
+  margin-left: 80px;
 }
 .splithouse-bis {
   color: $SH-almond;
-  text-align: center;
+  text-align: right;
   width: 100%;
+  margin-bottom: 50px;
+  margin-right: 60px;
 }
 
 .p-sci {
   font-size: 25px;
   color: #46536C;
-  margin: 20px 0px 0px 130px;
+  margin: 20px 0px 0px 60px;
   font-weight: lighter;
 }
 
@@ -91,22 +97,27 @@ body {
 
 .card-category {
   height: 350px;
-  border-radius: 5px;
+  border-radius: 10px;
   color: white;
   background-size: cover;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
 
 .btn-banner {
 width: 30% !important;
 padding: 15px;
-margin: 80px 0px 0px 20px;
+margin: 80px 0px 0px 0px;
 border-radius: 30px;
 
 }
 
 .background-casa {
   background-color: $SH-blue-light;
-  height: 75vh;
+  height: 70vh;
+}
+
+.btn-primary {
+  border-radius: 10px !important;
 }
 
 
@@ -116,6 +127,7 @@ border-radius: 30px;
   border: 0;
   background-color: $SH-pink;
   transition: all 125ms ease;
+  font-size: large;
 
   &:hover {
     color: $SH-almond !important;
@@ -162,9 +174,10 @@ border-radius: 30px;
 
 
 .card-advantage {
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: $SH-blue-light;
   color: $SH-almond;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .sci-info {
@@ -182,7 +195,7 @@ justify-content: center;
 }
 
 .btn-contact {
-  background-color: $SH-blue !important;
+  background-color: $SH-pink !important;
   border: 0;
   width: 15%;
 }
@@ -220,12 +233,12 @@ justify-content: center;
   background-position: top 40% right 130px;
   padding: 20px 0px 70px 0px;
   background-repeat: no-repeat;
-  height: 600px;
+  height: 70vh;
 }
 
 #accordionExample {
   margin: auto 0;
-  margin-left: 60%;
+  margin-left: 45%;
 
   .accordion-item {
     background-color: transparent;
@@ -233,15 +246,28 @@ justify-content: center;
   }
   .accordion-button {
     background-color: transparent !important;
+    color: $SH-almond;
+    font-size: 25px;
+    font-weight: lighter;
   }
   .accordion-body {
     background-color: $SH-blue-light;
 }
 }
 
+.form-inline-home {
+  margin-top: -55px !important;
+  width: auto;
+}
 
+.form-inline {
+  width: 100%;
+}
 
-
+.cards-advantages {
+  justify-content: space-between !important;
+  padding-top: 0px !important;
+}
 
 
 
@@ -288,11 +314,19 @@ justify-content: center;
   overflow-x: scroll;
   scroll-padding: 0 50%;
   scroll-snap-type: x mandatory;
+  .property-card {
+    min-width: 20vw !important;
+    .property-card-body {
+      padding-bottom: 0;
+      justify-content: space-between;
+      height: 245px;
+    }
   }
+}
 
 .gallery > div {
   scroll-snap-align: center;
   display: inline-block;
-  border-radius: 3px;
+  border-radius: 10px;
   margin-right: 3rem;
   }
