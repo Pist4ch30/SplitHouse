@@ -24,10 +24,14 @@ body {
   }
 }
 
+.flexbox-class {
+  box-shadow: 0px 4px 16px rgba(0,0,0,0.1);
+}
+
 .banner-header h1 {
   margin: 0;
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
   font-size: 50px;
   font-weight: bold;
 }
@@ -36,7 +40,7 @@ body {
   font-size: 20px;
   color: white;
   opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 
 .cards-home {
@@ -93,6 +97,7 @@ body {
   border-radius: 10px;
   color: white;
   background-size: cover;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
 
 .btn-banner {
@@ -165,9 +170,10 @@ border-radius: 30px;
 
 
 .card-advantage {
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: $SH-blue-light;
   color: $SH-almond;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .sci-info {
@@ -236,6 +242,9 @@ justify-content: center;
   }
   .accordion-button {
     background-color: transparent !important;
+    color: $SH-almond;
+    font-size: 25px;
+    font-weight: lighter;
   }
   .accordion-body {
     background-color: $SH-blue-light;
@@ -244,6 +253,10 @@ justify-content: center;
 
 .form-inline-home {
   margin-top: -55px !important;
+  width: auto;
+}
+
+.form-inline {
   width: 100%;
 }
 
