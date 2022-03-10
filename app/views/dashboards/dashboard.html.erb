@@ -26,7 +26,7 @@
                 <div class="mx-auto">
                   <h6 class="text-muted">Montant investit</h6>
                   <%= image_tag "invests-logo-dashboard" %>
-                  <h3 class="font-weight-bold color-secondary"><%= @data_buyer[:total_invest] %> K</h3>
+                  <h3 class="font-weight-bold color-secondary"><%= @data_buyer[:total_invest] %> €</h3>
                 </div>
               </div>
               <div class="col-lg-3 d-flex stat my-3">
@@ -73,7 +73,7 @@
                   <div class="card-property-dashboard">
                     <div class="modal-header">
                       <h5 class="modal-title" id="ModalProperty<%=index%>Label"><%= status[:property_details][:title] %></h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                     </div>
                     <div class="modal-body-modal-dasboard">
 
@@ -94,6 +94,7 @@
                               <li class="list-group-item"><%= status[:last_booking] != nil ? "Du #{status[:last_booking][:start_date]} au #{status[:last_booking][:finish_date]}" : "Aucune réservation pour le moment" %></li>
                             </ul>
                             <div>
+
                               <%= simple_form_for [status[:property_details][:property], @booking] do |f| %>
                                   <%= f.input :start_date, as: :string,
                                                           required: true,
@@ -127,9 +128,7 @@
             <% else %>
                 <p>Rien</p>
             <% end %>
-
             </div>
-
           </div>
 
           <div class="dashboard-columns bg-white m-1">
@@ -147,7 +146,7 @@
                     <li class="list-group-item ps-0"><i class="fas fa-map-marker-alt location-icon-dashboard pe-2"></i><%= favorite.address %> </li>
                     <li class="list-group-item ps-0"><%= pluralize(favorite.nbr_room, "chambre", "chambres") %></li>
                     <li class="list-group-item ps-0"><%= pluralize(favorite.nbr_bathroom, "salle de bain", "salles de bain") %></li>
-                    <li class="list-group-item ps-0">Prix par part : <%= favorite.price_part %> €</li>
+                    <li class="list-group-item ps-0">Prix par part : <%= favorite.price_part.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse %> €</li>
                   </ul>
                   <%= link_to "Revoir l'annonce", property_path(id: favorite.id), class: "btn btn-primary border-none" %>
                 </div>
