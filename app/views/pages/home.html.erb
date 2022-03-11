@@ -1,3 +1,5 @@
+<% content_for :meta_description, "Blabla" %>
+
 <div class="banner-header" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://www.univers-vacances.fr/wp-content/uploads/2020/07/pierre-et-vacances-ete-piscine-image-principale.jpg);">
     <div class="container">
       <h1>Jetez-vous à l'eau,</h1>
@@ -72,22 +74,29 @@
     <h2 class="splithouse">Aperçu de notre catalogue</h2>
   </div>
 
-  <div class="gallery mt-3">
+  <div class="gallery my-3">
     <% @properties.each.each_with_index do |property,index| %>
-      <div class="card-box-home">
-        <div class="card sh-property-card">
-        <h2 class="property-card_parts">Part : <%= property.price_part.to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ' ') %> €</h2>
-            <h2 class="property-card_remaining"><%= property.part_left %> / 8 </h2>
-          <% unless property.photos_attachments.empty? %>
+
+        <div id="property-<%= property.id %>" class="card property-card">
+          <div class="property-card-image">
+            <h2 class="property-card_parts"><%= property.price_part.to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ' ') %> € / part</h2>
+            <h2 class="property-card_remaining">Reste : <%= property.part_left <= 1 ? "#{property.part_left} part" : "#{property.part_left} parts"  %></h2>
+            <% if user_signed_in? %>
+              <% if current_user.favorited?(property) %>
+                <%= link_to image_tag("heart.png"), unfavorite_property_path(property), class: "btn btn-heart-card", remote: true, data: { controller: "toggle-heart", action:"click->toggle-heart#favorite"} %>
+              <% else %>
+                <%= link_to image_tag("heart.png"), favorite_property_path(property), class: "btn btn-heart-card btn-heart-70", remote: true, data: { controller: "toggle-heart", action:"click->toggle-heart#favorite"}  %>
+              <% end %>
+            <% end %>
             <div id='<%="carouselExampleControls#{index}"%>' class="carousel slide" data-interval="false" data-ride="carousel">
               <div class="carousel-inner unset-border-radius">
                 <div class="carousel-item active">
-                  <%= cl_image_tag property.photos.first.key, class: "card-img-top sh-card-img d-block w-100", alt: "Photo 1" %>
+                  <%= cl_image_tag property.photos.first.key, class: "d-block w-100", alt: "Photo 1" %>
                 </div>
                 <% property.photos.each_with_index do |photo, index| %>
                   <% if index > 0 %>
                     <div class="carousel-item">
-                      <%= cl_image_tag photo.key, class: "card-img-top sh-card-img d-block w-100", alt: "Photo #{index}" %>
+                      <%= cl_image_tag photo.key, class: "d-block w-100", alt: "Photo #{index}" %>
                     </div>
                   <% end %>
                 <% end %>
@@ -101,21 +110,26 @@
                 <span class="sr-only">Next</span>
               </a>
             </div>
-
-          <% else %>
-            <img src="https://marieclaire.be/fr/wp-content/uploads/2018/01/marieclaire_chalet_ian-keefe_unsplahs.jpg" class="card-img-top" alt="carousel-image-1">
-          <% end %>
-            <div class="card-body">
-              <h5 class="card-title"><%= property.title %></h5>
-              <p class="card-text"><%= property.detail %></p>
-
-
-
-              <%= link_to "Jeter un coup d'oeil à cette propriété", property_path(property), class: "btn btn-primary sh-btn-primary" %>
-
+          </div>
+          <div class="property-card-body">
+            <h5 class="property-card-title sh-blue-text"><%= property.title %></h5>
+            <div class="property-card-text flex-grow-1 d-flex flex-column mb-2">
+              <p class="mb-0 ps-0"><i class="fas fa-map-marker-alt"></i><%= property.address.split(",").second %></p>
+              <p class="mb-0 ps-0"><i class="fas fa-home"></i><%= " #{property.home_size}" %> m2</p>
+              <p class="mb-0 ps-0"><i class="fas fa-bed"></i><%= " #{property.nbr_room}" %></p>
+              <p class="mb-0 ps-0"><i class="fas fa-bath"></i><%= " #{property.nbr_bathroom}" %></p>
             </div>
+            <% if user_signed_in? %>
+              <%= link_to "Découvrir", property_path(property.id), class: "btn btn-primary btn-decouvrir mx-auto" %>
+            <% else %>
+              <button type="button" class="btn btn-primary btn-decouvrir mx-auto" data-bs-toggle="modal" data-bs-target="#signupModal">
+                Voir plus
+              </button>
+            <% end %>
+          </div>
         </div>
-      </div>
+
+
     <% end %>
   </div>
 
@@ -246,7 +260,38 @@
   </div>
 </div>
 
-<script>
+
+<!-- Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Connectez vous pour en voir plus !</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :email,
+                        required: false,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" } %>
+            <%= f.input :password,
+                        required: false,
+                        input_html: { autocomplete: "current-password" } %>
+            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Log in", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
+<%# <script>
   const init = function(){
     let items = document.querySelectorAll('.gallery > div');
     for (let i = 0; i < items.length; i++){
@@ -255,4 +300,4 @@
     }
   }
   init();
-</script>
+</script> %>

@@ -312,8 +312,6 @@ maison11.address = "30 avenue Félix Faure, Menton"
 maison11.detail = "Résidence récente avec piscine et court de tennis.<br>
 Cet appartement de 4 pièces en bon état est en étage d'une résidence face à la mer.<br><br>
 
-Résidence des années 70 en bon état et bien tenue avec ascenseur, à seulement 3 minutes à pied de la mer, du centre ville ainsi que de toutes les commodités.<br><br>
-
 Il se compose d'une entrée, d'un séjour lumineux donnant sur une terrasse plein Sud de 15m² avec vue mer et ville, d'une cuisine indépendante équipée et aménagée avec balcon, de 2 chambres avec terrasse, d'une salle de bains ainsi que d'un W.C indépendant et nombreux rangements.<br><br>
 
 Vue mer et ville sublime plein Sud.<br>

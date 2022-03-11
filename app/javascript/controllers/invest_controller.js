@@ -18,7 +18,7 @@ export default class extends Controller {
     const partNumber = inputValue/44;
     const pricePart = this.inputTarget.dataset.pricePart;
     const total = partNumber * pricePart;
-    this.calculTarget.innerHTML = `Montant de mon investissement : <strong>${total}€</strong>`;
+    this.calculTarget.innerHTML = `Montant de mon investissement : <strong>${total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} €</strong>`;
   }
   computeNuitee() {
     // nombre de nuitees
