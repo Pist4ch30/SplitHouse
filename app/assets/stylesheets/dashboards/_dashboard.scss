@@ -27,8 +27,7 @@ a:hover {
   text-transform: uppercase;
   text-align: center;
   color: black;
-  border: 1px solid;
-  background-color: white;
+  background-color: $SH-pink;
   border-radius: 20px;
   margin: 0;
 }
@@ -140,9 +139,11 @@ a:hover {
 
 .card-body-stat-dashboard {
   display: flex;
-  padding: 1rem;
-  align-items: center;
+  padding: 1rem 0;
   justify-content: center;
+  h6.text-muted {
+    height: 44px;
+  }
 }
 
 .row1 {
@@ -249,6 +250,32 @@ a:hover {
   }
 }
 
+
+.resa-property-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1rem 0;
+  p { margin: 0; }
+}
+
+
+.menu-card-modal-dasboard {
+  h4 {
+    padding: .5rem 1rem;
+  }
+  .flatpickr-calendar {
+    margin: 0 auto;
+    margin-top: 1rem;
+  }
+  #new_booking {
+    text-align: center;
+    .btn-ageanda-dashboard {
+      border: none;
+      width: 80%;
+      margin-bottom: 1rem;
+    }
+  }
+}
 .list-group {
   align-items: center;
 }

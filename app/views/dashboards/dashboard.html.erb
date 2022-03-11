@@ -67,7 +67,7 @@
 
                   <!-- Button Modal Property -->
                   <button type="button" class="btn btn-primary border-none" data-bs-toggle="modal" data-bs-target="#ModalProperty<%=index%>">
-                    Voir plus
+                    Réserver
                   </button>
                 </div>
               </div>
@@ -108,11 +108,13 @@
                                 </div>
                               </div>
                             </div>
-                            <ul class="list-group list-group-flush">
+
+                              <% property = status[:property_details][:property] %>
                               <%#= Part.find_by(user: current_user, property: status[:property_details][:property]).nbr_part %>
                               <%#= status[:property_details][:property].price_part * Part.find_by(user: current_user, property: property).nbr_part %>
-                              <h4>Votre prochain séjour</h4>
-                              <li class="list-group-item"><%= status[:last_booking] != nil ? "Du #{status[:last_booking][:start_date]} au #{status[:last_booking][:finish_date]}" : "Aucune réservation pour le moment" %></li>
+
+                              <h4>Dernière réservation</h4>
+                              <li class="list-group-item"><%= status[:last_booking] != nil ? "Du #{I18n.l(status[:last_booking][:start_date], format: "%d %B %Y", locale: :fr)} au #{I18n.l(status[:last_booking][:finish_date], format: "%d %B %Y", locale: :fr)}" : "Aucune réservation pour le moment" %></li>
                             </ul>
 
                             <div class=" container sipmle-form-modal">
