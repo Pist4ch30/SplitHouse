@@ -67,7 +67,7 @@
 
                   <!-- Button Modal Property -->
                   <button type="button" class="btn btn-primary border-none" data-bs-toggle="modal" data-bs-target="#ModalProperty<%=index%>">
-                    Voir plus
+                    Réserver
                   </button>
                 </div>
               </div>
@@ -83,13 +83,13 @@
 
                       <div class="flex-container-card-dashboard">
                         <div class="flex-items-card-dashboard">
-                          <div class="menu-card-modal-dasboard" style="width: 18rem;">
+                          <div class="menu-card-modal-dasboard">
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                               <%= "Il vous reste #{status[:stat_booking][:day_restant]}/Jours"%>
                               <span class="visually-hidden">unread messages</span>
                             </span>
                             <%= cl_image_tag status[:property_details][:property].photos.first.key, class:"img-card-dashboard-modale w-100" %>
-                            <div class="d-flex flex-wrap">
+                            <%# <div class="d-flex flex-wrap">
                               <div class="row">
                                 <div class="col-lg-6"><p>Hogo,dkkskdfkazkdf</p></div>
                                 <div class="col-lg-6"><p>Hogozkrjazkjazrkazkr</p></div>
@@ -98,17 +98,23 @@
                                 <div class="col-lg-6"><p>Hogo</p></div>
                                 <div class="col-lg-6"><p>Hogo</p></div>
                               </div>
-                            </div>
-                            <ul class="list-group list-group-flush">
+                            </div> %>
+
                               <% property = status[:property_details][:property] %>
                               <%#= Part.find_by(user: current_user, property: status[:property_details][:property]).nbr_part %>
                               <%#= status[:property_details][:property].price_part * Part.find_by(user: current_user, property: property).nbr_part %>
-                              <li class="list-group-item-card-modal-dasboard">Investissement total : <%= property.price_part * Part.find_by(user: current_user, property: property).nbr_part %> €</li>
-                              <li class="list-group--card-modal-dasboard">Nombre de parts : <span class="badge rounded-pill bg-primary"><%= Part.find_by(user: current_user, property: property).nbr_part %></span></li>
-                              <li class="list-group--card-modal-dasboard">Nuits allouées : <span class="badge rounded-pill bg-success"><%= Part.find_by(property: property, user: current_user).nbr_part*44 %></span></li>
-                              <li class="list-group--card-modal-dasboard">Nuits utilisés : <span class="badge rounded-pill bg-info text-dark"><%= current_user.bookings.where(property: property).sum(&:duration) %></span></li>
+                              <div class="resa-property-stats">
+                                <p>Investissement total :</p>
+                                <p><%= property.price_part * Part.find_by(user: current_user, property: property).nbr_part %> €</p>
+                                <p>Nombre de parts :</p>
+                                <p><span class="badge rounded-pill bg-primary"><%= Part.find_by(user: current_user, property: property).nbr_part %></span></p>
+                                <p>Nuits allouées :</p>
+                                <p><span class="badge rounded-pill bg-success"><%= Part.find_by(property: property, user: current_user).nbr_part*44 %></span></p>
+                                <p>Nuits utilisés :</p>
+                                <p><span class="badge rounded-pill bg-info text-dark"><%= current_user.bookings.where(property: property).sum(&:duration) %></span></p>
+                              </div>
                               <h4>Dernière réservation</h4>
-                              <li class="list-group-item"><%= status[:last_booking] != nil ? "Du #{status[:last_booking][:start_date]} au #{status[:last_booking][:finish_date]}" : "Aucune réservation pour le moment" %></li>
+                              <li class="list-group-item"><%= status[:last_booking] != nil ? "Du #{I18n.l(status[:last_booking][:start_date], format: "%d %B %Y", locale: :fr)} au #{I18n.l(status[:last_booking][:finish_date], format: "%d %B %Y", locale: :fr)}" : "Aucune réservation pour le moment" %></li>
                             </ul>
                             <% booking_dates = status[:property_details][:property].bookings.map do |booking|
                                   {
@@ -127,7 +133,7 @@
                                                         as: :hidden,
                                                         required: true,
                                                         input_html: { 'data-flatpickr-target': "rangeEnd", class: "d-none" } %>
-                                  <%= f.button :submit, "Réserver", class: "btn btn-primary" %>
+                                  <%= f.button :submit, "Réserver", class: "btn btn-primary new-booking-button" %>
                                 <% end %>
                                   <div  id="booking-form-div"
                                         data-bookings="<%= booking_dates.to_json %>">
