@@ -40,7 +40,7 @@
         <p><%= @property.nbr_bathroom %></p>
       </div>
     </div>
-    <div class="ps-0 container info">
+    <div class="ps-0 pt-2 pb-3 container info">
       <p><%= @property.detail.html_safe %></p>
     </div>
     <div class="container mt-10 p-0">
@@ -84,7 +84,7 @@
                 min="44" max="176" step="44" oninput="num.value = this.value" value=44 data-invest-target="input" data-action="change->invest#computeInvest" data-price-part="<%= @property.price_part %>">
           <output id="num">44</output>
           <div class="montant">
-          <p class="p-0 m-0" data-invest-target="calcul">Montant de mon investissement : <%= @property.price_part.to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ' ') %> €</p>
+          <p class="p-0 m-0" data-invest-target="calcul">Montant de mon investissement : <strong><%= @property.price_part.to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ' ') %> €</strong></p>
           </div>
           <div class="prix">
           <p class="p-0 mb-2 ">Prix au m² : <%= @square_meter_price.to_s.reverse.gsub(/...(?=.)/,'\& ').reverse %>€</p>
@@ -99,8 +99,8 @@
         </div>
         <div class="italics">
           <ul>
-            <li><%= link_to "Obtenir plus de details sur les charges", "#", class: "avoid-clicks" %><li>
-            <li><%= link_to "Obtenir le diagnostic de ce bien", "#", class: "avoid-clicks" %></li>
+            <li><%= link_to "Obtenir plus de details sur les charges", "#"%><li>
+            <li><%= link_to "Obtenir le diagnostic de ce bien", "#" %></li>
           </ul>
         </div>
       </div>
@@ -122,13 +122,14 @@
       <div class="modal-body">
         <%= form_with url: "#", method: :get do |form| %>
           <%= form.label :query, "Votre message" %>
-          <%= form.text_area :message, size: "70x5", class: "text-area p-2", value: "Bonjour, \nje suis intéressé par l'annonce '#{@property.title}', \nmerci de me recontacter. \n#{current_user.first_name} #{current_user.last_name}"%>
+          <%= form.text_area :message, size: "70x5", class: "text-area p-2", value: "Bonjour, \nJe suis intéressé par l'annonce '#{@property.title}', pouvez-vous me recontacter svp ? \n#{current_user.first_name} #{current_user.last_name}"%>
         <% end %>
-        <p><em>Vous pouvez également nous envoyer un message via notre système de chat</em></p>
+        <p><em>Vous pouvez également nous envoyer un message via notre système de chat.</em></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Envoyer</button>
-        <button type="button" class="btn btn-primary btn-pink">Retour</button>
+        <%= link_to "Envoyer", property_parts_path(@property), method: :post, class:"btn btn-secondary", 'data-dismiss': "modal" %>
+        <%# <button type="button" class="btn btn-secondary" data-dismiss="modal">Envoyer</button> %>
+        <%# <button type="button" class="btn btn-primary btn-pink">Retour</button> %>
       </div>
     </div>
   </div>
