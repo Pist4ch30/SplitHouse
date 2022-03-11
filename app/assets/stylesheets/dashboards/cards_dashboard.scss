@@ -1,8 +1,8 @@
 .image-card-property-dashboard {
-  margin-top: 5%;
-  width: 50%;
-  height: 150px;
-  object-fit: cover;
+  width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card-property-dashboard {
@@ -10,4 +10,9 @@
   margin: 5px 10px 5px 10px;
   border-radius: 10px;
   background-color: white;
+}
+
+.img-card-dashboard-modale {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }

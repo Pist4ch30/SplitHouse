@@ -50,7 +50,6 @@
 }
 
 p {
-  padding-left: 20px;
   color: #46536C;
 }
 
@@ -88,7 +87,6 @@ h1 {
   width: 25%;
   height: 100px;
   border: none;
-  padding: 5px;
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -121,7 +119,8 @@ h1 {
 }
 .carousel-item img {
   width: 100%;
-  object-fit: contain;
+  // object-fit: contain;
+  height: 300px;
 }
 
 input[type=range] {
