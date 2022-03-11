@@ -107,21 +107,12 @@
                                   <p><%= current_user.bookings.where(property: property).sum(&:duration) %></p>
                                 </div>
                               </div>
-                            </div> %>
+                            </div>
 
                               <% property = status[:property_details][:property] %>
                               <%#= Part.find_by(user: current_user, property: status[:property_details][:property]).nbr_part %>
                               <%#= status[:property_details][:property].price_part * Part.find_by(user: current_user, property: property).nbr_part %>
-                              <div class="resa-property-stats">
-                                <p>Investissement total :</p>
-                                <p><%= property.price_part * Part.find_by(user: current_user, property: property).nbr_part %> €</p>
-                                <p>Nombre de parts :</p>
-                                <p><span class="badge rounded-pill bg-primary"><%= Part.find_by(user: current_user, property: property).nbr_part %></span></p>
-                                <p>Nuits allouées :</p>
-                                <p><span class="badge rounded-pill bg-success"><%= Part.find_by(property: property, user: current_user).nbr_part*44 %></span></p>
-                                <p>Nuits utilisés :</p>
-                                <p><span class="badge rounded-pill bg-info text-dark"><%= current_user.bookings.where(property: property).sum(&:duration) %></span></p>
-                              </div>
+
                               <h4>Dernière réservation</h4>
                               <li class="list-group-item"><%= status[:last_booking] != nil ? "Du #{I18n.l(status[:last_booking][:start_date], format: "%d %B %Y", locale: :fr)} au #{I18n.l(status[:last_booking][:finish_date], format: "%d %B %Y", locale: :fr)}" : "Aucune réservation pour le moment" %></li>
                             </ul>
