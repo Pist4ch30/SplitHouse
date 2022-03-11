@@ -17,7 +17,7 @@
                   <div class="mx-auto">
                     <h6 class="text-muted">Mes parts</h6>
                     <%= image_tag "parts-logo-dashboard" %>
-                    <h3 class="font-weight-bold color-secondary p-0"><%= @total_parts %> Parts</h3>
+                    <h3 class="font-weight-bold color-secondary p-0"><%= @total_parts <= 1 ? "#{@total_parts} part" : "#{@total_parts} parts" %></h3>
                   </div>
                 </div>
                 <div class="col-lg-3 d-flex stat my-3">
@@ -31,14 +31,14 @@
                   <div class="mx-auto">
                     <h6 class="text-muted">Nuits Restantes</h6>
                     <%= image_tag "nuits-restantes-dashboard" %>
-                    <h3 class="font-weight-bold color-secondary p-0"><%= @days_allowed - @days_utilises %> Nuits</h3>
+                    <h3 class="font-weight-bold color-secondary p-0"><%= @days_allowed - @days_utilises %> nuits</h3>
                   </div>
                 </div>
                 <div class="col-lg-3 d-flex stat my-3">
                   <div class="mx-auto">
                     <h6 class="text-muted">Nuits Utilisées</h6>
                     <%= image_tag "nuits-utilise-dashboard" %>
-                    <h3 class="font-weight-bold color-secondary p-0"><%= @days_utilises %> Nuits</h3>
+                    <h3 class="font-weight-bold color-secondary p-0"><%= @days_utilises <= 1 ? "#{@days_utilises} nuit" : "#{@days_utilises} nuits" %></h3>
                   </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                               <div class="row w-100">
                                 <div class="col-lg-6 data-user">
                                   <h6 class="text-muted-1">Investissement</h6>
-                                  <p><%= property.price_part * Part.find_by(user: current_user, property: property).nbr_part %> €</p>
+                                  <p><%= property.price_part.to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ' ') * Part.find_by(user: current_user, property: property).nbr_part %> €</p>
                                 </div>
                                 <div class="col-lg-6 data-user">
                                   <h6 class="text-muted-1"><%= Part.find_by(user: current_user, property: property).nbr_part <= 1 ? "Part": "Parts" %></h6>
