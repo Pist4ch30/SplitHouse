@@ -11,15 +11,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Accueil", root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
+         <li class="nav-item">
             <%= link_to "Propriétés", properties_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "Dashboard", dashboard_path, class: "nav-link dash" %>
           </li>
 
           <li class="nav-item dropdown">
-            <%= image_tag "didier.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= cl_image_tag current_user.photo.attached? ? current_user.photo.key : "https://res.cloudinary.com/olivierlewagon800/image/upload/v1646994079/avatar_an7rpe.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
               <%= link_to "Déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
